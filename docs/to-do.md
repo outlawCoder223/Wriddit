@@ -2,7 +2,7 @@
 
 ## Project Set-up
 
-* [ ] Repo created and shared w/ collaborators
+* [x] Repo created and shared w/ collaborators
 
 * [ ] All necessary packages included
 
@@ -32,7 +32,7 @@
 
 ### Back-end Clean-up
 
-* [ ] Routes are RESTful
+* [x] Routes are RESTful
 
 * [ ] Files modularized
 
