@@ -98,13 +98,31 @@
 
 * [ ] Front-end connected to back-end
 
-* [ ] Homepage finished
-
 * [ ] Header finished
 
-* [ ] Footer finished
+* [ ] Homepage finished
+
+  * [ ] Stories appear on homepage
+
+    * [ ] Stories are incomplete or complete
+
+  * [ ] User can click on a link to take them to create a story
+
+  * [ ] User can click any story on the homepage
 
 * [ ] Story page finished
+
+  * [ ] User can read the story
+
+  * [ ] User can click the upvote btn to upvote a contribution
+
+  * [ ] Upvote increments when clicked
+
+  * [ ] User can write a contribution
+
+  * [ ] User can submit contribution
+
+  * [ ] Contribution will appear on page
 
 ------------------
 
