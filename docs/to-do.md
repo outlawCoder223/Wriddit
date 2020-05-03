@@ -2,7 +2,7 @@
 
 ## Project Set-up
 
-* [ ] Repo created and shared w/ collaborators
+* [x] Repo created and shared w/ collaborators
 
 * [ ] All necessary packages included
 
