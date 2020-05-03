@@ -1,0 +1,19 @@
+header {
+  height: 400px;
+  position: relative;
+  text-align: center;
+  background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+  background-color: #d19732;
+  margin-top: 120px;
+  font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+body {
+  background-color: #cc6363;
+}
+
+body h1 {
+  color: #244751;
+}

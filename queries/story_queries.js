@@ -14,10 +14,14 @@ LIMIT 1;
 
 const getStoryById =
 `
-SELECT created_on, ended_on, content, title, photo_url, genres.name, users.name, AVG(rating)
+SELECT created_on, ended_on, content, title, photo_url, genres.name, users.name, AVG(rating) AS average_rating
 FROM stories
-JOIN story_ratings ON story_rating.story_id = stories.id
+JOIN story_ratings ON story_ratings.story_id = stories.id
+JOIN story_genres ON story_genres.story_id = stories.id
+JOIN genres ON genre_id = genres.id
+JOIN users ON author_id = users.id
 WHERE stories.id = $1
+GROUP BY created_on, ended_on, content, title, photo_url, genres.name, users.name
 LIMIT 1;
 `
 
@@ -28,7 +32,7 @@ FROM stories
 JOIN contributions ON story_id = stories.id
 JOIN users ON contributor_id = users.id
 WHERE story_id = $1
-AND state or status?
+AND state = 'active';
 `
 
 const getStoryOfTheWeek =
@@ -39,7 +43,9 @@ JOIN users ON stories.author_id = users.id
 WHERE stories.name = $1
 `
 
-// const getRandomUnfinishedStory =
-// `
-// Select
-// `
+module.exports = {
+  getStoriesByGenre,
+  getContributionsByStoryId,
+  getStoryById,
+  getStoryOfTheWeek
+};

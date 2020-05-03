@@ -16,9 +16,9 @@
 
 ## Back-end To-do:
 
-* [ ] Database and tables created
+* [x] Database and tables created
   
-  * [ ] Necessary seed data inserted
+  * [x] Necessary seed data inserted
 
 * [ ] Server connected to database
 
