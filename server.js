@@ -37,6 +37,7 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+
 // Separated Routes for each Resource
 const usersRoutes = require('./routes/users');
 const storiesRoutes = require('./routes/stories');
