@@ -3,15 +3,11 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get('/', (req, res) => {
-
-  });
-
-  router.get('/:user_id', (req, res) => {
-
+    res.render('stories');
   });
 
   router.get('/:story_id', (req, res) => {
-
+    res.render('stories')
   });
 
   router.get('/:story_id/:contribution_id', (req, res) => {
@@ -33,5 +29,6 @@ module.exports = (db) => {
   router.post('/stories/:story_id/:contribution_id', (req, res) => {
 
   });
+
   return router;
 };
