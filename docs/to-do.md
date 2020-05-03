@@ -22,17 +22,23 @@
 
 * [ ] Server connected to database
 
-* [ ] Routes created
+* [x] Routes created
 
-* [ ] User cookie set
+* [ ] GET requests respond w/ correct resourses
 
-* [ ] User cookie removed on Logout
+* [ ] POST requests post/update database
+
+* [x] User cookie set
+
+* [x] User cookie removed on Logout
+
+* [ ] DB queries
 
 ------------------
 
 ### Back-end Clean-up
 
-* [ ] Routes are RESTful
+* [x] Routes are RESTful
 
 * [ ] Files modularized
 

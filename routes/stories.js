@@ -7,7 +7,7 @@ module.exports = (db) => {
   });
 
   router.get('/:story_id', (req, res) => {
-    res.render('stories')
+    res.render('story')
   });
 
   router.get('/:story_id/:contribution_id', (req, res) => {
