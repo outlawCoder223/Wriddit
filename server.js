@@ -2,14 +2,14 @@
 require('dotenv').config();
 
 // Web server config
-const PORT       = process.env.PORT || 8080;
-const ENV        = process.env.ENV || "development";
-const express    = require("express");
+const PORT = process.env.PORT || 8080;
+const ENV = process.env.ENV || "development";
+const express = require("express");
 const cookieSession = require('cookie-session');
 const bodyParser = require("body-parser");
-const sass       = require("node-sass-middleware");
-const app        = express();
-const morgan     = require('morgan');
+const sass = require("node-sass-middleware");
+const app = express();
+const morgan = require('morgan');
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -40,13 +40,19 @@ app.use(express.static("public"));
 
 
 // Separated Routes for each Resource
-const usersRoutes = require('./routes/users');
-const storiesRoutes = require('./routes/stories');
+
+const contributionsRoutes = require('./routes/contributions');
+const genresRoutes = require('./routes/genres');
 const mainRoutes = require('./routes/main');
+// const storiesRoutes = require('./routes/stories'); //TESTING
+const storiesRoutes = require('./routes/stories-tinker');
+const usersRoutes = require('./routes/users');
 
 // Mount all resource routes
-app.use("/stories", storiesRoutes(db));
+app.use('/contributions', contributionsRoutes(db));
+app.use('/genres', genresRoutes(db));
 app.use('/', mainRoutes(db));
+app.use('/stories', storiesRoutes(db));
 app.use('/users', usersRoutes(db));
 
 app.listen(PORT, () => {
