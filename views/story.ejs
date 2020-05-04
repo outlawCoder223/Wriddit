@@ -6,24 +6,39 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/story.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
-    <img src="https://images.unsplash.com/photo-1501421018470-faf26f6b1bef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="">
-    <h1><%= title %></h1>
-    <h3>Started by <%= author %></h3>
-    <p><%= content %></p>
-    <form action="/stories/:story_id/:contribution_id" method="post">
-      <label for="contribution">What happens next...</label>
-      <input type="text" name="contribution" id="contribution-text">
-      <button type="submit">Submit</button>
-    </form>
-    <% for (const item of contributions) { %>
-      <p><%= item.content %></p>
-      <h4><%= item.name %></h4>
-    <% } %>
+    <%- include('partials/_header') %>
+    <main>
+      <section class="story">
+        <img src="https://images.unsplash.com/photo-1501421018470-faf26f6b1bef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="">
+        <h1><%= title %></h1>
+        <h3>Started by <%= author %></h3>
+        <p><%= content %></p>
+      </section>
+      <section class="story-form">
+        <form action="/stories/:story_id/:contribution_id" method="post">
+        <label for="contribution">What happens next...</label>
+        <input type="text" name="contribution" id="contribution-text">
+        <div id="button">
+          <button type="submit">Submit</button>
+        </div>
+
+      </section>
+      <section class="contributions">
+        </form>
+        <% for (const item of contributions) { %>
+          <p><%= item.content %></p>
+          <h4><%= item.name %></h4>
+        <% } %>
+      </section>
+    </main>
   </body>
 </html>

@@ -1,0 +1,36 @@
+main {
+  // display: flex;
+  margin: 0 auto;
+  width: 80%;
+
+}
+
+.story {
+  h1 {
+    color: #244751;
+    font-size: 64px;
+  }
+
+  h3 {
+    font-size: 32px;
+  }
+
+  img {
+    width: 40%;
+    float: right;
+  }
+
+}
+
+.story-form {
+
+  label {
+    display: block;
+  }
+
+  input {
+    width: 100%;
+    height: 300px;
+  }
+
+}
