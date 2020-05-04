@@ -27,12 +27,26 @@ main {
 
   label {
     display: block;
+    font-size: 2.25rem;
   }
 
-  input {
+  textarea {
     width: 100%;
-    height: 300px;
+    height: 250px;
+    font-size: 1rem;
+    border: none;
+    background-color: #F7F4EE;
   }
+
+  textarea:focus {
+
+      outline: none !important;
+      border: 1px solid #000000;
+      box-shadow: 0 0 2px #000000;
+
+  }
+
+
 
 }
 
@@ -40,6 +54,7 @@ main {
   border: 2px solid black;
   padding: 5px;
   margin: 10px 0;
+  font-size: 1rem;
 
   footer {
     display: flex;
@@ -54,6 +69,16 @@ main {
     p {
       display: inline-block;
       margin: 0;
+    }
+
+    button {
+      background-color: #e6dfdf;
+      border: none;
+      opacity: 0.5;
+    }
+
+    button:hover {
+      opacity: 1;
     }
 
   }
