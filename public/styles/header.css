@@ -1,0 +1,83 @@
+.mainheader {
+  background-color: #438180;
+  font-family: 'Jost', sans-serif;
+}
+
+.mainheader-topbar {
+  height: 70px;
+  position: relative;
+  text-align: center;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em;
+  padding-top: 15px;
+}
+
+.mainheader-topbar .header-menu {
+  list-style: none;
+  display: flex;
+}
+
+.mainheader-topbar .logo {
+  font-size: 40px;
+  color: whitesmoke;
+  padding-top: 20px;
+}
+
+#navList {
+  justify-content: center;
+}
+
+.header-link-2 {
+  padding-left: 4px;
+  padding-right: 4px;
+  color: black;
+}
+
+.header-link {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.header-link-1 {
+  margin-right: 6px;
+}
+
+.header-link-3 {
+  margin-left: 6px;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background-color: #e6dfdf;
+  padding-top: 14px;
+}
+
+.nav-link {
+  text-decoration: none;
+  margin: 5px;
+  color: black;
+}
+
+.nav-link-2 {
+  border-left: 1px solid #c9caca;
+  padding-left: 4px;
+  border-right: 1px solid #c9caca;
+  padding-right: 4px;
+  color: black;
+}
+
+.nav-link-3 {
+  padding-left: 4px;
+  border-right: 1px solid #c9caca;
+  padding-right: 4px;
+  color: black;
+}
+
+.container-header {
+  padding-top: 35px;
+}
