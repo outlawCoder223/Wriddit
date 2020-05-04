@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const rp = require('request-promise-native');
 
 const { selectAllStories,
   getCompleteStoryById,
@@ -17,10 +18,11 @@ const { getContributionsByStoryId,
 } = require('../queries/contributions_queries')
 
 /**************ESSENTIAL ROUTES***************
- *  GET /stories -- done with hardcoding
- * POST /stories -- done
+ * GET / -- done with hardcoding
+ * POST / -- done
+ * POST /update (for writing prompt api) - needs tempVars
  * GET /:story_id  -- done
- * GET /:story_id/contributions
+ * GET /:story_id/contributions - needs powow with Rance re: templateVars
  */
 
 module.exports = (db) => {
@@ -52,6 +54,29 @@ module.exports = (db) => {
         res
           .status(500)
           .json({ error: err.message });
+      });
+  });
+
+  router.post('/update', (req, res) => {
+    const templateVars = {
+      title: req.body.title,
+      content: req.body.content,
+      author_id: req.body.author_id
+    }
+    const options = {
+      uri: 'https://ineedaprompt.com/dictionary/default/prompt?q=adj+noun+adv+verb+noun+location',
+      json: true
+    };
+
+    rp(options)
+      .then((data) => {
+        console.log(data.english);
+        //this will need to go into tempVars
+        res.render('story', templateVars);
+
+      })
+      .catch((err) => {
+        console.log(err);
       });
   });
 
