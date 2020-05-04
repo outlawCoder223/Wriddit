@@ -81,7 +81,8 @@ module.exports = (db) => {
 
   });
 
-  router.post('/stories/:story_id/:contribution_id', (req, res) => {
+  router.post('/:story_id/contributions/:contribution_id', (req, res) => {
+    console.log(req.body);
 
   });
 
