@@ -5,23 +5,7 @@ const { getStoriesByGenre, getContributionsByStoryId, getStoryById, getStoryOfTh
 
 module.exports = (db) => {
   router.get('/', (req, res) => {
-    let query = getStoryById;
-    db.query(query, [1])
-      .then(data => {
-        const story = data.rows[0].title;
-        console.log('story', data.rows);
-        const templateVars = {
-          title: story
-        };
-        console.log(templateVars);
-        res.render('stories', templateVars);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-
+    res.render('stories')
   });
 
   router.get('/:story_id', (req, res) => {
