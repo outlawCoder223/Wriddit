@@ -12,7 +12,18 @@
   </head>
 
   <body>
+    <img src="https://images.unsplash.com/photo-1501421018470-faf26f6b1bef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="">
     <h1><%= title %></h1>
+    <h3>Started by <%= author %></h3>
     <p><%= content %></p>
+    <form action="/stories/:story_id/:contribution_id" method="post">
+      <label for="contribution">What happens next...</label>
+      <input type="text" name="contribution" id="contribution-text">
+      <button type="submit">Submit</button>
+    </form>
+    <% for (const item of contributions) { %>
+      <p><%= item.content %></p>
+      <h4><%= item.name %></h4>
+    <% } %>
   </body>
 </html>

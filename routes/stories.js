@@ -27,16 +27,30 @@ module.exports = (db) => {
   router.get('/:story_id', (req, res) => {
     let query = getStoryById;
     const id = req.params.story_id;
-    db.query(query, [id])
+    const templateVars = {};
+    db.query(getStoryById, [id])
       .then(data => {
         const story = data.rows[0];
         console.log('story', data.rows);
-        const templateVars = {
-          title: story.title,
-          content: story.content
-        };
+        // const templateVars = {
+        //   title: story.title,
+        //   content: story.content,
+        //   author: story.author
+        // };
+        templateVars.title = story.title;
+        templateVars.content = story.content;
+        templateVars.author = story.author;
         console.log(templateVars);
-        res.render('story', templateVars);
+
+      })
+      .then(() => {
+        db.query(getContributionsByStoryId, [id])
+          .then(data => {
+
+            console.log('story', data.rows);
+            templateVars.contributions = data.rows;
+            res.render('story', templateVars);
+        })
       })
       .catch(err => {
         res
@@ -55,7 +69,7 @@ module.exports = (db) => {
   });
 
   router.post('/:story_id/:contribution_id', (req, res) => {
-
+    res.redirect('/');
   });
 
   router.post('/stories', (req, res) => {

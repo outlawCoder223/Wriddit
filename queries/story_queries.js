@@ -14,25 +14,19 @@ LIMIT 1;
 
 const getStoryById =
 `
-SELECT created_on, ended_on, content, title, photo_url, genres.name, users.name, AVG(rating) AS average_rating
+SELECT title, users.name AS author, content
 FROM stories
-JOIN story_ratings ON story_ratings.story_id = stories.id
-JOIN story_genres ON story_genres.story_id = stories.id
-JOIN genres ON genre_id = genres.id
 JOIN users ON author_id = users.id
 WHERE stories.id = $1
-GROUP BY created_on, ended_on, content, title, photo_url, genres.name, users.name
 LIMIT 1;
 `
 
 const getContributionsByStoryId =
 `
-SELECT upvotes, content, users.name, created_on
-FROM stories
-JOIN contributions ON story_id = stories.id
+SELECT upvotes, content, users.name
+FROM contributions
 JOIN users ON contributor_id = users.id
-WHERE story_id = $1
-AND state = 'active';
+WHERE story_id = $1;
 `
 
 const getStoryOfTheWeek =
