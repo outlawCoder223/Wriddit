@@ -52,7 +52,9 @@
                 </div>
                 <div>
                   <h4><%= item.name %></h4>
-                  <button id="<%= item.id %>" class="merge">Merge</button>
+                  <% if (loggedIn) { %>
+                    <button id="<%= item.id %>" class="merge">Merge</button>
+                  <% } %>
                 </div>
 
               </footer>

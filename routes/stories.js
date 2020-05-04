@@ -36,10 +36,13 @@ module.exports = (db) => {
     SELECT upvotes, content, users.name, contributions.id AS id
     FROM contributions
     JOIN users ON contributor_id = users.id
-    WHERE story_id = $1;
-    `
+    WHERE story_id = $1
+    ORDER BY upvotes DESC;
+    `;
+    console.log(req.session.user)
     const id = req.params.story_id;
-    const templateVars = {};
+    const templateVars = { loggedIn: null };
+    if (req.session.user) templateVars.loggedIn = true;
     db.query(getStory, [id])
       .then(data => {
         const story = data.rows[0];
@@ -50,7 +53,6 @@ module.exports = (db) => {
       .then(() => {
         db.query(getContributions, [id])
           .then(data => {
-            console.log(data.rows)
             templateVars.contributions = data.rows;
             res.render('story', templateVars);
         })
@@ -72,7 +74,7 @@ module.exports = (db) => {
   });
 
   router.post('/:story_id/:contribution_id', (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
   });
 
   router.post('/stories', (req, res) => {
