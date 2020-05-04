@@ -45,7 +45,7 @@ const contributionsRoutes = require('./routes/contributions');
 const genresRoutes = require('./routes/genres');
 const mainRoutes = require('./routes/main');
 // const storiesRoutes = require('./routes/stories'); //TESTING
-const storiesRoutes = require('./routes/stories-tinker');
+const storiesRoutes = require('./routes/stories');
 const usersRoutes = require('./routes/users');
 
 // Mount all resource routes

@@ -1,70 +1,37 @@
 const express = require('express');
 const router = express.Router();
-const randomstring = require("randomstring");
-const { getStoriesByGenre,
-  selectStoriesByUser,
-  selectAllStories,
-  selectStoryByUser,
-  getContributionsByStoryId,
-  getStoryById,
-  getStoryOfTheWeek } = require('../queries/get_queries')
+
+const { selectAllStories,
+  getCompleteStoryById,
+  getIncompleteStoryById,
+  getActiveContributions
+} = require('../queries/stories_get_queries')
+
 const {
   createNewStory,
   markStoryComplete,
-  currentStory,
-  mergeContributionToStory
-} = require('../queries/post_queries')
+} = require('../queries/stories_post_queries')
 
-// browse all stories
+const { getContributionsByStoryId,
+  createContribution
+} = require('../queries/contributions_queries')
+
+/**************ESSENTIAL ROUTES***************
+ *  GET /stories -- done with hardcoding
+ * POST /stories -- done
+ * GET /:story_id  -- done
+ * GET /:story_id/contributions
+ */
+
 module.exports = (db) => {
+  //browse random stories
   router.get('/', (req, res) => {
-    let query = getStoryById;
-    db.query(query, [1])
-      .then(data => {
-        const story = data.rows[0].title;
-        // console.log('story', data.rows);
-        const templateVars = {
-          title: story
-        };
-        // console.log(templateVars);
-        res.render('stories', templateVars);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-
+    res.render('stories');
   });
 
-  // view a single story
-  router.get('/:story_id', (req, res) => {
-    let query = getStoryById;
-    const id = req.params.story_id;
-    db.query(query, [id])
-      .then(data => {
-        const story = data.rows[0];
-        // console.log('story', data.rows);
-        const templateVars = {
-          title: story.title,
-          content: story.content
-        };
-        // console.log(templateVars);
-        res.render('story', templateVars);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-
-  });
-
-  //make a new story
-  //PUT
-  //DELETE // POST
+  //create a new story
   router.post('/', (req, res) => {
-    let query = createNewStory;
+    const query = createNewStory;
     const authorId = req.body.author_id;
     const title = req.body.title;
     const content = req.body.content;
@@ -86,46 +53,18 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
-
   });
 
-  //mark a story as complete
-  // TODO finish this request
-  //need nother route for merging a contribution (PUT)
-
-  router.post('/:story_id', (req, res) => {
-    //if statement to determine type of post? is this a thing?
-
-    const storyId = req.params.story_id;
-    const authorId = req.body.author_id;
-    const title = req.body.title;
-    const content = req.body.content;
-    const contribution = req.body.contribution;
-
-    let query1 = currentStory;
-    let query2 = mergeContributionToStory;
-
-    db.query(query1, [storyId])
+  // read a complete story
+  router.get('/:story_id', (req, res) => {
+    const query = getCompleteStoryById;
+    const id = req.params.story_id;
+    db.query(query, [id])
       .then(data => {
-        db.query(query2, [data, contribution, storyId])
-      })
-    //need a .then() that removes all the other irrelevant contributions
-
-
-    //else {}
-    /*
-    const storyId = req.params.story_id;
-    const authorId = req.body.author_id;
-    const title = req.body.title;
-    const content = req.body.content;
-    let query = markStoryComplete;
-
-    db.query(query, [storyId])
-      .then(() => {
+        const story = data.rows[0];
         const templateVars = {
-          title,
-          content,
-          author_id: authorId
+          title: story.title,
+          content: story.content
         };
         res.render('story', templateVars);
       })
@@ -134,27 +73,68 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
-      */
   });
 
-  //make a new contribution
-
-
-  router.post('/:story_id/contributions', (req, res) => {
-    // updating a story to contain a new contribution / reject a bunch of other contributions that didn't make the cut
-    //
-
-  });
-
-  // view an individual contribution
-  router.get('/:story_id/contributions/:contribution_id', (req, res) => {
-
-  });
-
-  //make a change to a specific contribution ..??
-  router.post('/stories/:story_id/:contribution_id', (req, res) => {
-
+  //read an incomplete story
+  // TODO Rance will need to deconstruct and loop through templateVars which are different here. How does that impact the view w.r.t. completed stories?
+  router.get('/:story_id/contributions', (req, res) => {
+    let query1 = getActiveContributions;
+    let query2 = getActiveContributions;
+    const id = req.params.story_id;
+    let templateVars = {};
+    db.query(query1, [id])
+      .then(data => {
+        templateVars['contributions'] = data.rows
+      })
+    db.query(query2, [id])
+      .then(data => {
+        templateVars['story'] = data.rows;
+        res.render('story', templateVars);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   });
 
   return router;
 };
+
+
+/*******NON-ESSENTIAL ROUTES*********
+ * place these in the router as you build them out
+
+
+
+  //edit a story's title or content NOT by merge
+  router.post('/:story_id', (req, res) => {
+
+  });
+
+  //mark a story complete
+  router.post('/:story_id/complete', (req, res) => {
+
+  });
+
+  //delete a story
+  router.post('/:story_id/delete', (req, res) => {
+
+  });
+
+  //create a new contribution to a story
+  router.post('/:story_id/contributions', (req, res) => {
+    const query = createContribution;
+
+  });
+
+  //read a contribution
+  router.get('/:story_id/contributions/:contribution_id', (req, res) => {
+
+  });
+
+  //append a contribution to a story
+  router.post('/:story_id/contributions/:contribution_id', (req, res) => {
+    //how am I going to call this for all contributions, based on ONE button click to merge one? (Need to reject the rest)
+  });
+     */
