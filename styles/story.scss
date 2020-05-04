@@ -23,7 +23,7 @@ main {
 
 }
 
-.story-form {
+.contribution-form {
 
   height: 375px;
 
@@ -42,7 +42,7 @@ main {
 
   textarea:focus {
 
-    outline: none !important;
+    outline: none;
     border: 1px solid #000000;
     box-shadow: 0 0 2px #000000;
 
