@@ -1,7 +1,9 @@
 .mainheader {
   background-color: #438180;
   font-family: 'Jost', sans-serif;
-
+  position: fixed;
+  top: 0;
+  width: 100%;
 
 }
 
@@ -58,6 +60,8 @@
   justify-content: center;
   background-color: rgb(230, 223, 223);
   padding-top: 14px;
+  margin-bottom: 0;
+
 }
 
 .nav-link {
