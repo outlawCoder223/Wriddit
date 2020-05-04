@@ -1,7 +1,7 @@
 require('dotenv').config();
 const faker = require('faker');
 const { Pool } = require('pg');
-const dbParams = require('./lib/db.js');
+const dbParams = require('../../lib/db.js');
 const db = new Pool(dbParams);
 
 faker.seed(10);
