@@ -1,11 +1,196 @@
+section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .landing-first h1 {
-  font-family: 'Jost', sans-serif;
+  font-style: italic;
   font-size: 60px;
+  display: flex;
+  line-height: 1.1;
+  margin-bottom: 0px;
+  color: black;
 }
 
 .landing-first h3 {
   font-family: 'Jost', sans-serif;
-  font-style: italic;
+  font-style: normal;
   font-size: 30px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.landing-first-words {
+  display: flex;
+  flex-direction: column;
+}
+
+#landing-container {
+  margin-bottom: 44px;
+  margin-top: 3.5em;
+  padding-top: 139px;
+}
+
+.landing-first {
+  display: flex;
+  max-width: 1100px;
+}
+
+.landing-second {
+  display: flex;
+}
+
+.background-green {
+  background-color: #244651;
+}
+
+.landing-second-words {
+  font-family: 'Jost';
+  font-style: italic;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.landing-second-words h1 {
+  font-family: 'Jost';
+  font-style: italic;
+  color: white;
+  align-self: center;
+  font-weight: 400;
+}
+
+.landing-second img {
+  height: 314px;
+}
+
+.landing-second-h-three {
+  font-weight: 300;
+}
+
+.landing-third-h2 {
+  font-weight: 400;
+}
+
+.landing-second-buttons {
+  display: flex;
+  margin-left: 71px;
+  align-self: center;
+}
+
+.continue-button {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  margin-top: 4px;
+  margin-right: 1px;
+}
+
+.likes {
+  margin-bottom: 0px;
+  margin-top: 13px;
+  font-size: 31px;
+  margin-right: 41px;
+  font-weight: 200;
+}
+
+.landing-third {
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+}
+
+.landing-third-unfinished-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.landing-third-unfinished-container div {
+  width: 26%;
+}
+
+.landing-third h1 {
+  color: black;
+}
+
+.landing-third-unfinished-container .continue-button {
+  background-color: #244651;
+}
+
+.landing-fourth {
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  justify-content: center;
+  display: flex;
+  margin-top: 4%;
+}
+
+.landing-fourth h1 {
+  color: black;
+}
+
+.landing-fourth .continue-button {
+  background-color: #244651;
+}
+
+.landing-fourth-button {
+  width: 139%;
+  align-self: center;
+}
+
+.landing-fourth-button h1 {
+  margin-bottom: 41px;
+}
+
+.test-image {
+  background-image: url("https://66.media.tumblr.com/588c277cd01a738137c3f51bcb0b9104/tumblr_pc1mpc1bRX1t0t09yo1_400.png");
+  height: auto;
+  width: 100%;
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.two {
+  height: 420px;
+}
+
+body {
+  font-family: 'jost-2', sans-serif;
+}
+
+.landing-third-title {
+  text-align: center;
+  font-size: 51px;
+  font-weight: 400;
+}
+
+.landing-title {
+  font-family: 'jost-2', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.test-image-three {
+  background-image: url("https://images.squarespace-cdn.com/content/v1/54942a43e4b0f18f7f64b77b/1536270729145-4VTJTO9JNNCGEO5VFGDA/ke17ZwdGBToddI8pDm48kDZpkFAcEfWDCD12finKj4BZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PI7iXggpIF2Rw6nDy3K0ikBxImcxpKV9VrHyCS3AIRa1kKMshLAGzx4R3EDFOm1kBS/mtg+%281%29.jpg");
+  height: auto;
+  width: 100%;
+  background-position: left;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@font-face {
+  font-family: 'jost-2';
+  src: url("../fonts/Jost-SemiBold.ttf");
   font-weight: normal;
 }
