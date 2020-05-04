@@ -17,6 +17,10 @@ main {
   float: right;
 }
 
+.story-form {
+  height: 375px;
+}
+
 .story-form label {
   display: block;
   font-size: 2.25rem;
@@ -34,6 +38,23 @@ main {
   outline: none !important;
   border: 1px solid #000000;
   box-shadow: 0 0 2px #000000;
+}
+
+.story-form div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.story-form button {
+  background-color: #438180;
+  padding: 8px 16px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-family: 'Jost', sans-serif;
+}
+
+.story-form button:hover {
+  background-color: #3c7473;
 }
 
 .contribution {

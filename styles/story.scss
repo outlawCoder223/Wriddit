@@ -25,6 +25,8 @@ main {
 
 .story-form {
 
+  height: 375px;
+
   label {
     display: block;
     font-size: 2.25rem;
@@ -40,13 +42,29 @@ main {
 
   textarea:focus {
 
-      outline: none !important;
-      border: 1px solid #000000;
-      box-shadow: 0 0 2px #000000;
+    outline: none !important;
+    border: 1px solid #000000;
+    box-shadow: 0 0 2px #000000;
 
   }
 
+  div {
+    display: flex;
+    justify-content: flex-end;
 
+  }
+
+  button {
+    background-color: #438180;
+    padding: 8px 16px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-family: 'Jost', sans-serif;
+  }
+
+  button:hover {
+    background-color: #3c7473;
+  }
 
 }
 
