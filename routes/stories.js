@@ -46,8 +46,6 @@ module.exports = (db) => {
         templateVars.title = story.title;
         templateVars.content = story.content;
         templateVars.author = story.author;
-        console.log(templateVars);
-
       })
       .then(() => {
         db.query(getContributions, [id])
@@ -73,7 +71,7 @@ module.exports = (db) => {
   });
 
   router.post('/:story_id/:contribution_id', (req, res) => {
-    res.redirect('/');
+    console.log(req.body)
   });
 
   router.post('/stories', (req, res) => {
