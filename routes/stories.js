@@ -104,7 +104,7 @@ module.exports = (db) => {
   // TODO Rance will need to deconstruct and loop through templateVars which are different here. How does that impact the view w.r.t. completed stories?
   router.get('/:story_id/contributions', (req, res) => {
     let query1 = getActiveContributions;
-    let query2 = getActiveContributions;
+    let query2 = getIncompleteStoryById;
     const id = req.params.story_id;
     let templateVars = {};
     db.query(query1, [id])
@@ -115,6 +115,8 @@ module.exports = (db) => {
       .then(data => {
         templateVars['story'] = data.rows;
         res.render('story', templateVars);
+        console.log(templateVars);
+
       })
       .catch(err => {
         res
