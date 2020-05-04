@@ -47,10 +47,14 @@
               <p><%= item.content %></p>
               <footer>
                 <div>
-                  <button type="submit"><img src="/images/hands-and-gestures.png" alt=""></button>
+                  <button class="upvote" type="submit"><img src="/images/hands-and-gestures.png" alt=""></button>
                   <p><%= item.upvotes %></p>
                 </div>
-                <h4><%= item.name %></h4>
+                <div>
+                  <h4><%= item.name %></h4>
+                  <button id="<%= item.id %>" class="merge">Merge</button>
+                </div>
+
               </footer>
             </form>
           </article>

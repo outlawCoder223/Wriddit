@@ -72,6 +72,7 @@ main {
 }
 
 .contribution footer h4 {
+  display: inline-block;
   margin: 0;
 }
 
@@ -80,17 +81,30 @@ main {
   margin: 0;
 }
 
-.contribution footer button {
+.contribution img {
+  width: 20px;
+  display: inline-block;
+}
+
+.upvote {
   background-color: #e6dfdf;
   border: none;
   opacity: 0.5;
 }
 
-.contribution footer button:hover {
+.upvote:hover {
   opacity: 1;
 }
 
-.contribution img {
-  width: 20px;
+.merge {
+  background-color: #d63732;
   display: inline-block;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-family: 'Jost', sans-serif;
+  color: #FFFFFF;
+}
+
+.merge:hover {
+  background-color: #ac322d;
 }

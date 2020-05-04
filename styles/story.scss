@@ -81,7 +81,7 @@ main {
     align-items: center;
 
     h4 {
-
+      display: inline-block;
       margin: 0;
     }
 
@@ -90,20 +90,36 @@ main {
       margin: 0;
     }
 
-    button {
-      background-color: #e6dfdf;
-      border: none;
-      opacity: 0.5;
-    }
-
-    button:hover {
-      opacity: 1;
-    }
-
   }
 
   img {
     width: 20px;
     display: inline-block;
   }
+
+
+}
+
+.upvote {
+  background-color: #e6dfdf;
+  border: none;
+  opacity: 0.5;
+}
+
+.upvote:hover {
+  opacity: 1;
+}
+
+.merge {
+  background-color: #d63732;
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-family: 'Jost', sans-serif;
+  color: #FFFFFF;
+}
+
+.merge:hover {
+  background-color: #ac322d;
+
 }

@@ -33,7 +33,7 @@ module.exports = (db) => {
     LIMIT 1;
     `;
     const getContributions = `
-    SELECT upvotes, content, users.name
+    SELECT upvotes, content, users.name, contributions.id AS id
     FROM contributions
     JOIN users ON contributor_id = users.id
     WHERE story_id = $1;
@@ -50,6 +50,7 @@ module.exports = (db) => {
       .then(() => {
         db.query(getContributions, [id])
           .then(data => {
+            console.log(data.rows)
             templateVars.contributions = data.rows;
             res.render('story', templateVars);
         })
