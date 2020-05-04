@@ -42,6 +42,12 @@ main {
   margin: 0;
 }
 
+.contribution footer p {
+  display: inline-block;
+  margin: 0;
+}
+
 .contribution img {
   width: 20px;
+  display: inline-block;
 }

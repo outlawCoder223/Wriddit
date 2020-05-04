@@ -47,12 +47,19 @@ main {
     align-items: center;
 
     h4 {
+
       margin: 0;
     }
+
+    p {
+      display: inline-block;
+      margin: 0;
+    }
+
   }
 
   img {
     width: 20px;
-
+    display: inline-block;
   }
 }
