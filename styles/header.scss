@@ -1,12 +1,12 @@
 .mainheader {
-  background-color: #408080;
+  background-color: #438180;
   font-family: 'Jost', sans-serif;
 
 
 }
 
 .mainheader-topbar {
-  height: 90px;
+  height: 70px;
   position: relative;
   text-align: center;
   z-index: 999;
@@ -14,6 +14,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5em;
+  padding-top: 15px;
 
   .header-menu {
     list-style: none;
@@ -23,6 +24,7 @@
   .logo {
     font-size: 40px;
     color: whitesmoke;
+    padding-top: 20px;
   }
 }
 
@@ -54,6 +56,8 @@
   list-style: none;
   display: flex;
   justify-content: center;
+  background-color: rgb(230, 223, 223);
+  padding-top: 14px;
 }
 
 .nav-link {
@@ -76,4 +80,8 @@
   border-right: 1px solid #c9caca;
   padding-right: 4px;
   color: black;
+}
+
+.container-header {
+  padding-top: 35px;
 }
