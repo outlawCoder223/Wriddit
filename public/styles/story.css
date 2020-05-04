@@ -13,7 +13,7 @@ main {
 }
 
 .story img {
-  width: 40%;
+  width: 30%;
   float: right;
 }
 
@@ -24,4 +24,24 @@ main {
 .story-form input {
   width: 100%;
   height: 300px;
+}
+
+.contribution {
+  border: 2px solid black;
+  padding: 5px;
+  margin: 10px 0;
+}
+
+.contribution footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contribution footer h4 {
+  margin: 0;
+}
+
+.contribution img {
+  width: 20px;
 }

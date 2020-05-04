@@ -6,6 +6,7 @@ main {
 }
 
 .story {
+
   h1 {
     color: #244751;
     font-size: 64px;
@@ -16,7 +17,7 @@ main {
   }
 
   img {
-    width: 40%;
+    width: 30%;
     float: right;
   }
 
@@ -33,4 +34,25 @@ main {
     height: 300px;
   }
 
+}
+
+.contribution {
+  border: 2px solid black;
+  padding: 5px;
+  margin: 10px 0;
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h4 {
+      margin: 0;
+    }
+  }
+
+  img {
+    width: 20px;
+
+  }
 }
