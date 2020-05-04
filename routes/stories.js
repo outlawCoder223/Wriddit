@@ -1,7 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const randomstring = require("randomstring");
-const { getStoriesByGenre, getContributionsByStoryId, getStoryById, getStoryOfTheWeek } = require('../queries/story_queries')
+
 
 module.exports = (db) => {
   router.get('/', (req, res) => {
