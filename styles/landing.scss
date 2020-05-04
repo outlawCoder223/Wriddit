@@ -29,7 +29,7 @@ section {
 #landing-container {
   margin-bottom: 44px;
   margin-top: 3.5em;
-  padding-top: 139px;
+  padding-top: 99px;
 }
 
 
@@ -80,7 +80,7 @@ section {
 .landing-second-buttons {
   display: flex;
   margin-left: 71px;
-  align-self: center;
+
 }
 
 .continue-button {
@@ -191,10 +191,11 @@ body {
 .test-image-three {
   background-image: url("https://images.squarespace-cdn.com/content/v1/54942a43e4b0f18f7f64b77b/1536270729145-4VTJTO9JNNCGEO5VFGDA/ke17ZwdGBToddI8pDm48kDZpkFAcEfWDCD12finKj4BZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PI7iXggpIF2Rw6nDy3K0ikBxImcxpKV9VrHyCS3AIRa1kKMshLAGzx4R3EDFOm1kBS/mtg+%281%29.jpg");
   height: auto;
-  width: 100%;
+  width: 200%;
   background-position: left;
   background-size: contain;
-  background-repeat: no-repeat
+  margin-right: 100px;
+  background-repeat: no-repeat;
 }
 
 @font-face {
