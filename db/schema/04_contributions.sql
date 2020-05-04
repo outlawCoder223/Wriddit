@@ -5,11 +5,9 @@ CREATE TABLE contributions (
   story_id INTEGER,
   upvotes INTEGER DEFAULT 0,
   state VARCHAR(255) NOT NULL DEFAULT 'In Progress',
-  created_on DATE DEFAULT CURRENT_DATE,
-  resolved_on DATE,
-  status VARCHAR (255) NOT NULL DEFAULT 'active',
+  status VARCHAR (255) NOT NULL DEFAULT 'Active', --rejected, merged
   content TEXT,
-  contributor_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+  contributor_id INTEGER
 );
 
 /*
