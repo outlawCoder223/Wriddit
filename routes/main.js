@@ -16,11 +16,5 @@ module.exports = (db) => {
     req.session = null;
     res.status(307).redirect('/');
   });
-
-  router.get("/landing", (req, res) => {
-    res.render('landing');
-  });
-
-
   return router;
 };

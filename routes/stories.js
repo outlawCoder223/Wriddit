@@ -22,7 +22,6 @@ module.exports = (db) => {
     WHERE story_id = $1
     ORDER BY upvotes DESC;
     `;
-    console.log(req.session.user)
     const id = req.params.story_id;
     const templateVars = { loggedIn: null };
     if (req.session.user) templateVars.loggedIn = true;
