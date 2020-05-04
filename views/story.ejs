@@ -43,11 +43,11 @@
       <section>
         <% for (const item of contributions) { %>
           <article class="contribution">
-            <form action="" method="post">
+
               <p><%= item.content %></p>
               <footer>
                 <div>
-                  <button class="upvote" type="submit"><img src="/images/hands-and-gestures.png" alt=""></button>
+                  <button class="upvote" ><img src="/images/hands-and-gestures.png" alt=""></button>
                   <p><%= item.upvotes %></p>
                 </div>
                 <div>
@@ -58,7 +58,7 @@
                 </div>
 
               </footer>
-            </form>
+
           </article>
         <% } %>
       </section>
