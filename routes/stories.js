@@ -130,7 +130,6 @@ module.exports = (db) => {
               .json({ error: err.message });
           });
       });
-
   });
 
   //create a new contribution to a story
