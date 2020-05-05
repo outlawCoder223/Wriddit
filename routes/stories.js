@@ -15,37 +15,35 @@ const {
 
 const { getContributionsByStoryId,
   createContribution,
-  renderNewContribution
+  renderNewContribution,
+  mergeContribution1,
+  mergeContribution2,
+  mergeContribution3,
+  getContributionById
 } = require('../queries/contributions_queries');
 
 /**************ESSENTIAL ROUTES***************
- * why won't this collapse?
  * GET / -- done with hardcoding
  * POST / -- done
- * POST /update (for writing prompt api) // TODO needs tempVars
+ * POST /update (for writing prompt api) // TODO needs tempVars from Josh
  * GET /:story_id  -- done
- * GET /:story_id/contributions // TODO needs powow with Rance re: templateVars
- * POST /:story_id/contributions // TODO
- * POST /:story_id/contributions/:contribution_id // TODO
+ * GET /:story_id/contributions
+ * POST /:story_id/contributions
+ * POST /:story_id/contributions/:contribution_id -- done; need to go over this with Rance
  */
 
 module.exports = (db) => {
-  //browse random stories
+  //browse all stories
   router.get('/', (req, res) => {
     res.render('stories');
   });
 
   //create a new story
   router.post('/', (req, res) => {
-    const query = createNewStory;
     const authorId = req.body.author_id;
     const title = req.body.title;
     const content = req.body.content;
-    //delete dupe - for testing only
-    db.query(`DELETE FROM stories WHERE title = '${title}'`)
-      //insert story
-      .then((db.query(query, [content, title, authorId])))
-      //redirect somewhere fun
+    db.query(createNewStory, [content, title, authorId])
       .then(() => {
         const templateVars = {
           title,
@@ -61,6 +59,7 @@ module.exports = (db) => {
       });
   });
 
+  //generate a writing prompt
   router.post('/update', (req, res) => {
     const templateVars = {
       title: req.body.title,
@@ -77,7 +76,6 @@ module.exports = (db) => {
         console.log(data.english);
         //this will need to go into tempVars
         res.render('story', templateVars);
-
       })
       .catch((err) => {
         console.log(err);
@@ -85,10 +83,11 @@ module.exports = (db) => {
   });
 
   // read a complete story
+  // TODO  - is this endpoint ever used?
   router.get('/:story_id', (req, res) => {
-    const query = getCompleteStoryById;
     const id = req.params.story_id;
-    db.query(query, [id])
+
+    db.query(getCompleteStoryById, [id])
       .then(data => {
         const story = data.rows[0];
         const templateVars = {
@@ -106,19 +105,16 @@ module.exports = (db) => {
 
   //read an incomplete story
   router.get('/:story_id/contributions', (req, res) => {
-    const query1 = getActiveContributions;
-    const query2 = getIncompleteStoryById;
     const id = req.params.story_id;
     let templateVars = {};
-    db.query(query1, [id])
+    db.query(getActiveContributions, [id])
       .then(data => {
         templateVars['contributions'] = data.rows
       })
-    db.query(query2, [id])
+    db.query(getIncompleteStoryById, [id])
       .then(data => {
         templateVars['story'] = data.rows;
         res.render('story', templateVars);
-        // console.log(templateVars);
       })
       .catch(err => {
         res
@@ -129,17 +125,15 @@ module.exports = (db) => {
 
   //create a new contribution to a story
   router.post('/:story_id/contributions', (req, res) => {
-    const query1 = createContribution;
-    const query2 = renderNewContribution;
     const storyId = req.params.story_id;
     const contributor_id = req.body.contributor_id;
     const content = req.body.content;
     let templateVars = {};
 
-    db.query(query1, [storyId, content, contributor_id])
+    db.query(createContribution, [storyId, content, contributor_id])
       .then(data => {
         const contribution_id = data.rows[0].id;
-        return db.query(query2, [contribution_id])
+        return db.query(renderNewContribution, [contribution_id])
       })
       .then(data => {
         console.log(data.rows);
@@ -151,12 +145,47 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
-
   });
 
   //append a contribution to a story
   router.post('/:story_id/contributions/:contribution_id', (req, res) => {
-    //how am I going to call this for all contributions, based on ONE button click to merge one? (Need to reject the rest)
+    const contribution_id = req.params.contribution_id;
+    const story_id = req.params.story_id;
+    let mergeContent;
+
+    //grab existing story content to a var
+    db.query(getCompleteStoryById, [story_id])
+      .then(data => {
+        return mergeContent = data.rows[0].content;
+      })
+    // append var with target contribution content
+    db.query(getContributionById, [contribution_id])
+      .then(data => {
+        return mergeContent += ' ' + data.rows[0].content;
+      })
+    //Update story content in DB
+    db.query(mergeContribution1, [contribution_id])
+      .then(() => {
+        //to find fail point
+        console.log('hello1');
+        return db.query(`
+        UPDATE stories SET content = '${mergeContent}'
+        WHERE stories.id = ${story_id};`)
+      })
+      .then(() => {
+        //to find fail point
+        console.log('hello2');
+        //update all contribution statuses related to that story
+        return db.query(mergeContribution3, [story_id])
+      })
+      .then(() => {
+        res.redirect(`/stories/${story_id}/contributions`)
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   });
 
   return router;
