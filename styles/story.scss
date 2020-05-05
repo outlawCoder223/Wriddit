@@ -66,6 +66,7 @@ main {
 
   button:hover {
     background-color: #3c7473;
+    cursor: pointer;
   }
 
 }
@@ -104,11 +105,14 @@ main {
 .upvote {
   background-color: #e6dfdf;
   border: none;
-  opacity: 0.5;
+  // opacity: 0.5;
+
+  opacity: 1;
 }
 
 .upvote:hover {
-  opacity: 1;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .merge {
@@ -122,5 +126,5 @@ main {
 
 .merge:hover {
   background-color: #ac322d;
-
+  cursor: pointer;
 }
