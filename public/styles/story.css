@@ -23,7 +23,7 @@ main {
 }
 
 .story img {
-  width: 57%;
+  width: 47%;
   float: right;
   margin-left: 10px;
 }
@@ -94,6 +94,7 @@ main {
   padding: 5px;
   margin: 10px 0;
   font-size: 1rem;
+  margin-top: 31px;
 }
 
 .contribution footer {
