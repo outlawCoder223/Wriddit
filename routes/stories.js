@@ -121,7 +121,7 @@ module.exports = (db) => {
             templateVars.title = story.title;
             templateVars.content = story.content;
             templateVars.author = story.author;
-
+            templateVars.id = story.id;
             res.render('story', templateVars);
           })
           .catch(err => {

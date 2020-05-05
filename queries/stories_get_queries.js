@@ -23,7 +23,7 @@ WHERE stories.id = $1
 `;
 
 const getActiveContributions = `
-SELECT content, upvotes, contributor_id, name
+SELECT content, upvotes, contributor_id, name, contributions.id
 FROM contributions
 JOIN users ON contributor_id = users.id
 WHERE status = 'Active' AND story_id = $1
