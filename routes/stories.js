@@ -173,22 +173,17 @@ module.exports = (db) => {
       .then(mergeContent => {
         return db.query(mergeContribution1, [contribution_id])
           .then(() => {
-            //to find fail point
-            console.log('hello1');
             return db.query(`
-        UPDATE stories SET content = '${mergeContent}'
-        WHERE stories.id = ${story_id};`)
+        UPDATE stories SET content = $1
+        WHERE stories.id = $2;`, [mergeContent, story_id])
           })
       })
       .then(() => {
-        //to find fail point
-        console.log('hello2');
         //update all contribution statuses related to that story
         return db.query(mergeContribution2, [story_id])
       })
       .then(() => {
-        console.log('hello3');
-        res.redirect(`/stories/${story_id}/contributions`)
+        res.status(201).send();
       })
       .catch(err => {
         console.log(err)

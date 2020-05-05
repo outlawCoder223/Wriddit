@@ -1,3 +1,6 @@
+// Javascript for single story page.
+
+// create new contribution when form submitted
 $('#new-contribution').on('submit', function(event) {
   event.preventDefault();
   const url = window.location.pathname;
@@ -14,28 +17,38 @@ $('#new-contribution').on('submit', function(event) {
     });
 });
 
+// merge contribution into story body and erase all previous contributions.
 $('.merge').on('click', function(event) {
   event.preventDefault();
+
   const contribution = $(this).attr('id');
   const url = window.location.pathname;
   const storyId = getStoryId(url)
+
   $.post(url + `/${contribution}`, {story_id: storyId, contribution_id: contribution})
+    .then(function() {
+      window.location.reload();
+    })
 });
 
+// dummy upvote functionality
 $('.upvote').click(function(event) {
   if ($(this).hasClass('on')) {
     const upvoteCount = $(this).siblings('p')[0].innerHTML;
+
     $(this).siblings('p')[0].innerHTML = Number(upvoteCount) - 1;
     $(this).css('opacity', 0.5);
     $(this).toggleClass('on');
   } else {
     const upvoteCount = $(this).siblings('p')[0].innerHTML;
+
     $(this).siblings('p')[0].innerHTML = Number(upvoteCount) + 1;
     $(this).css('opacity', 1);
     $(this).toggleClass('on');
   }
 });
 
+// parse story id out of url
 const getStoryId = (url) => {
   let parseUrl = url.replace('/stories/', '');
 
@@ -43,6 +56,7 @@ const getStoryId = (url) => {
   return parseUrl;
 };
 
+// creates new contribution post
 const renderPost = (post) => {
   const newPost = `
   <article class="contribution">
@@ -59,6 +73,7 @@ const renderPost = (post) => {
               </footer>
           </article>
   `;
+
   $('#contribution-container').prepend(newPost);
   $('#add-contribution').val('');
 };
