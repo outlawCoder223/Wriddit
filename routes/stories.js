@@ -18,18 +18,17 @@ const { getContributionsByStoryId,
   renderNewContribution,
   mergeContribution1,
   mergeContribution2,
-  mergeContribution3,
   getContributionById
 } = require('../queries/contributions_queries');
 
 /**************ESSENTIAL ROUTES***************
  * GET / -- done with hardcoding
  * POST / -- done
- * POST /update (for writing prompt api) // TODO needs tempVars from Josh
+ * POST /update (for writing prompt api) // TODO needs FE implmnt'n
  * GET /:story_id  -- done
  * GET /:story_id/contributions
  * POST /:story_id/contributions
- * POST /:story_id/contributions/:contribution_id -- done; need to go over this with Rance
+ * POST /:story_id/contributions/:contribution_id -- done
  */
 
 module.exports = (db) => {
@@ -60,12 +59,8 @@ module.exports = (db) => {
   });
 
   //generate a writing prompt
+  //TODO implement in FE
   router.post('/update', (req, res) => {
-    const templateVars = {
-      title: req.body.title,
-      content: req.body.content,
-      author_id: req.body.author_id
-    }
     const options = {
       uri: 'https://ineedaprompt.com/dictionary/default/prompt?q=adj+noun+adv+verb+noun+location',
       json: true
@@ -74,8 +69,8 @@ module.exports = (db) => {
     rp(options)
       .then((data) => {
         console.log(data.english);
-        //this will need to go into tempVars
-        res.render('story', templateVars);
+        res.json(data);
+        // jQ requests this route; this is returned; then update with that json
       })
       .catch((err) => {
         console.log(err);
@@ -106,14 +101,20 @@ module.exports = (db) => {
   //read an incomplete story
   router.get('/:story_id/contributions', (req, res) => {
     const id = req.params.story_id;
-    let templateVars = {};
+    const templateVars = { loggedIn: false, complete: false };
+    if (req.session.user) templateVars.loggedIn = true;
+
     db.query(getActiveContributions, [id])
       .then(data => {
-        templateVars['contributions'] = data.rows
+        templateVars['contributions'] = data.rows;
       })
     db.query(getIncompleteStoryById, [id])
       .then(data => {
-        templateVars['story'] = data.rows;
+        const story = data.rows[0];
+        templateVars.title = story.title;
+        templateVars.content = story.content;
+        templateVars.author = story.name;
+        templateVars.id = story.id;
         res.render('story', templateVars);
       })
       .catch(err => {
@@ -151,37 +152,42 @@ module.exports = (db) => {
   router.post('/:story_id/contributions/:contribution_id', (req, res) => {
     const contribution_id = req.params.contribution_id;
     const story_id = req.params.story_id;
-    let mergeContent;
 
     //grab existing story content to a var
     db.query(getCompleteStoryById, [story_id])
       .then(data => {
-        return mergeContent = data.rows[0].content;
+        return data.rows[0].content;
       })
-    // append var with target contribution content
-    db.query(getContributionById, [contribution_id])
-      .then(data => {
-        return mergeContent += ' ' + data.rows[0].content;
+      // append var with target contribution content
+      .then(mergeContent => {
+        return db.query(getContributionById, [contribution_id])
+          .then(data => {
+            return mergeContent += ' ' + data.rows[0].content;
+          })
       })
-    //Update story content in DB
-    db.query(mergeContribution1, [contribution_id])
-      .then(() => {
-        //to find fail point
-        console.log('hello1');
-        return db.query(`
+
+      //Update story content in DB
+      .then(mergeContent => {
+        return db.query(mergeContribution1, [contribution_id])
+          .then(() => {
+            //to find fail point
+            console.log('hello1');
+            return db.query(`
         UPDATE stories SET content = '${mergeContent}'
         WHERE stories.id = ${story_id};`)
+          })
       })
       .then(() => {
         //to find fail point
         console.log('hello2');
         //update all contribution statuses related to that story
-        return db.query(mergeContribution3, [story_id])
+        return db.query(mergeContribution2, [story_id])
       })
       .then(() => {
         res.redirect(`/stories/${story_id}/contributions`)
       })
       .catch(err => {
+        console.log(err)
         res
           .status(500)
           .json({ error: err.message });
