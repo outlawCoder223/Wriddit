@@ -47,7 +47,6 @@ module.exports = (db) => {
       .then((data) => {
         console.log(data.rows[0]);
         const storyId = data.rows[0].id
-        // res.redirect(`/stories/${story_id}/contributions`)
         res.redirect(`/stories/${storyId}/contributions`)
       })
       .catch(err => {
@@ -55,8 +54,6 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
-    // console.log(req.body)
-    // res.redirect('/stories');
   });
 
   //generate a writing prompt
