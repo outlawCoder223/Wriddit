@@ -182,11 +182,12 @@ module.exports = (db) => {
       })
       .then(() => {
         //to find fail point
-
+        console.log('hello2');
         //update all contribution statuses related to that story
         return db.query(mergeContribution2, [story_id])
       })
       .then(() => {
+        console.log('hello3');
         res.redirect(`/stories/${story_id}/contributions`)
       })
       .catch(err => {
