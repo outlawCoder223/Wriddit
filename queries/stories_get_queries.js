@@ -9,14 +9,14 @@ GROUP BY content, title, genres.name, users.name
 LIMIT $1;
 `
 const getCompleteStoryById = `
-SELECT content, title, users.name
+SELECT content, title, users.name, state
 FROM stories
 JOIN users ON author_id = users.id
 WHERE stories.id = $1
 `;
 
 const getIncompleteStoryById = `
-SELECT content, title, users.name
+SELECT content, title, users.name, state
 FROM stories
 JOIN users ON author_id = users.id
 WHERE stories.id = $1
