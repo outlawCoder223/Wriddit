@@ -109,7 +109,6 @@ module.exports = (db) => {
   //read an incomplete story
   router.get('/:story_id/contributions', (req, res) => {
     const id = req.params.story_id;
-<<<<<<< HEAD
     const templateVars = { loggedIn: false, complete: false };
     if (req.session.user) templateVars.loggedIn = true;
     db.query(query1, [id])
@@ -129,40 +128,18 @@ module.exports = (db) => {
               .status(500)
               .json({ error: err.message });
           });
-=======
-    let templateVars = {};
-    db.query(getActiveContributions, [id])
-      .then(data => {
-        templateVars['contributions'] = data.rows
-      })
-    db.query(getIncompleteStoryById, [id])
-      .then(data => {
-        templateVars['story'] = data.rows;
-        res.render('story', templateVars);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
->>>>>>> master
       });
 
   });
 
   //create a new contribution to a story
   router.post('/:story_id/contributions', (req, res) => {
-<<<<<<< HEAD
     const query1 = createContribution;
     const query2 = renderNewContribution;
     const storyId = req.body.story_id;
     const contributor_id = req.session.user;
-=======
-    const storyId = req.params.story_id;
-    const contributor_id = req.body.contributor_id;
->>>>>>> master
     const content = req.body.content;
 
-<<<<<<< HEAD
     db.query(query1, [storyId, content, contributor_id])
       .then((data) => {
 
@@ -173,17 +150,6 @@ module.exports = (db) => {
             const result = JSON.stringify(data.rows[0]);
             res.end(result);
           })
-=======
-    db.query(createContribution, [storyId, content, contributor_id])
-      .then(data => {
-        const contribution_id = data.rows[0].id;
-        return db.query(renderNewContribution, [contribution_id])
-      })
-      .then(data => {
-        console.log(data.rows);
-        templateVars['contributions'] = data.rows;
-        res.render('story', templateVars);
->>>>>>> master
       })
       .catch(err => {
         res
