@@ -142,26 +142,19 @@ module.exports = (db) => {
     const storyId = req.body.story_id;
     const contributor_id = req.session.user;
     const content = req.body.content;
-    let templateVars = {};
-    console.log('**********************');
 
     db.query(query1, [storyId, content, contributor_id])
-      // .then(data => {
-      //   console.log(data.rows);
-      //   const contribution_id = data.rows[0].id;
-      //   return db.query(query2, [contribution_id])
-      // })
-      // .then(data => {
-      //   // console.log(data.rows);
-      //   templateVars['contributions'] = data.rows;
-      //   res.render('story', templateVars);
-      // })
-      .then(data => {
-        const result = JSON.stringify(data.rows[0]);
-        res.end(result);
+      .then((data) => {
+
+        const contributionId = data.rows[0].id;
+        db.query(query2, [contributionId])
+          .then((data) => {
+
+            const result = JSON.stringify(data.rows[0]);
+            res.end(result);
+          })
       })
       .catch(err => {
-        console.log(err)
         res
           .status(500)
           .json({ error: err.message });

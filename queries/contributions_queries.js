@@ -21,7 +21,7 @@ RETURNING *;
 `
 
 const renderNewContribution = `
-SELECT upvotes, name, content
+SELECT upvotes, name, content, contributor_id
 FROM contributions
 JOIN users ON contributor_id = users.id
 WHERE contributions.id = $1

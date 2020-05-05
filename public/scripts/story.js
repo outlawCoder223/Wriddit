@@ -11,8 +11,8 @@ $('#new-contribution').on('submit', function(event) {
 
   $.post('/stories/:story_id/contributions',data)
     .done(function(res) {
-      // $(this).children('textarea').val('');
-      console.log(res);
+      $(this).children('textarea').val('');
+      renderPost(JSON.parse(res));
     });
 });
 
@@ -43,4 +43,23 @@ const getStoryId = (url) => {
 
   parseUrl = parseUrl.replace('/contributions', '');
   return parseUrl;
+};
+
+const renderPost = (post) => {
+  const newPost = `
+  <article class="contribution">
+              <p>${post.content}</p>
+              <footer>
+                <div>
+                  <button class="upvote" ><img src="/images/hands-and-gestures.png" alt=""></button>
+                  <p>${post.upvotes}</p>
+                </div>
+                <div>
+                  <h4>${post.name}</h4>
+                    <button id="${post.id}" class="merge">Merge</button>
+                </div>
+              </footer>
+          </article>
+  `;
+  $('#contribution-container').prepend(newPost);
 };
