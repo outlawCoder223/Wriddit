@@ -45,7 +45,6 @@ module.exports = (db) => {
     const content = req.body.content;
     db.query(createNewStory, [content, title, authorId])
       .then((data) => {
-        console.log(data.rows[0]);
         const storyId = data.rows[0].id
         res.redirect(`/stories/${storyId}/contributions`)
       })
