@@ -147,7 +147,6 @@ module.exports = (db) => {
         const contributionId = data.rows[0].id;
         db.query(query2, [contributionId])
           .then((data) => {
-
             const result = JSON.stringify(data.rows[0]);
             res.end(result);
           })
