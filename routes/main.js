@@ -16,17 +16,12 @@ module.exports = (db) => {
   router.get('/login/:id', (req, res) => {
     const id = req.params;
     req.session.user = 1;
-    res.redirect('/homepage');
+    res.redirect('/stories');
   });
 
   router.get('/logout', (req, res) => {
     req.session = null;
     res.status(307).redirect('/');
-  });
-
-  router.get("/homepage", (req, res) => {
-    const user = req.session.user;
-    res.render('homepage', {user});
   });
 
   router.get('/create', (req, res) => {

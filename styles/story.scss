@@ -104,6 +104,7 @@ main {
   padding: 5px;
   margin: 10px 0;
   font-size: 1rem;
+  margin-top: 31px;
 
   footer {
     display: flex;
@@ -162,9 +163,15 @@ main {
   font-family: 'Jost';
 }
 
+#contribution-container {
+  padding-top: 18%;
+}
+
 @font-face {
   font-family: 'jost-3';
   src: url("../fonts/Jost-VariableFont_ital,wght.ttf");
   font-weight: 300;
 
 }
+
+

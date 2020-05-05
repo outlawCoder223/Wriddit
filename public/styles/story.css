@@ -94,6 +94,7 @@ main {
   padding: 5px;
   margin: 10px 0;
   font-size: 1rem;
+  margin-top: 31px;
 }
 
 .contribution footer {
@@ -145,6 +146,10 @@ main {
 
 .story-text {
   font-family: 'Jost';
+}
+
+#contribution-container {
+  padding-top: 18%;
 }
 
 @font-face {
