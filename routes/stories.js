@@ -62,6 +62,7 @@ module.exports = (db) => {
     db.query(query, [id])
       .then(data => {
         const story = data.rows[0];
+        console.log('story:', story)
         const templateVars = {
           title: story.title,
           content: story.content,
@@ -84,14 +85,18 @@ module.exports = (db) => {
     let query1 = getActiveContributions;
     let query2 = getIncompleteStoryById;
     const id = req.params.story_id;
-    const templateVars = { loggedIn: false, complete: true };
+    const templateVars = { loggedIn: false, complete: false };
     if (req.session.user) templateVars.loggedIn = true;
     db.query(query1, [id])
       .then(data => {
         templateVars['contributions'] = data.rows;
         db.query(query2, [id])
           .then(data => {
-            templateVars['story'] = data.rows[0];
+            const story = data.rows[0];
+            templateVars.title = story.title;
+            templateVars.content = story.content;
+            templateVars.author = story.author;
+
             res.render('story', templateVars);
           })
           .catch(err => {

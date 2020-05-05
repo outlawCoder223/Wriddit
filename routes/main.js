@@ -15,7 +15,7 @@ module.exports = (db) => {
   router.get('/login/:id', (req, res) => {
     const id = req.params;
     req.session.user = 1;
-    res.redirect('/stories');
+    res.redirect('/');
   });
 
   router.get('/logout', (req, res) => {
