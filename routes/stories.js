@@ -143,7 +143,6 @@ module.exports = (db) => {
 
     db.query(query1, [storyId, content, contributor_id])
       .then((data) => {
-
         const contributionId = data.rows[0].id;
         db.query(query2, [contributionId])
           .then((data) => {
