@@ -64,7 +64,8 @@ module.exports = (db) => {
         const story = data.rows[0];
         const templateVars = {
           title: story.title,
-          content: story.content
+          content: story.content,
+          author: story.name
         };
         res.render('story', templateVars);
       })
@@ -78,17 +79,20 @@ module.exports = (db) => {
   //read an incomplete story
   // TODO Rance will need to deconstruct and loop through templateVars which are different here. How does that impact the view w.r.t. completed stories?
   router.get('/:story_id/contributions', (req, res) => {
+    console.log('begin')
     let query1 = getActiveContributions;
-    let query2 = getActiveContributions;
+    let query2 = getIncompleteStoryById;
     const id = req.params.story_id;
-    let templateVars = {};
+    const templateVars = { loggedIn: null };
+    if (req.session.user) templateVars.loggedIn = true;
     db.query(query1, [id])
       .then(data => {
-        templateVars['contributions'] = data.rows
+        templateVars.contributions = data.rows
+        // console.log(templateVars.contributions)
       })
     db.query(query2, [id])
       .then(data => {
-        templateVars['story'] = data.rows;
+        templateVars['story'] = data.rows[0];
         res.render('story', templateVars);
       })
       .catch(err => {

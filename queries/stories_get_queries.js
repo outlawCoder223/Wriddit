@@ -27,6 +27,7 @@ SELECT content, upvotes, contributor_id, name
 FROM contributions
 JOIN users ON contributor_id = users.id
 WHERE status = 'Active' AND story_id = $1
+ORDER BY upvotes DESC;
 `
 
 const getStoryOfTheWeek = `
