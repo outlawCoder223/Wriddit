@@ -4,6 +4,7 @@
     <title>Home Page</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jost:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -20,52 +21,87 @@
 
     <%- include('partials/_header') %>
 
+    <main id="main-container">
 
-    <section class="header-one">
+      <section class="header-one">
 
-      <div class="header-top-stories">
+        <div class="header-top-stories">
+          <h1 class="mainpage-header">TOP STORIES</h1>
 
-        <div class="header-top-stories-one">
-          <div class="top-stories-one-image"></div>
-          <h1>WHO ATE MY ICE CREAM</h1>
-          <button class="continue-button">READ THE STORY</button>
-          <h3 class="likes">320</h3>
+          <div class="header-top-stories-one">
+            <img class="story-image" src="https://i.pinimg.com/originals/85/bd/13/85bd1361a9180a835637f4a3ab4a4aa5.jpg">
+            <h1 class="story-name">WHO ATE MY ICE CREAM</h1>
+            <button class="button-mainpage">READ THE STORY</button>
+            <h3>320</h3>
+          </div>
+
+          <div class="header-top-stories-two">
+            <img class="story-image" src="https://assets.bigcartel.com/product_images/184356896/deforge.png?auto=format&fit=max&w=1800">
+            <h1 class="story-name"> WHERE'S MY BURGER</h1>
+            <button class="button-mainpage">READ THE STORY</button>
+            <h3>480</h3>
+          </div>
+
+          <div class="header-top-stories-three">
+            <img class="story-image" src="https://studygroupcomics.com/main/wp-content/uploads/2012/10/inccov.gif">
+            <h1 class="story-name">HOW'S IT UP THERE</h1>
+            <button class="button-mainpage">READ THE STORY</button>
+            <h3>480</h3>
+          </div>
+
         </div>
 
-        <div class="header-top-stories-two">
-          <div class="top-stories-two-image"></div>
-          <h1>WHERE'S MY BURGER</h1>
-          <button class="continue-button">READ THE STORY</button>
-          <h3 class="likes">480</h3>
+        <div class="header-one-middle">
+          <div class="feature-story">
+            <div class="feature-story-first-section">
+              <h1 class="feature-title">FEATURE STORY OF THE WEEK</h1>
+              <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h2>
+              <button class="continue-button">CONTINUE READING</button>
+            </div>
+            <img class="story-image" src="https://images.squarespace-cdn.com/content/v1/54942a43e4b0f18f7f64b77b/1488138052846-GY1DV3BU9AX7QT69XA99/ke17ZwdGBToddI8pDm48kH038fvZX_ZDi5CWVe14JagUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2ZF1TI0rpp0sXYn-3dPgx__MFNthWFT7lOW0KclkvbGxbTvJybZOtvbWRiFosmN10/mars-03.jpg">
+          </div>
+
+          <div class="story-starter">
+            <h1 class="feature-title">WRITER'S BLOCK?</h1>
+            <button class="continue-button">GENERATE A STORY STARTER</button>
+            <textarea class="story-starter-text-area"></textarea>
+          </div>
         </div>
 
-        <div class="header-top-stories-three">
-          <div class="top-stories-three-image"></div>
-          <h1>HOW'S IT UP THERE</h1>
-          <button class="continue-button">READ THE STORY</button>
-          <h3 class="likes">480</h3>
+
+        <div class="unfinished-stories">
+          <h1 class="mainpage-header">UNFINISHED STORIES</h1>
+          <div class="unfinished-stories-one">
+            <img class="story-image" src="https://pyxis.nymag.com/v1/imgs/f57/534/061d88d05cd78bbe00e139d008cfd06bf7-17-fyh-cover.rsquare.w700.jpg">
+            <h1 class="story-name">WHO MADE THIS PIE?</h1>
+            <h2 class="author-name">STARTED BY JAMES EL</h2>
+            <h2 class="contributions">ALREADY 320 CONTRIBUTIONS</h2>
+            <button class="button-mainpage">CONTINUE THE STORY</button>
+          </div>
+
+          <div class="unfinished-stories-two">
+            <img class="story-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTcif4Hubi1xlT7--FGGC4Im1t0DO4wZiZB1hRmdA75lsQBPW59&usqp=CAU">
+            <h1 class="story-name">WHAT THE HECK?</h1>
+            <h2 class="author-name">STARTED BY PARSY B</h2>
+            <h2 class="contributions">ALREADY 436 CONTRIBUTIONS</h2>
+            <button class="button-mainpage">CONTINUE THE STORY</button>
+          </div>
+
+          <div class="unfinished-stories-three">
+            <img class="story-image" src="https://www.booooooom.com/wp-content/uploads/2014/12/michael-deforge06.jpg">
+            <h1 class="story-name">THE BIG LEAGUES</h1>
+            <h2 class="author-name">STARTED BY PAUL BARRY</h2>
+            <h2 class="contributions">ALREADY 924 CONTRIBUTIONS</h2>
+            <button class="button-mainpage">CONTINUE THE STORY</button>
+          </div>
+
         </div>
 
-      </div>
+      </section>
 
-      <div class="feature-story">
-        <h1>FEATURE STORY OF THE WEEK</h1>
-        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h2>
-        <button class="continue-button">CONTINUE READING</button>
-        <div class="feature-story-image"></div>
-      </div>
 
-      <div class="story-starter">
-        <h1>WRITER'S BLOCK?</h1>
-        <button class="continue-button">GENERATE A STORY STARTER</button>
-        <textarea></textarea>
-      </div>
+    </main>
 
-      <div class="unfinished-stories">
-        
-      </div>
-
-    </section>
 
 
 

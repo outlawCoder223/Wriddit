@@ -1,35 +1,127 @@
-.top-stories-one-image {
-  background-image: url("https://i.pinimg.com/originals/85/bd/13/85bd1361a9180a835637f4a3ab4a4aa5.jpg");
-  height: auto;
-  width: 100%;
-  background-position: right;
-  background-size: contain;
-  background-repeat: no-repeat
+#main-container {
+  margin-bottom: 44px;
+  margin-top: 3.5em;
+  padding-top: 99px;
 }
 
-.top-stories-two-image {
-  background-image: url("https://assets.bigcartel.com/product_images/184356896/deforge.png?auto=format&fit=max&w=1800");
-  height: auto;
-  width: 100%;
-  background-position: right;
-  background-size: contain;
-  background-repeat: no-repeat
+.header-one {
+  display: flex;
+}
+.header-top-stories {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  flex-basis: 20%;
+  text-align: center;
 }
 
-.top-stories-three-image {
-  background-image: url("https://assets.bigcartel.com/product_images/184356896/deforge.png?auto=format&fit=max&w=1800");
-  height: auto;
-  width: 100%;
-  background-position: right;
-  background-size: contain;
-  background-repeat: no-repeat
+.story-name {
+  font-size: 18px;
 }
 
-.feature-story-image {
-  background-image: url("https://images.squarespace-cdn.com/content/v1/54942a43e4b0f18f7f64b77b/1488138052846-GY1DV3BU9AX7QT69XA99/ke17ZwdGBToddI8pDm48kH038fvZX_ZDi5CWVe14JagUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2ZF1TI0rpp0sXYn-3dPgx__MFNthWFT7lOW0KclkvbGxbTvJybZOtvbWRiFosmN10/mars-03.jpg");
-  height: auto;
-  width: 100%;
-  background-position: right;
-  background-size: contain;
-  background-repeat: no-repeat
+
+.header-one-middle {
+  display: flex;
+  flex-direction: column;
+  border-left: .8px solid #0000002e;
+  padding-left: 21px;
+  border-right: .8px solid #0000002e;
+  padding-right: 21px;
+}
+
+.story-starter {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+}
+
+.unfinished-stories {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  flex-basis: 20%;
+  text-align: center;
+}
+
+.unfinished-stories-one {
+  padding-bottom: 20px;
+}
+
+.unfinished-stories-three {
+  padding-top: 20px;
+}
+
+.feature-story {
+  flex-basis: 50%;
+  display: flex;
+  border-bottom: .8px solid #0000002e;
+  padding-bottom: 26px;
+}
+
+.story-starter {
+  flex-basis: 50%;
+}
+
+.story-image {
+  width: 8.5rem;
+}
+
+
+.feature-story-first-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-name {
+  font-family: 'jost-2', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.contributions {
+  font-size: 12px;
+  color: #d52b2b;
+}
+
+.mainpage-header {
+  font-size: 20px;
+}
+
+.button-mainpage {
+  background-color: white;
+    border: none;
+    color: black;
+    padding: 9px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    margin-bottom: 6px;
+    margin-top: 4px;
+    margin-right: 1px;
+    width: 150px;
+}
+
+.story-starter-text-area {
+  height: 50%;
+  margin-top: 7%;
+  border: none;
+  overflow: auto;
+  outline: none;
+  resize: none;
+  background-color: #d7d4d4;
+}
+
+@font-face {
+  font-family: 'jost-2';
+  src: url("../fonts/Jost-SemiBold.ttf");
+  font-weight: normal;
+}
+
+.feature-title {
+  font-size: 40px;
 }
