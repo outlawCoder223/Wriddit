@@ -44,14 +44,19 @@ module.exports = (db) => {
     const title = req.body.title;
     const content = req.body.content;
     db.query(createNewStory, [content, title, authorId])
-      .then(() => {
-        res.redirect(`/stories/${story_id}/contributions`)
+      .then((data) => {
+        console.log(data.rows[0]);
+        const storyId = data.rows[0].id
+        // res.redirect(`/stories/${story_id}/contributions`)
+        res.redirect(`/stories/${storyId}/contributions`)
       })
       .catch(err => {
         res
           .status(500)
           .json({ error: err.message });
       });
+    // console.log(req.body)
+    // res.redirect('/stories');
   });
 
   //generate a writing prompt
