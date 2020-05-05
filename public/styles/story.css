@@ -148,6 +148,10 @@ main {
   font-family: 'Jost';
 }
 
+#contribution-container {
+  padding-top: 18%;
+}
+
 @font-face {
   font-family: 'jost-3';
   src: url("../fonts/Jost-VariableFont_ital,wght.ttf");
