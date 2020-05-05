@@ -198,6 +198,15 @@ body {
   background-repeat: no-repeat;
 }
 
+.test-image-two {
+  background-image: url("http://images.tcj.com/2016/02/Dressing_011.jpg");
+  height: auto;
+  width: 200%;
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat
+}
+
 @font-face {
   font-family: 'jost-2';
   src: url("../fonts/Jost-SemiBold.ttf");
