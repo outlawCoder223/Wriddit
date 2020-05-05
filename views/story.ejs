@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css">
     <link rel="stylesheet" href="/styles/story.css">
-    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jost:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -20,19 +20,19 @@
       <section class="story">
 
 
-        <img src="https://images.unsplash.com/photo-1501421018470-faf26f6b1bef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="">
+        <img src="https://images.squarespace-cdn.com/content/v1/54942a43e4b0f18f7f64b77b/1566909279972-ZMT7JGSCY1WXGFSBRT8X/ke17ZwdGBToddI8pDm48kOiqdsfHQPA8ihNjytf6azUUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2pTu6XFiae5s5fU-ZX3bEBd_e_OjDfmdBVoFaOAshuL5m0nepH0bYFh4DTA4Bp5g2/internet-medium.jpg" alt="">
         <h1><%= title %></h1>
-        <h3>Started by <%= author %></h3>
+        <h3>STARTED BY <%= author %></h3>
         <% if (!complete && loggedIn) { %>
         <a href="/stories/<%= id %>"><button>Mark Completed</button></a>
         <% } %>
 
       </section>
-      <p><%= content %></p>
+      <p class="story-text"><%= content %></p>
       <% if (!complete) { %>
       <section class="contribution-form">
         <form id="new-contribution" action="/stories/:story_id/:contribution_id" method="post">
-        <label for="contribution">What happens next...</label>
+        <label class="contribution-label" for="contribution">What happens next...</label>
         <textarea name="contribution" id="add-contribution" cols="30" rows="10"></textarea>
         <div>
           <button type="submit">Submit</button>

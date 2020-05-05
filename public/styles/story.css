@@ -5,22 +5,31 @@ main {
 }
 
 .story h1 {
-  color: #244751;
+  color: black;
   font-size: 64px;
+  font-family: 'Jost';
+  font-weight: 400;
+  margin-bottom: 5px;
+  line-height: 1;
 }
 
 .story h3 {
   font-size: 32px;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  font-family: 'Jost-3';
+  font-weight: 100;
+  font-style: italic;
 }
 
 .story img {
-  width: 40%;
+  width: 57%;
   float: right;
   margin-left: 10px;
 }
 
 .story button {
-  background-color: #438180;
+  background-color: black;
   padding: 8px 16px;
   border-radius: 5px;
   color: #FFFFFF;
@@ -38,15 +47,22 @@ main {
 
 .contribution-form label {
   display: block;
-  font-size: 2.25rem;
+  font-size: 3.25rem;
+  font-family: 'Jost';
 }
 
 .contribution-form textarea {
   width: 100%;
-  height: 250px;
   font-size: 1rem;
+  font-family: 'Jost';
   border: none;
-  background-color: #F7F4EE;
+  height: 50%;
+  margin-top: 1%;
+  border: none;
+  overflow: auto;
+  outline: none;
+  resize: none;
+  background-color: #d7d4d4;
 }
 
 .contribution-form textarea:focus {
@@ -94,6 +110,7 @@ main {
 .contribution footer p {
   display: inline-block;
   margin: 0;
+  font-family: 'Jost';
 }
 
 .contribution img {
@@ -124,4 +141,14 @@ main {
 .merge:hover {
   background-color: #ac322d;
   cursor: pointer;
+}
+
+.story-text {
+  font-family: 'Jost';
+}
+
+@font-face {
+  font-family: 'jost-3';
+  src: url("../fonts/Jost-VariableFont_ital,wght.ttf");
+  font-weight: 300;
 }
