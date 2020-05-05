@@ -19,17 +19,16 @@
     <main>
       <section class="story">
 
-
         <img src="https://images.unsplash.com/photo-1501421018470-faf26f6b1bef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="">
         <h1><%= title %></h1>
         <h3>Started by <%= author %></h3>
-        <% if (!complete && loggedIn) { %>
-        <a href="/stories/<%= id %>"><button>Mark Completed</button></a>
+        <% if (state !== 'Complete' && loggedIn) { %>
+          <button id="mark-complete">Mark Complete</button>
         <% } %>
 
       </section>
       <p><%= content %></p>
-      <% if (!complete) { %>
+      <% if (state !== 'Complete') { %>
       <section class="contribution-form">
         <form id="new-contribution" action="/stories/:story_id/:contribution_id" method="post">
         <label for="contribution">What happens next...</label>
