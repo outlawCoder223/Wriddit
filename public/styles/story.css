@@ -19,6 +19,19 @@ main {
   margin-left: 10px;
 }
 
+.story button {
+  background-color: #438180;
+  padding: 8px 16px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-family: 'Jost', sans-serif;
+}
+
+.story button:hover {
+  background-color: #2b5353;
+  cursor: pointer;
+}
+
 .contribution-form {
   height: 375px;
 }
@@ -56,7 +69,7 @@ main {
 }
 
 .contribution-form button:hover {
-  background-color: #3c7473;
+  background-color: #2b5353;
   cursor: pointer;
 }
 

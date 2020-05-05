@@ -23,8 +23,9 @@
         <img src="https://images.unsplash.com/photo-1501421018470-faf26f6b1bef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="">
         <h1><%= title %></h1>
         <h3>Started by <%= author %></h3>
-
-
+        <% if (!complete && loggedIn) { %>
+        <a href="/stories/<%= id %>"><button>Mark Completed</button></a>
+        <% } %>
 
       </section>
       <p><%= content %></p>
@@ -65,5 +66,5 @@
       <% } %>
     </main>
   </body>
-<script src="/scripts/story.js"></script>
+<script type="text/javascript" src="/scripts/story.js"></script>
 </html>
