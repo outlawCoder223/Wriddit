@@ -25,10 +25,6 @@ SET status = 'Merged'
 WHERE contributions.id = $1;
 `
 const mergeContribution2 = `
-UPDATE stories SET content = '$1'
-WHERE stories.id = $2;
-`
-const mergeContribution3 = `
 UPDATE contributions SET status = 'Rejected'
 WHERE story_id = $1 AND status = 'Active';
 `
@@ -44,6 +40,5 @@ module.exports = {
   renderNewContribution,
   mergeContribution1,
   mergeContribution2,
-  mergeContribution3,
   getContributionById
 };
