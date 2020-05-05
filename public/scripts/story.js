@@ -2,7 +2,6 @@ $('#new-contribution').on('submit', function(event) {
   event.preventDefault();
   const url = window.location.pathname;
   const storyId = getStoryId(url);
-
   const content = $(this).children('textarea')[0].value;
   const data = {
     story_id: storyId,
@@ -11,7 +10,6 @@ $('#new-contribution').on('submit', function(event) {
 
   $.post('/stories/:story_id/contributions',data)
     .done(function(res) {
-      $(this).children('textarea').val('');
       renderPost(JSON.parse(res));
     });
 });
@@ -62,4 +60,5 @@ const renderPost = (post) => {
           </article>
   `;
   $('#contribution-container').prepend(newPost);
+  $('#add-contribution').val('');
 };

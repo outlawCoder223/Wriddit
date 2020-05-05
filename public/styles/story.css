@@ -85,7 +85,6 @@ main {
 .contribution img {
   width: 20px;
   display: inline-block;
-  z-index: 1;
 }
 
 .upvote {
