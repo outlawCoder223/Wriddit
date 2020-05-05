@@ -1,8 +1,19 @@
 $('#new-contribution').on('submit', function(event) {
   event.preventDefault();
-  const data = $(this).serialize();
-  $(this).children('textarea').val('');
-  $.post('/stories/:story_id/contributions', data);
+  const url = window.location.pathname;
+  const storyId = getStoryId(url);
+
+  const content = $(this).children('textarea')[0].value;
+  const data = {
+    story_id: storyId,
+    content: content,
+  }
+
+  $.post('/stories/:story_id/contributions',data)
+    .done(function(res) {
+      // $(this).children('textarea').val('');
+      console.log(res);
+    });
 });
 
 $('.merge').on('click', function(event) {
@@ -26,3 +37,10 @@ $('.upvote').click(function(event) {
     $(this).toggleClass('on');
   }
 });
+
+const getStoryId = (url) => {
+  let parseUrl = url.replace('/stories/', '');
+
+  parseUrl = parseUrl.replace('/contributions', '');
+  return parseUrl;
+};
