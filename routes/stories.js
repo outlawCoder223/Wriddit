@@ -89,16 +89,22 @@ module.exports = (db) => {
     db.query(query, [id])
       .then(data => {
         const story = data.rows[0];
-        console.log('story.state', story.state)
         const templateVars = {
           title: story.title,
           content: story.content,
           author: story.name,
-          complete: true,
+          state: story.state,
+          loggedIn: false,
           id,
           user,
         };
-        res.render('story', templateVars);
+        if (req.session.user) templateVars.loggedIn = true;
+        if (story.state !== 'Complete') {
+          res.redirect(`/stories/${id}/contributions`);
+        } else {
+          res.render('story', templateVars);
+        }
+
       })
       .catch(err => {
         res
@@ -117,19 +123,20 @@ module.exports = (db) => {
     if (req.session.user) templateVars.loggedIn = true;
     db.query(query1, [id])
       .then(data => {
-        templateVars['contributions'] = data.rows;
+        templateVars.contributions = data.rows;
         db.query(query2, [id])
           .then(data => {
             const story = data.rows[0];
-            if (story.state === 'complete') {
-              res.redirect('/' + id);
-            }
             templateVars.title = story.title;
             templateVars.content = story.content;
             templateVars.author = story.name;
             templateVars.state = story.state
             templateVars.id = id;
-            res.render('story', templateVars);
+            if (story.state === 'Complete') {
+              res.redirect(`/stories/${id}`);
+            } else {
+              res.render('story', templateVars);
+            }
           })
           .catch(err => {
             res
@@ -207,17 +214,13 @@ module.exports = (db) => {
 
   //mark a story complete
   router.post('/:story_id/complete', (req, res) => {
-    // grab data
-    console.log('this is req.body', req.body)
     const query = markStoryComplete;
     const storyId = req.body.storyId;
-    console.log('this is storyId -> ', storyId)
+
     db.query(query, [storyId])
-    db.query(getCompleteStoryById, [storyId])
-      .then((data) => {
-        console.log(data)
+      .then(() => {
+        console.log('Changed story state to complete.')
       });
-    // redirect to /:story_id
     res.status(200).send()
   });
 
