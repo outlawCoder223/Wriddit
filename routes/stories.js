@@ -78,16 +78,18 @@ module.exports = (db) => {
   });
 
   // read a complete story
-  // TODO  - is this endpoint ever used?
   router.get('/:story_id', (req, res) => {
+    const query = getCompleteStoryById;
     const id = req.params.story_id;
-
-    db.query(getCompleteStoryById, [id])
+    db.query(query, [id])
       .then(data => {
         const story = data.rows[0];
+        console.log('story:', story)
         const templateVars = {
           title: story.title,
-          content: story.content
+          content: story.content,
+          author: story.name,
+          complete: true
         };
         res.render('story', templateVars);
       })
@@ -100,46 +102,47 @@ module.exports = (db) => {
 
   //read an incomplete story
   router.get('/:story_id/contributions', (req, res) => {
+    const query1 = getActiveContributions;
+    const query2 = getIncompleteStoryById;
     const id = req.params.story_id;
     const templateVars = { loggedIn: false, complete: false };
     if (req.session.user) templateVars.loggedIn = true;
-
-    db.query(getActiveContributions, [id])
+    db.query(query1, [id])
       .then(data => {
         templateVars['contributions'] = data.rows;
-      })
-    db.query(getIncompleteStoryById, [id])
-      .then(data => {
-        const story = data.rows[0];
-        templateVars.title = story.title;
-        templateVars.content = story.content;
-        templateVars.author = story.name;
-        templateVars.id = story.id;
-        res.render('story', templateVars);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+        db.query(query2, [id])
+          .then(data => {
+            const story = data.rows[0];
+            templateVars.title = story.title;
+            templateVars.content = story.content;
+            templateVars.author = story.name;
+            templateVars.id = story.id;
+            res.render('story', templateVars);
+          })
+          .catch(err => {
+            res
+              .status(500)
+              .json({ error: err.message });
+          });
       });
   });
 
   //create a new contribution to a story
   router.post('/:story_id/contributions', (req, res) => {
-    const storyId = req.params.story_id;
-    const contributor_id = req.body.contributor_id;
+    const query1 = createContribution;
+    const query2 = renderNewContribution;
+    const storyId = req.body.story_id;
+    const contributor_id = req.session.user;
     const content = req.body.content;
-    let templateVars = {};
 
-    db.query(createContribution, [storyId, content, contributor_id])
-      .then(data => {
-        const contribution_id = data.rows[0].id;
-        return db.query(renderNewContribution, [contribution_id])
-      })
-      .then(data => {
-        console.log(data.rows);
-        templateVars['contributions'] = data.rows;
-        res.render('story', templateVars);
+    db.query(query1, [storyId, content, contributor_id])
+      .then((data) => {
+        const contributionId = data.rows[0].id;
+        db.query(query2, [contributionId])
+          .then((data) => {
+            const result = JSON.stringify(data.rows[0]);
+            res.end(result);
+          })
       })
       .catch(err => {
         res
@@ -170,21 +173,17 @@ module.exports = (db) => {
       .then(mergeContent => {
         return db.query(mergeContribution1, [contribution_id])
           .then(() => {
-            //to find fail point
-            console.log('hello1');
             return db.query(`
-        UPDATE stories SET content = '${mergeContent}'
-        WHERE stories.id = ${story_id};`)
+        UPDATE stories SET content = $1
+        WHERE stories.id = $2;`, [mergeContent, story_id])
           })
       })
       .then(() => {
-        //to find fail point
-        console.log('hello2');
         //update all contribution statuses related to that story
         return db.query(mergeContribution2, [story_id])
       })
       .then(() => {
-        res.redirect(`/stories/${story_id}/contributions`)
+        res.status(201).send();
       })
       .catch(err => {
         console.log(err)

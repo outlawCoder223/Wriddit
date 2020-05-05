@@ -20,7 +20,7 @@
   
   * [x] Necessary seed data inserted
 
-* [ ] Server connected to database
+* [x] Server connected to database
 
 * [x] Routes created
 
@@ -52,7 +52,7 @@
 
 * [ ] Front-end connected to back-end
 
-* [ ] Header finished
+* [x] Header finished
 
 * [ ] Homepage finished
 
@@ -66,17 +66,19 @@
 
 * [ ] Story page finished
 
-  * [ ] User can read the story
+  * [ ] Author can merge contribution to story
 
-  * [ ] User can click the upvote btn to upvote a contribution
+  * [x] User can read the story
 
-  * [ ] Upvote increments when clicked
+  * [x] User can click the upvote btn to upvote a contribution
 
-  * [ ] User can write a contribution
+  * [x] Upvote increments when clicked
 
-  * [ ] User can submit contribution
+  * [x] User can write a contribution
 
-  * [ ] Contribution will appear on page
+  * [x] User can submit contribution
+
+  * [x] Contribution will appear on page
 
 ------------------
 
