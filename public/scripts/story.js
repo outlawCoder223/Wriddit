@@ -48,6 +48,18 @@ $('.upvote').click(function(event) {
   }
 });
 
+$('#mark-complete').click(function(event) {
+  const url = window.location.pathname;
+  const storyId = getStoryId(url)
+
+  $.post(`/stories/${storyId}/complete`, {storyId})
+    .then(function() {
+      const origin = window.location.origin;
+      const path = '/stories/' + storyId;
+      window.location.href = origin + path;
+    });
+});
+
 // parse story id out of url
 const getStoryId = (url) => {
   let parseUrl = url.replace('/stories/', '');

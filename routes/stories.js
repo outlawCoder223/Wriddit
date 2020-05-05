@@ -82,23 +82,29 @@ module.exports = (db) => {
 
   // read a complete story
   router.get('/:story_id', (req, res) => {
-    console.log(req.params)
+
     const query = getCompleteStoryById;
     const id = req.params.story_id;
     const user = req.session.user;
     db.query(query, [id])
       .then(data => {
         const story = data.rows[0];
-
         const templateVars = {
           title: story.title,
           content: story.content,
           author: story.name,
-          complete: true,
+          state: story.state,
+          loggedIn: false,
           id,
           user,
         };
-        res.render('story', templateVars);
+        if (req.session.user) templateVars.loggedIn = true;
+        if (story.state !== 'Complete') {
+          res.redirect(`/stories/${id}/contributions`);
+        } else {
+          res.render('story', templateVars);
+        }
+
       })
       .catch(err => {
         res
@@ -117,15 +123,20 @@ module.exports = (db) => {
     if (req.session.user) templateVars.loggedIn = true;
     db.query(query1, [id])
       .then(data => {
-        templateVars['contributions'] = data.rows;
+        templateVars.contributions = data.rows;
         db.query(query2, [id])
           .then(data => {
             const story = data.rows[0];
             templateVars.title = story.title;
             templateVars.content = story.content;
             templateVars.author = story.name;
+            templateVars.state = story.state
             templateVars.id = id;
-            res.render('story', templateVars);
+            if (story.state === 'Complete') {
+              res.redirect(`/stories/${id}`);
+            } else {
+              res.render('story', templateVars);
+            }
           })
           .catch(err => {
             res
@@ -201,6 +212,18 @@ module.exports = (db) => {
       });
   });
 
+  //mark a story complete
+  router.post('/:story_id/complete', (req, res) => {
+    const query = markStoryComplete;
+    const storyId = req.body.storyId;
+
+    db.query(query, [storyId])
+      .then(() => {
+        console.log('Changed story state to complete.')
+      });
+    res.status(200).send()
+  });
+
   return router;
 };
 
@@ -215,10 +238,6 @@ module.exports = (db) => {
 
   });
 
-  //mark a story complete
-  router.post('/:story_id/complete', (req, res) => {
-
-  });
 
   //delete a story
   router.post('/:story_id/delete', (req, res) => {
