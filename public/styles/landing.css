@@ -29,7 +29,6 @@ section {
 #landing-container {
   margin-bottom: 44px;
   margin-top: 3.5em;
-  padding-top: 99px;
 }
 
 .landing-first {
@@ -76,7 +75,8 @@ section {
 
 .landing-second-buttons {
   display: flex;
-  margin-left: 71px;
+  margin-right: 11px;
+  margin-left: 41px;
 }
 
 .continue-button {
@@ -98,8 +98,8 @@ section {
 
 .likes {
   margin-bottom: 0px;
-  margin-top: 13px;
-  font-size: 31px;
+  margin-top: 10px;
+  font-size: 30px;
   margin-right: 41px;
   font-weight: 200;
 }
@@ -201,6 +201,10 @@ body {
 
 .bottom {
   max-width: 914px;
+}
+
+.read-the-story {
+  padding: 15px;
 }
 
 @font-face {
