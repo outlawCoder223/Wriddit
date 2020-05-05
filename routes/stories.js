@@ -94,7 +94,8 @@ module.exports = (db) => {
           content: story.content,
           author: story.name,
           complete: true,
-          user
+          id,
+          user,
         };
         res.render('story', templateVars);
       })
