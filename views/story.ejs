@@ -26,9 +26,9 @@
 
 
 
-
       </section>
       <p><%= story.content %></p>
+      <% if (complete) { %>
       <section class="contribution-form">
         <form id="new-contribution" action="/stories/:story_id/:contribution_id" method="post">
         <label for="contribution">What happens next...</label>
@@ -64,6 +64,7 @@
           </article>
         <% } %>
       </section>
+      <% } %>
     </main>
   </body>
 <script src="/scripts/story.js"></script>

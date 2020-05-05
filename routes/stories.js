@@ -65,7 +65,8 @@ module.exports = (db) => {
         const templateVars = {
           title: story.title,
           content: story.content,
-          author: story.name
+          author: story.name,
+          complete: true
         };
         res.render('story', templateVars);
       })
@@ -83,7 +84,7 @@ module.exports = (db) => {
     let query1 = getActiveContributions;
     let query2 = getIncompleteStoryById;
     const id = req.params.story_id;
-    const templateVars = { loggedIn: null };
+    const templateVars = { loggedIn: false, complete: true };
     if (req.session.user) templateVars.loggedIn = true;
     db.query(query1, [id])
       .then(data => {
