@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Create A Story</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jost:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/landing.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/homepage.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/create.css" type="text/css" />
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+
+  <body>
+    <%- include('partials/_header') %>
+    <form action="/stories" method="post" id="create-story">
+      <label for="title">Enter the title of your story:</label>
+      <input type="text" name="title" id="title">
+      <label for="story-content">Enter your content</label>
+      <textarea name="story-content" id="story-content"></textarea>
+    </form>
+
+
+  </body>
+</html>

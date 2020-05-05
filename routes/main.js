@@ -28,5 +28,11 @@ module.exports = (db) => {
     const user = req.session.user;
     res.render('homepage', {user});
   });
+
+  router.get('/create', (req, res) => {
+    const user = req.session.user;
+    res.render('createStory', {user})
+  });
+
   return router;
 };
