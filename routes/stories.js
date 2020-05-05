@@ -120,7 +120,7 @@ module.exports = (db) => {
             const story = data.rows[0];
             templateVars.title = story.title;
             templateVars.content = story.content;
-            templateVars.author = story.author;
+            templateVars.author = story.name;
             templateVars.id = story.id;
             res.render('story', templateVars);
           })
@@ -178,14 +178,14 @@ module.exports = (db) => {
     db.query(mergeContribution1, [contribution_id])
       .then(() => {
         //to find fail point
-        console.log('hello1');
+
         return db.query(`
         UPDATE stories SET content = '${mergeContent}'
         WHERE stories.id = ${story_id};`)
       })
       .then(() => {
         //to find fail point
-        console.log('hello2');
+
         //update all contribution statuses related to that story
         return db.query(mergeContribution3, [story_id])
       })

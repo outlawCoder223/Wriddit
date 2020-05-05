@@ -17,10 +17,9 @@ $('#new-contribution').on('submit', function(event) {
 $('.merge').on('click', function(event) {
   event.preventDefault();
   const contribution = $(this).attr('id');
-  console.log($(this).attr('id'))
   const url = window.location.pathname;
   const storyId = getStoryId(url)
-  $.post(url + '/contributions/:contribution_id', {story_id: storyId, contribution_id: contribution});
+  $.post(url + `/${contribution}`, {story_id: storyId, contribution_id: contribution})
 });
 
 $('.upvote').click(function(event) {
