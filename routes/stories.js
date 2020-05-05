@@ -82,13 +82,14 @@ module.exports = (db) => {
 
   // read a complete story
   router.get('/:story_id', (req, res) => {
+    console.log(req.params)
     const query = getCompleteStoryById;
     const id = req.params.story_id;
     const user = req.session.user;
     db.query(query, [id])
       .then(data => {
         const story = data.rows[0];
-        console.log('story:', story)
+
         const templateVars = {
           title: story.title,
           content: story.content,
@@ -123,7 +124,7 @@ module.exports = (db) => {
             templateVars.title = story.title;
             templateVars.content = story.content;
             templateVars.author = story.name;
-            templateVars.id = story.id;
+            templateVars.id = id;
             res.render('story', templateVars);
           })
           .catch(err => {
