@@ -40,19 +40,14 @@ module.exports = (db) => {
 
   //create a new story
   router.post('/', (req, res) => {
-    const authorId = req.body.author_id;
+    const authorId = req.session.user;
     const title = req.body.title;
     const content = req.body.content;
-    const user = req.session.user;
     db.query(createNewStory, [content, title, authorId])
-      .then(() => {
-        const templateVars = {
-          title,
-          content,
-          author_id: authorId,
-          user
-        };
-        res.render('story', templateVars);
+      .then((data) => {
+        console.log(data.rows[0]);
+        const storyId = data.rows[0].id
+        res.redirect(`/stories/${storyId}/contributions`)
       })
       .catch(err => {
         res

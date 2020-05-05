@@ -48,9 +48,9 @@
 
 ## Front-end To-do:
 
-* [ ] Theme properties agreed and set
+* [x] Theme properties agreed and set
 
-* [ ] Front-end connected to back-end
+* [x] Front-end connected to back-end
 
 * [x] Header finished
 
@@ -64,9 +64,9 @@
 
   * [ ] User can click any story on the homepage
 
-* [ ] Story page finished
+* [x] Story page finished
 
-  * [ ] Author can merge contribution to story
+  * [x] Author can merge contribution to story
 
   * [x] User can read the story
 
