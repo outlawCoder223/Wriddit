@@ -59,9 +59,7 @@ module.exports = (db) => {
   router.get('/:story_id', (req, res) => {
     const query = getCompleteStoryById;
     const id = req.params.story_id;
-    const templateVars = { loggedIn: null };
-    if (req.session.user) templateVars.loggedIn = true;
-    db.query(getStory, [id])
+    db.query(query, [id])
       .then(data => {
         const story = data.rows[0];
         const templateVars = {
