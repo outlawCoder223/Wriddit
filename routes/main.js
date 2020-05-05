@@ -9,18 +9,24 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    res.render('landing')
+    const user = req.session.user;
+    res.render('landing', {user});
   });
 
   router.get('/login/:id', (req, res) => {
     const id = req.params;
     req.session.user = 1;
-    res.redirect('/');
+    res.redirect('/homepage');
   });
 
   router.get('/logout', (req, res) => {
     req.session = null;
     res.status(307).redirect('/');
+  });
+
+  router.get("/homepage", (req, res) => {
+    const user = req.session.user;
+    res.render('homepage', {user});
   });
   return router;
 };

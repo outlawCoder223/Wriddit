@@ -199,6 +199,10 @@ body {
   background-repeat: no-repeat;
 }
 
+.bottom {
+  max-width: 914px;
+}
+
 @font-face {
   font-family: 'jost-2';
   src: url("../fonts/Jost-SemiBold.ttf");
