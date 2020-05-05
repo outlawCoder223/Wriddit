@@ -2,14 +2,12 @@ DROP TABLE IF EXISTS contributions CASCADE;
 
 CREATE TABLE contributions (
   id SERIAL PRIMARY KEY NOT NULL,
-  story_id INTEGER REFERENCES stories(id), -- don't cascade on delete? How does this work because stories will be deleted..
+  story_id INTEGER,
   upvotes INTEGER DEFAULT 0,
   state VARCHAR(255) NOT NULL DEFAULT 'In Progress',
-  created_on DATE DEFAULT CURRENT_DATE,
-  resolved_on DATE,
-  status VARCHAR (255) NOT NULL DEFAULT 'active',
+  status VARCHAR (255) NOT NULL DEFAULT 'Active', --rejected, merged
   content TEXT,
-  contributor_id INTEGER REFERENCES users(id) -- don't cascade on delete? as above
+  contributor_id INTEGER
 );
 
 /*
