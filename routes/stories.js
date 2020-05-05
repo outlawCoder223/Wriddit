@@ -34,7 +34,8 @@ const { getContributionsByStoryId,
 module.exports = (db) => {
   //browse all stories
   router.get('/', (req, res) => {
-    res.render('stories');
+    const user = req.session.user;
+    res.render('stories',{user});
   });
 
   //create a new story
@@ -42,12 +43,14 @@ module.exports = (db) => {
     const authorId = req.body.author_id;
     const title = req.body.title;
     const content = req.body.content;
+    const user = req.session.user;
     db.query(createNewStory, [content, title, authorId])
       .then(() => {
         const templateVars = {
           title,
           content,
-          author_id: authorId
+          author_id: authorId,
+          user
         };
         res.render('story', templateVars);
       })
@@ -82,6 +85,7 @@ module.exports = (db) => {
     console.log(req.params)
     const query = getCompleteStoryById;
     const id = req.params.story_id;
+    const user = req.session.user;
     db.query(query, [id])
       .then(data => {
         const story = data.rows[0];
@@ -91,7 +95,8 @@ module.exports = (db) => {
           content: story.content,
           author: story.name,
           complete: true,
-          id
+          id,
+          user,
         };
         res.render('story', templateVars);
       })
@@ -107,7 +112,8 @@ module.exports = (db) => {
     const query1 = getActiveContributions;
     const query2 = getIncompleteStoryById;
     const id = req.params.story_id;
-    const templateVars = { loggedIn: false, complete: false };
+    const user = req.session.user;
+    const templateVars = { loggedIn: false, complete: false, user };
     if (req.session.user) templateVars.loggedIn = true;
     db.query(query1, [id])
       .then(data => {

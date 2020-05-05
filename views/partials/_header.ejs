@@ -2,23 +2,37 @@
 
   <div class="mainheader-topbar">
 
-    <h1 class="logo">WRIDDIT</h1>
+
+
+
+      <a class='logo' href="/homepage">WRIDDIT</a>
+
+
+
 
     <div class="container-header">
       <ul class="header-menu">
+        <% if (user) { %>
+
           <li class='header-link-1'>
-            <a class='header-link' href="#">Home</a>
+            <a class='header-link' href="/homepage">Home</a>
           </li>
+
           <li class='header-link-2'>
             <a class='header-link' href="#">my Profile</a>
           </li>
-          <li class='header-link-3'>
-            <a class='header-link' href="/login/1">Login</a>
-          </li>
+
+            <li class='header-link-3'>
+              <a class='header-link' href="/logout">Logout</a>
+              <% } else { %>
+              <li class='header-link-3'>
+                <a class='header-link' href="/login/1">Login</a>
+              </li>
+              <% } %>
       </ul>
     </div>
   </div>
-
+  <% if (user) { %>
   <nav class="nav-container">
 
     <ul class="nav-menu">
@@ -37,5 +51,5 @@
     </ul>
 
   </nav>
-
+  <% } %>
 </header>
