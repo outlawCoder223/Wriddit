@@ -83,11 +83,10 @@ module.exports = (db) => {
   });
 
   // read a complete story
-  // TODO  - is this endpoint ever used?
   router.get('/:story_id', (req, res) => {
+    const query = getCompleteStoryById;
     const id = req.params.story_id;
-
-    db.query(getCompleteStoryById, [id])
+    db.query(query, [id])
       .then(data => {
         const story = data.rows[0];
         console.log('story:', story)
@@ -108,6 +107,8 @@ module.exports = (db) => {
 
   //read an incomplete story
   router.get('/:story_id/contributions', (req, res) => {
+    const query1 = getActiveContributions;
+    const query2 = getIncompleteStoryById;
     const id = req.params.story_id;
     const templateVars = { loggedIn: false, complete: false };
     if (req.session.user) templateVars.loggedIn = true;
