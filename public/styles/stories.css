@@ -7,6 +7,7 @@
 .header-one {
   display: flex;
 }
+
 .header-top-stories {
   display: flex;
   flex-direction: column;
@@ -23,7 +24,6 @@
   font-size: 18px;
 }
 
-
 .header-one-middle {
   display: flex;
   flex-direction: column;
@@ -37,6 +37,11 @@
   display: flex;
   flex-direction: column;
   flex-grow: 2;
+}
+
+.story-starter .prompt-box {
+  display: none;
+  text-align: center;
 }
 
 .unfinished-stories {
@@ -88,20 +93,20 @@
 
 .button-mainpage {
   background-color: white;
-    border: none;
-    color: black;
-    padding: 9px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 12px;
-    margin-bottom: 6px;
-    margin-top: 4px;
-    margin-right: 1px;
-    width: 150px;
+  border: none;
+  color: black;
+  padding: 9px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  margin-top: 4px;
+  margin-right: 1px;
+  width: 150px;
 }
 
 .story-starter-text-area {
@@ -117,7 +122,6 @@
 .feature-title {
   font-size: 40px;
 }
-
 
 .catchphrase {
   display: flex;
@@ -145,19 +149,23 @@
   flex-wrap: wrap;
   flex-direction: row;
 }
+
 .grid2x2 > div {
   display: flex;
   flex-basis: calc(50% - 40px);
   justify-content: center;
   flex-direction: column;
 }
+
 .grid2x2 > div > div {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
-.box { margin: 20px; }
+.box {
+  margin: 20px;
+}
 
 .feature-image {
   float: right;
@@ -173,7 +181,6 @@
   border-bottom: 1px solid;
 }
 
-
 .top-story-image-one {
   background-image: url("https://i.pinimg.com/originals/85/bd/13/85bd1361a9180a835637f4a3ab4a4aa5.jpg");
   height: 100%;
@@ -182,5 +189,3 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
-
-
