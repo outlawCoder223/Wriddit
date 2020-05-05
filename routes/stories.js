@@ -87,19 +87,19 @@ module.exports = (db) => {
     if (req.session.user) templateVars.loggedIn = true;
     db.query(query1, [id])
       .then(data => {
-        templateVars.contributions = data.rows
-        // console.log(templateVars.contributions)
-      })
-    db.query(query2, [id])
-      .then(data => {
-        templateVars['story'] = data.rows[0];
-        res.render('story', templateVars);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+        templateVars['contributions'] = data.rows;
+        db.query(query2, [id])
+          .then(data => {
+            templateVars['story'] = data.rows[0];
+            res.render('story', templateVars);
+          })
+          .catch(err => {
+            res
+              .status(500)
+              .json({ error: err.message });
+          });
       });
+
   });
 
   return router;
