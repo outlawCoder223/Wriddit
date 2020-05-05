@@ -15,6 +15,10 @@
   text-align: center;
 }
 
+.header-top-stories-one {
+  display: contents;
+}
+
 .story-name {
   font-size: 18px;
 }
@@ -65,12 +69,6 @@
 .story-image {
   width: 8.5rem;
 }
-
-
-// .feature-story-first-section {
-//   display: flex;
-//   flex-direction: column;
-// }
 
 .author-name {
   font-family: 'jost-2', sans-serif;
@@ -163,7 +161,7 @@
 
 .feature-image {
   float: right;
-  width: 460px;
+  width: 400px;
 }
 
 .categories {
@@ -174,3 +172,15 @@
   font-size: 5.5vw;
   border-bottom: 1px solid;
 }
+
+
+.top-story-image-one {
+  background-image: url("https://i.pinimg.com/originals/85/bd/13/85bd1361a9180a835637f4a3ab4a4aa5.jpg");
+  height: 100%;
+  width: auto;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
