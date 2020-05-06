@@ -8,7 +8,8 @@ const { selectAllStories,
   getActiveContributions,
   getRandomIncompleteStory,
   getAllUnfinishedStories,
-  getRandomCompleteStory
+  getRandomCompleteStory,
+  getAllTopStories
 } = require('../queries/stories_get_queries');
 
 const {
@@ -104,8 +105,23 @@ module.exports = (db) => {
     db.query(query)
       .then(data => {
         templateVars['stories'] = data.rows;
-        console.log(templateVars);
         res.render('unfinished', templateVars);
+
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
+  router.get('/topStories', (req,res) => {
+    const query = getAllTopStories;
+    const user = req.session.user;
+    const templateVars = { user };
+
+    db.query(query)
+      .then(data => {
+        templateVars['stories'] = data.rows;
+        res.render('topStories', templateVars);
 
       })
       .catch((err) => {

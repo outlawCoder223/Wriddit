@@ -1,0 +1,46 @@
+#top-stories-container {
+  padding-top: 15%;
+}
+
+.top-stories {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-stories-content {
+  font-family: 'Jost';
+  font-weight: 200;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.top-stories-author {
+  font-family: 'Jost';
+  font-weight: 300;
+  margin-bottom: 0;
+  font-size: 31px;
+
+}
+
+.top-stories-author:hover {
+  text-decoration: underline;
+}
+
+.top-stories-name {
+  font-family: 'Jost';
+  font-weight: 300;
+  margin-top: 0;
+}
+
+.top-stories-name:hover {
+  text-decoration: underline;
+
+}
+
+.anchor {color:black;}
+.anchor:visited {color:black;}
+.anchor:hover {color:black;}
+.anchor:active {color:black;}
