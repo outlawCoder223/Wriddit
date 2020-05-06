@@ -75,26 +75,26 @@
           <h1 class="mainpage-header">UNFINISHED STORIES</h1>
           <div class="unfinished-stories-one">
             <img class="story-image" src="https://pyxis.nymag.com/v1/imgs/f57/534/061d88d05cd78bbe00e139d008cfd06bf7-17-fyh-cover.rsquare.w700.jpg">
-            <h1 class="story-name">WHO MADE THIS PIE?</h1>
-            <h2 class="author-name">STARTED BY JAMES EL</h2>
+            <h1 class="story-name"><%= first.title %></h1>
+            <h2 class="author-name"><%= first.name %></h2>
             <h2 class="contributions">ALREADY 320 CONTRIBUTIONS</h2>
-            <button class="button-mainpage">CONTINUE THE STORY</button>
+            <a href="/stories/<%= first.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
 
           <div class="unfinished-stories-two">
             <img class="story-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQJSfOorI6keldTIKVd6UcGhyxSlFvRcQwN9rngGVZaAi1L2m28&usqp=CAU">
-            <h1 class="story-name">WHAT THE HECK?</h1>
-            <h2 class="author-name">STARTED BY PARSY B</h2>
+            <h1 class="story-name"><%= second.title %></h1>
+            <h2 class="author-name"><%= second.name %></h2>
             <h2 class="contributions">ALREADY 436 CONTRIBUTIONS</h2>
-            <button class="button-mainpage">CONTINUE THE STORY</button>
+            <a href="/stories/<%= second.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
 
           <div class="unfinished-stories-three">
             <img class="story-image" src="https://www.booooooom.com/wp-content/uploads/2014/12/michael-deforge06.jpg">
-            <h1 class="story-name">THE BIG LEAGUES</h1>
-            <h2 class="author-name">STARTED BY PAUL BARRY</h2>
+            <h1 class="story-name"><%= third.title %></h1>
+            <h2 class="author-name"><%= third.name %></h2>
             <h2 class="contributions">ALREADY 924 CONTRIBUTIONS</h2>
-            <button class="button-mainpage">CONTINUE THE STORY</button>
+            <a href="/stories/<%= third.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
 
         </div>
