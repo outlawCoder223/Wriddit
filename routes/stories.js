@@ -53,20 +53,23 @@ module.exports = (db) => {
       .then(() => db.query(getRandomIncompleteStory, [4]))
 
       .then((data) => {
-        templateVars.fourth = data.rows[0];
-        templateVars.fifth = data.rows[1];
-        templateVars.sixth = data.rows[2];
+        templateVars.incomplete = {
+          first: data.rows[0],
+          second: data.rows[1],
+          third: data.rows[2]
+        }
         templateVars.seventh = data.rows[3];
       })
       // get complete stories
       .then(() => db.query(getRandomCompleteStory, [3]))
       .then((data) => {
-        templateVars.first = data.rows[0];
-        templateVars.second = data.rows[1];
-        templateVars.third = data.rows[2];
+        templateVars.complete = {
+          first: data.rows[0],
+          second: data.rows[1],
+          third: data.rows[2]
+        }
       })
       .then(() => {
-        console.log(templateVars);
         res.render('stories', templateVars);
       })
       .catch(err => {
