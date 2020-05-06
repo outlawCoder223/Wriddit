@@ -169,6 +169,10 @@
   width: 400px;
 }
 
+.end {
+  margin-left: 50px;
+  max-width: none;
+
 .end-container {
   display: flex;
 
@@ -177,47 +181,44 @@
     flex: 1 1 75%;
 
     .categories-header {
-      font-size: 2.2rem;
-      border-bottom: 1px solid;
+      font-size: 4.2rem;
+      border-bottom: .8px solid #0000002e;
       color: black;
-      background-color: white;
-      margin: 0;
+      margin: 0 0 0 85px;
     }
 
     .categ-stories-container {
-
-      background-color: purple;
       display: flex;
-    flex-wrap: wrap;
+      flex-wrap: wrap;
+      background-color: none;
 
-
-        .categ-story1 {
-          background-color: white;
-          border: 1px solid;
-          flex: 1 1 50%;
-          display: flex;
+      .categ-story1 {
+        flex: 1 1 50%;
+        display: flex;
+        border-right: .8px solid #0000002e;
+        justify-content: space-evenly;
         }
         .categ-story2 {
-          background-color: white;
-          border: 1px solid;
           flex: 1 1 50%;
           display: flex;
+          justify-content: space-evenly;
         }
         .categ-story3 {
-          background-color: white;
-          border: 1px solid;
           flex: 1 1 50%;
           display: flex;
+          border-right: .8px solid #0000002e;
+          justify-content: space-evenly;
         }
         .categ-story4 {
-          background-color: white;
-          border: 1px solid;
           flex: 1 1 50%;
           display: flex;
+          justify-content: space-evenly;
         }
 
         .categ-story-text {
-
+          .cont-count {
+            color: tomato;
+          }
 
         }
 
@@ -226,23 +227,32 @@
           width: auto;
           margin-right: 35px;
           margin-top: 60px;
-
         }
 
+        .categ-story-image2 {
+          height: 200px;
+          width: auto;
+          margin-right: 35px;
+          margin-top: 60px;
+        }
     }
   }
 
   .image-container {
-
-    background-color: green;
     flex: 1 1 25%;
+    display: flex;
+    align-items: center;
 
     .wridders-img {
       height: 750px;
+      margin: 0 auto;
     }
 
   }
 }
+
+}
+
 
 
 
