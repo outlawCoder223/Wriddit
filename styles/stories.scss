@@ -111,7 +111,7 @@
 
 .story-starter-text-area {
   height: 50%;
-  margin-top: 7%;
+  // margin-top: 7%;
   border: none;
   overflow: auto;
   outline: none;
@@ -294,6 +294,10 @@
     display: inline-block;
     margin-top: 10px;
   }
+}
+
+.story-submit input{
+  height: auto;
 }
 
 // @media only screen and (min-width: 980px) {

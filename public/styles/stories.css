@@ -111,7 +111,6 @@
 
 .story-starter-text-area {
   height: 50%;
-  margin-top: 7%;
   border: none;
   overflow: auto;
   outline: none;
@@ -290,4 +289,8 @@
 .total-likes h3 {
   display: inline-block;
   margin-top: 10px;
+}
+
+.story-submit input {
+  height: auto;
 }
