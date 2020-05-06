@@ -3,6 +3,7 @@ main {
   margin: 0 auto;
   margin-top: 150px;
   width: 80%;
+  margin-bottom: 51px;
 
 }
 
@@ -104,7 +105,8 @@ main {
   padding: 5px;
   margin: 10px 0;
   font-size: 1rem;
-  margin-top: 31px;
+  margin-top: 60px;
+  font-family: 'Jost';
 
 
   footer {
@@ -162,10 +164,12 @@ main {
 
 .story-text {
   font-family: 'Jost';
+  margin-bottom: 140px;
 }
 
 #contribution-container {
-  padding-top: 18%;
+  padding-top: 12%;
+  padding-bottom: 7%;
 
 }
 
@@ -176,4 +180,6 @@ main {
 
 }
 
-
+.test {
+  height: 100vh;
+}
