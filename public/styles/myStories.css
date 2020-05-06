@@ -8,14 +8,6 @@
   justify-content: center;
 }
 
-.title-text {
-  padding: none;
-}
-
-.my-stories-container {
-  padding-top: none;
-}
-
 .my-stories {
   display: flex;
   flex-direction: column;
