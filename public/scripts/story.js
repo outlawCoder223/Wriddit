@@ -32,19 +32,22 @@ $('.merge').on('click', function(event) {
 });
 
 // dummy upvote functionality
-$('.upvote').click(function(event) {
-  if ($(this).hasClass('on')) {
-    const upvoteCount = $(this).siblings('p')[0].innerHTML;
+$('#contribution-container').on('click','.upvote',function(event) {
+  event.preventDefault;
+  const self = this
+  if ($(self).hasClass('on')) {
+    const upvoteCount = $(self).siblings('p')[0].innerHTML;
 
-    $(this).siblings('p')[0].innerHTML = Number(upvoteCount) - 1;
-    $(this).css('opacity', 0.5);
-    $(this).toggleClass('on');
+    $(self).siblings('p')[0].innerHTML = Number(upvoteCount) - 1;
+    $(self).css('opacity', 0.5);
+    $(self).toggleClass('on');
   } else {
-    const upvoteCount = $(this).siblings('p')[0].innerHTML;
+    const upvoteCount = $(self).siblings('p')[0].innerHTML;
 
-    $(this).siblings('p')[0].innerHTML = Number(upvoteCount) + 1;
-    $(this).css('opacity', 1);
-    $(this).toggleClass('on');
+    $(self).siblings('p')[0].innerHTML = Number(upvoteCount) + 1;
+    $(self).css('opacity', 1);
+    $(self).toggleClass('on');
+    $(self).addClass('on');
   }
 });
 

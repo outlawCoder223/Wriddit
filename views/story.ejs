@@ -25,7 +25,7 @@
 
         <h1><%= title %></h1>
         <h3>STARTED BY <%= author %></h3>
-        <% if (state !== 'Complete' && loggedIn) { %>
+        <% if (state !== 'Complete' && loggedIn && username === author) { %>
           <button id="mark-complete">Mark Complete</button>
         <% } %>
 
@@ -49,15 +49,15 @@
         <% for (const item of contributions) { %>
           <article class="contribution">
 
-              <p><%= item.content %></p>
+              <p class="div-content"><%= item.content %></p>
               <footer>
-                <div>
+                <div class="upvote-box">
                   <button class="upvote" ><img src="/images/hands-and-gestures.png" alt=""></button>
                   <p><%= item.upvotes %></p>
                 </div>
-                <div>
+                <div class="button-id-and-merge">
                   <h4><%= item.name %></h4>
-                  <% if (loggedIn) { %>
+                  <% if (loggedIn && username === author ) { %>
                     <button id="<%= item.id %>" class="merge">Merge</button>
                   <% } %>
                 </div>
