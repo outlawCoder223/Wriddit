@@ -27,6 +27,8 @@ const { getContributionsByStoryId,
 
 const { getUserName } = require('../queries/users_get_queries')
 
+const { getStoryByGenreName } = require('../queries/genres_queries')
+
 
 
 /**************ESSENTIAL ROUTES***************
