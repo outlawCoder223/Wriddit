@@ -25,6 +25,17 @@
       <form action="/stories" method="post" id="create-story">
         <label for="title">Enter the title of your story:</label>
         <input type="text" name="title" id="title">
+        <label for="genre">Choose a genre</label>
+        <select name="genre" id="genre">
+          <option value="">--Please choose an option--</option>
+          <option value="romance">Romance</option>
+          <option value="mystery">Crime</option>
+          <option value="sci-fi">Sci-fi</option>
+          <option value="horror">Horror</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="action">Action</option>
+          <option value="comedy">Comedy</option>
+        </select>
         <div class="story-starter">
           <p>WRITER'S BLOCK?</p>
           <div class="prompt-box"></div>
