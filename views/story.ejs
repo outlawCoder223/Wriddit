@@ -15,7 +15,7 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
-  <body>
+  <body class="test">
     <%- include('partials/_header') %>
     <main>
       <section class="story">
@@ -25,7 +25,7 @@
 
         <h1><%= title %></h1>
         <h3>STARTED BY <%= author %></h3>
-        <% if (state !== 'Complete' && loggedIn) { %>
+        <% if (state !== 'Complete' && loggedIn && username === author) { %>
           <button id="mark-complete">Mark Complete</button>
         <% } %>
 
@@ -36,27 +36,28 @@
       <section class="contribution-form">
         <form id="new-contribution" action="/stories/:story_id/:contribution_id" method="post">
         <label class="contribution-label" for="contribution">What happens next...</label>
+
         <textarea name="contribution" id="add-contribution" cols="30" rows="10"></textarea>
         <div>
           <button type="submit">Submit</button>
         </div>
 
-      </form>
+        </form>
 
       </section>
       <section id="contribution-container">
         <% for (const item of contributions) { %>
           <article class="contribution">
 
-              <p><%= item.content %></p>
+              <p class="div-content"><%= item.content %></p>
               <footer>
-                <div>
+                <div class="upvote-box">
                   <button class="upvote" ><img src="/images/hands-and-gestures.png" alt=""></button>
                   <p><%= item.upvotes %></p>
                 </div>
-                <div>
+                <div class="button-id-and-merge">
                   <h4><%= item.name %></h4>
-                  <% if (loggedIn) { %>
+                  <% if (loggedIn && username === author ) { %>
                     <button id="<%= item.id %>" class="merge">Merge</button>
                   <% } %>
                 </div>
@@ -69,8 +70,8 @@
       <% } %>
     </main>
 
-    <%- include('partials/_footer') %>
-
   </body>
+
+  <%- include('partials/_footer') %>
 <script type="text/javascript" src="/scripts/story.js"></script>
 </html>
