@@ -41,11 +41,12 @@ module.exports = (db) => {
   router.get('/', (req, res) => {
     const user = req.session.user;
     const templateVars = { user };
-    db.query(getRandomIncompleteStory, [3])
+    db.query(getRandomIncompleteStory, [4])
       .then((data) => {
         templateVars.fourth = data.rows[0];
         templateVars.fifth = data.rows[1];
         templateVars.sixth = data.rows[2];
+        templateVars.seventh = data.rows[3];
 
       })
       .then(() => {
@@ -104,7 +105,6 @@ module.exports = (db) => {
     db.query(query)
       .then(data => {
         templateVars['stories'] = data.rows;
-        console.log(templateVars);
         res.render('unfinished', templateVars);
 
       })
