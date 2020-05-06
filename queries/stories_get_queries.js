@@ -53,6 +53,15 @@ JOIN users ON stories.author_id = users.id
 WHERE state LIKE '%rogr%';
 `;
 
+const getRandomCompleteStory = `
+SELECT content, title, users.name, state, stories.id
+FROM stories
+JOIN users ON author_id = users.id
+WHERE state LIKE '%Complete%'
+Order BY RANDOM()
+LIMIT $1
+`;
+
 module.exports = {
   selectAllStories,
   getCompleteStoryById,
@@ -60,5 +69,6 @@ module.exports = {
   getActiveContributions,
   getStoryOfTheWeek,
   getRandomIncompleteStory,
-  getAllUnfinishedStories
+  getAllUnfinishedStories,
+  getRandomCompleteStory
 };
