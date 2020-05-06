@@ -19,7 +19,11 @@ JOIN users ON author_id = users.id
 WHERE users.id = $1 AND title = '$2'
 GROUP BY content, title, genres.name, users.name;
 `
+
+
+
+
 module.exports = {
   selectStoriesByUser,
-  selectStoryByUser
+  selectStoryByUser,
 };
