@@ -285,6 +285,17 @@
   background-repeat: no-repeat;
 }
 
+.total-likes {
+  i {
+    display: inline-block;
+  }
+
+  h3 {
+    display: inline-block;
+    margin-top: 10px;
+  }
+}
+
 // @media only screen and (min-width: 980px) {
 //   .categ-story1 {
 //     flex: 1 1 100%;
