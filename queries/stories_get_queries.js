@@ -37,10 +37,38 @@ JOIN users ON stories.author_id = users.id
 WHERE stories.name = $1
 `;
 
+const getRandomIncompleteStory = `
+SELECT content, title, users.name, state, stories.id
+FROM stories
+JOIN users ON author_id = users.id
+WHERE state LIKE '%In Progress%'
+Order BY RANDOM()
+LIMIT $1
+`;
+
+const getAllUnfinishedStories = `
+SELECT stories.title, users.name, stories.content, stories.id
+FROM stories
+JOIN users ON stories.author_id = users.id
+WHERE state LIKE '%rogr%';
+`;
+
+const getRandomCompleteStory = `
+SELECT content, title, users.name, state, stories.id
+FROM stories
+JOIN users ON author_id = users.id
+WHERE state LIKE '%Complete%'
+Order BY RANDOM()
+LIMIT $1
+`;
+
 module.exports = {
   selectAllStories,
   getCompleteStoryById,
   getIncompleteStoryById,
   getActiveContributions,
-  getStoryOfTheWeek
+  getStoryOfTheWeek,
+  getRandomIncompleteStory,
+  getAllUnfinishedStories,
+  getRandomCompleteStory
 };

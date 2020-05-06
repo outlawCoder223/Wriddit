@@ -1,0 +1,46 @@
+#unfinished-stories-container {
+  padding-top: 15%;
+}
+
+.unfinished {
+  display: flex;
+  flex-direction: column;
+}
+
+.unfinished-content {
+  font-family: 'Jost';
+  font-weight: 200;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.unfinished-author {
+  font-family: 'Jost';
+  font-weight: 300;
+  margin-bottom: 0;
+  font-size: 31px;
+
+}
+
+.unfinished-author:hover {
+  text-decoration: underline;
+}
+
+.unfinished-name {
+  font-family: 'Jost';
+  font-weight: 300;
+  margin-top: 0;
+}
+
+.unfinished-name:hover {
+  text-decoration: underline;
+
+}
+
+.anchor {color:black;}
+.anchor:visited {color:black;}
+.anchor:hover {color:black;}
+.anchor:active {color:black;}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Story</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Jost:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
@@ -30,23 +30,26 @@
 
           <div class="header-top-stories-one">
             <img class="story-image" src="https://i.pinimg.com/originals/85/bd/13/85bd1361a9180a835637f4a3ab4a4aa5.jpg">
-            <h1 class="story-name">WHO ATE MY ICE CREAM</h1>
-            <button class="button-mainpage">READ THE STORY</button>
+            <h1 class="story-name"><%= first.title %></h1>
+            <h2 class="author-name"><%= first.name %></h2>
+            <a href="/stories/<%= first.id %>"><button class="button-mainpage">READ THE STORY</button></a>
             <h3>320</h3>
           </div>
 
           <div class="header-top-stories-two">
             <div class="top-story-image-two"></div>
             <img class="story-image" src="https://66.media.tumblr.com/tumblr_m6ilt1dzEh1rrqne4o1_500.jpg">
-            <h1 class="story-name"> WHERE'S MY BURGER</h1>
-            <button class="button-mainpage">READ THE STORY</button>
+            <h1 class="story-name"><%= second.title %></h1>
+            <h2 class="author-name"><%= second.name %></h2>
+            <a href="/stories/<%= second.id %>"><button class="button-mainpage">READ THE STORY</button></a>
             <h3>480</h3>
           </div>
 
           <div class="header-top-stories-three">
             <img class="story-image" src="https://studygroupcomics.com/main/wp-content/uploads/2012/10/inccov.gif">
-            <h1 class="story-name">HOW'S IT UP THERE</h1>
-            <button class="button-mainpage">READ THE STORY</button>
+            <h1 class="story-name"><%= third.title %></h1>
+            <h2 class="author-name"><%= third.name %></h2>
+            <a href="/stories/<%= third.id %>"><button class="button-mainpage">READ THE STORY</button></a>
             <h3>480</h3>
           </div>
 
@@ -57,8 +60,8 @@
             <div class="feature-story-first-section">
               <img class="feature-image" src="https://wfdd-live.s3.amazonaws.com/styles/slideshow/s3/images/slideshow/The-Sci-Fi-Strangeness-And-Canadian-Sensuality-Of-Cartoonist-Michael-DeForge-522904049-1491563707.jpg?itok=-1zh_Kx8">
               <h1 class="feature-title">FEATURE STORY OF THE WEEK</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <button class="continue-button">CONTINUE READING</button>
+              <p><%= seventh.content %></p>
+              <a href="/stories/<%= seventh.id %>"><button class="button-mainpage">READ THE STORY</button></a>
             </div>
           </div>
 
@@ -74,27 +77,27 @@
         <div class="unfinished-stories">
           <h1 class="mainpage-header">UNFINISHED STORIES</h1>
           <div class="unfinished-stories-one">
-            <img class="story-image" src="https://pyxis.nymag.com/v1/imgs/f57/534/061d88d05cd78bbe00e139d008cfd06bf7-17-fyh-cover.rsquare.w700.jpg">
-            <h1 class="story-name">WHO MADE THIS PIE?</h1>
-            <h2 class="author-name">STARTED BY JAMES EL</h2>
+            <img class="story-image" src="https://www.booooooom.com/wp-content/uploads/2014/12/michael-deforge05.jpg">
+            <h1 class="story-name"><%= fourth.title %></h1>
+            <h2 class="author-name"><%= fourth.name %></h2>
             <h2 class="contributions">ALREADY 320 CONTRIBUTIONS</h2>
-            <button class="button-mainpage">CONTINUE THE STORY</button>
+            <a href="/stories/<%= fourth.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
 
           <div class="unfinished-stories-two">
             <img class="story-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQJSfOorI6keldTIKVd6UcGhyxSlFvRcQwN9rngGVZaAi1L2m28&usqp=CAU">
-            <h1 class="story-name">WHAT THE HECK?</h1>
-            <h2 class="author-name">STARTED BY PARSY B</h2>
+            <h1 class="story-name"><%= fifth.title %></h1>
+            <h2 class="author-name"><%= fifth.name %></h2>
             <h2 class="contributions">ALREADY 436 CONTRIBUTIONS</h2>
-            <button class="button-mainpage">CONTINUE THE STORY</button>
+            <a href="/stories/<%= fifth.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
 
           <div class="unfinished-stories-three">
             <img class="story-image" src="https://www.booooooom.com/wp-content/uploads/2014/12/michael-deforge06.jpg">
-            <h1 class="story-name">THE BIG LEAGUES</h1>
-            <h2 class="author-name">STARTED BY PAUL BARRY</h2>
+            <h1 class="story-name"><%= sixth.title %></h1>
+            <h2 class="author-name"><%= sixth.name %></h2>
             <h2 class="contributions">ALREADY 924 CONTRIBUTIONS</h2>
-            <button class="button-mainpage">CONTINUE THE STORY</button>
+            <a href="/stories/<%= sixth.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
 
         </div>
