@@ -47,29 +47,23 @@ module.exports = (db) => {
 
     const user = req.session.user;
     const templateVars = { user };
-    db
-      .query(getUserName, [req.session.user])
-      .then(data => {
-        templateVars['username'] = data.rows[0].name;
-      })
-      .then(() => db.query(getRandomIncompleteStory, [4]))
-
+    const promise1 = db.query(getUserName, [user]);
+    const promise2 = db.query(getRandomIncompleteStory, [4]);
+    const promise3 = db.query(getRandomCompleteStory, [3]);
+    Promise.all([promise1, promise2, promise3])
       .then((data) => {
+        templateVars.username = data[0].rows[0].name;
         templateVars.incomplete = {
-          first: data.rows[0],
-          second: data.rows[1],
-          third: data.rows[2]
+          first: data[1].rows[0],
+          second: data[1].rows[1],
+          third: data[1].rows[2]
         }
-        templateVars.seventh = data.rows[3];
-      })
-      // get complete stories
-      .then(() => db.query(getRandomCompleteStory, [3]))
-      .then((data) => {
         templateVars.complete = {
-          first: data.rows[0],
-          second: data.rows[1],
-          third: data.rows[2]
+          first: data[2].rows[0],
+          second: data[2].rows[1],
+          third: data[2].rows[2]
         }
+        templateVars.seventh = data[1].rows[3];
       })
       .then(() => {
         res.render('stories', templateVars);
