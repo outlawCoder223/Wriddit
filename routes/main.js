@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const { getUserName } = require('../queries/users_get_queries')
 /**************ESSENTIAL ROUTES***************
  * login get /login/:id
  * logout get /logout
@@ -10,7 +11,24 @@ const router = express.Router();
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const user = req.session.user;
-    res.render('landing', {user});
+    const templateVars = { user };
+    if (user) {
+      db
+        .query(getUserName, [req.session.user])
+        .then(data => {
+          templateVars['username'] = data.rows[0].name;
+          res.render('landing', templateVars);
+        })
+        .catch(err => {
+          console.log(err);
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
+    } else {
+      res.render('landing', templateVars);
+    }
+
   });
 
   router.get('/login/:id', (req, res) => {
@@ -26,7 +44,19 @@ module.exports = (db) => {
 
   router.get('/create', (req, res) => {
     const user = req.session.user;
-    res.render('createStory', {user})
+    const templateVars = { user };
+    db
+      .query(getUserName, [req.session.user])
+      .then(data => {
+        templateVars['username'] = data.rows[0].name;
+        res.render('createStory', templateVars)
+      })
+      .catch(err => {
+        console.log(err);
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   });
 
   return router;

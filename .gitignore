@@ -5,3 +5,4 @@ node_modules/
 *.sqlite3
 
 tinker.js
+stories copy.js
