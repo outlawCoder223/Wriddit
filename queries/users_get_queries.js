@@ -10,7 +10,7 @@ GROUP BY content, title, genres.name, users.name;
 `
 
 const getStoriesByUser = `
-SELECT content, title, users.name, stories.state
+SELECT content, title, users.name, stories.state, stories.id
 FROM stories
 JOIN users ON author_id = users.id
 WHERE users.id = $1
