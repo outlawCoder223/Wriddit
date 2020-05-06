@@ -25,14 +25,14 @@ const { getContributionsByStoryId,
   getContributionById
 } = require('../queries/contributions_queries');
 
-const { getUserName } = require('../queries/users_get_queries')
+const { getUserName, getStoriesByUser } = require('../queries/users_get_queries')
 
 
 
 /**************ESSENTIAL ROUTES***************
  * GET / -- done with hardcoding
  * POST / -- done
- * POST /update (for writing prompt api) // TODO needs FE implmnt'n
+ * POST /update (for writing prompt api) - done
  * GET /:story_id  -- done
  * GET /:story_id/contributions
  * POST /:story_id/contributions
@@ -126,6 +126,26 @@ module.exports = (db) => {
       .then(data => {
         templateVars['stories'] = data.rows;
         res.render('unfinished', templateVars);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
+  router.get('/myStories', (req, res) => {
+    const query = getAllUnfinishedStories;
+    const user = req.session.user;
+    const templateVars = { user };
+
+    db
+      .query(getUserName, [req.session.user])
+      .then(data => {
+        templateVars['username'] = data.rows[0].name;
+      })
+      .then(() => db.query(getStoriesByUser, [user]))
+      .then(data => {
+        templateVars['stories'] = data.rows;
+        res.render('myStories', templateVars);
       })
       .catch((err) => {
         console.log(err);

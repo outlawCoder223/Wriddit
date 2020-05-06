@@ -69,22 +69,26 @@
 .nav-link {
   text-decoration: none;
   margin: 5px;
+  padding-left: 4px;
+  padding-right: 4px;
   color: black;
 }
 
 .nav-link-2 {
   border-left: 1px solid #c9caca;
-  padding-left: 4px;
   border-right: 1px solid #c9caca;
-  padding-right: 4px;
   color: black;
 }
 
 .nav-link-3 {
 
-  padding-left: 4px;
   border-right: 1px solid #c9caca;
-  padding-right: 4px;
+  color: black;
+}
+
+.nav-link-4 {
+
+  border-right: 1px solid #c9caca;
   color: black;
 }
 
