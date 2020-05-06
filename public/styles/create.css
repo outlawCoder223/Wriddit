@@ -1,26 +1,26 @@
-#create-story {
+.create-story {
   margin: 150px auto 0 auto;
   width: 80%;
 }
 
-#create-story input {
+.create-story input {
   background-color: #d7d4d4;
   border: none;
 }
 
-#create-story input:focus {
+.create-story input:focus {
   outline: none;
   border: 1px solid #000000;
   box-shadow: 0 0 2px #000000;
 }
 
-#create-story label {
+.create-story label {
   display: block;
   font-size: 3.25rem;
   font-family: 'Jost';
 }
 
-#create-story textarea {
+.create-story textarea {
   width: 100%;
   font-size: 1rem;
   font-family: 'Jost';
@@ -34,13 +34,21 @@
   background-color: #d7d4d4;
 }
 
-#create-story textarea:focus {
+.create-story textarea:focus {
   outline: none;
   border: 1px solid #000000;
   box-shadow: 0 0 2px #000000;
 }
 
-#create-story button {
+.create-story button {
+  background-color: #438180;
+  padding: 8px 16px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-family: 'Jost', sans-serif;
+}
+
+.create-story #prompt-btn {
   background-color: #438180;
   padding: 8px 16px;
   border-radius: 5px;

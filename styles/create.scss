@@ -1,4 +1,4 @@
-#create-story {
+.create-story {
   // margin-top: 150px;
   margin: 150px auto 0 auto;
   width: 80%;
@@ -48,5 +48,14 @@
     border-radius: 5px;
     color: #FFFFFF;
     font-family: 'Jost', sans-serif;
+  }
+
+  #prompt-btn {
+    background-color: #438180;
+    padding: 8px 16px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-family: 'Jost', sans-serif;
+
   }
 }
