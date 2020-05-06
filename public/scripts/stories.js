@@ -5,9 +5,13 @@ $(document).ready(() => {
 
   const renderPrompt = (prompt) => {
     const $promptBox = $('.prompt-box');
-    $promptBox.text(prompt);
+
     if ($promptBox.is(':visible')) {
-      $promptBox.slideUp(100);
+      $promptBox.slideUp(100, () => {
+        $promptBox.text(prompt);
+      });
+    } else {
+      $promptBox.text(prompt);
     }
     $promptBox.slideDown('slow');
   }
