@@ -181,7 +181,7 @@
     flex: 1 1 75%;
 
     .categories-header {
-      font-size: 4.2rem;
+      font-size: 4.2vw;
       border-bottom: .8px solid #0000002e;
       color: black;
       margin: 0 0 0 85px;
@@ -195,7 +195,7 @@
       .categ-story1 {
         flex: 1 1 50%;
         display: flex;
-        border-right: .8px solid #0000002e;
+        // border-right: .8px solid #0000002e;
         justify-content: space-evenly;
         }
         .categ-story2 {
@@ -206,7 +206,7 @@
         .categ-story3 {
           flex: 1 1 50%;
           display: flex;
-          border-right: .8px solid #0000002e;
+          // border-right: .8px solid #0000002e;
           justify-content: space-evenly;
         }
         .categ-story4 {
@@ -216,25 +216,44 @@
         }
 
         .categ-story-text {
-          .cont-count {
-            color: red;
-            }
-          i {
-            padding-right: 10px;
-            padding-left: 30px;
+
+          .genre {
+            font-size: 2vw;
+            text-decoration: underline;
           }
 
+          .title {
+            font-size: 1.5vw;
+          }
+
+          .starter {
+            font-size: smaller;
+          }
+
+          .cont-count {
+            color: red;
+            font-size: small;
+            }
+
+            .likes {
+              font-size: larger;
+
+              i {
+                padding-right: 10px;
+                padding-left: 10px;
+              }
+            }
         }
 
         .categ-story-image {
-          height: 275px;
+          height: 15vw;
           width: auto;
           margin-right: 35px;
           margin-top: 60px;
         }
 
         .categ-story-image2 {
-          height: 200px;
+          height: 12vw;
           width: auto;
           margin-right: 35px;
           margin-top: 60px;
@@ -248,7 +267,7 @@
     align-items: center;
 
     .wridders-img {
-      height: 750px;
+      height: 48vw;
       margin: 0 auto;
     }
 
@@ -256,9 +275,6 @@
 }
 
 }
-
-
-
 
 .top-story-image-one {
   background-image: url("https://i.pinimg.com/originals/85/bd/13/85bd1361a9180a835637f4a3ab4a4aa5.jpg");
@@ -269,4 +285,29 @@
   background-repeat: no-repeat;
 }
 
+
+// @media only screen and (min-width: 980px) {
+//   .categ-story1 {
+//     flex: 1 1 100%;
+//     display: flex;
+//     // border-right: .8px solid #0000002e;
+//     justify-content: space-evenly;
+//     }
+//     .categ-story2 {
+//       flex: 1 1 100%;
+//       display: flex;
+//       justify-content: space-evenly;
+//     }
+//     .categ-story3 {
+//       flex: 1 1 100%;
+//       display: flex;
+//       // border-right: .8px solid #0000002e;
+//       justify-content: space-evenly;
+//     }
+//     .categ-story4 {
+//       flex: 1 1 100%;
+//       display: flex;
+//       justify-content: space-evenly;
+//     }
+// }
 
