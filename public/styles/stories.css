@@ -186,7 +186,7 @@
 }
 
 .end .end-container .categories-container .categories-header {
-  font-size: 4.2rem;
+  font-size: 4.2vw;
   border-bottom: .8px solid #0000002e;
   color: black;
   margin: 0 0 0 85px;
@@ -201,7 +201,6 @@
 .end .end-container .categories-container .categ-stories-container .categ-story1 {
   flex: 1 1 50%;
   display: flex;
-  border-right: .8px solid #0000002e;
   justify-content: space-evenly;
 }
 
@@ -214,7 +213,6 @@
 .end .end-container .categories-container .categ-stories-container .categ-story3 {
   flex: 1 1 50%;
   display: flex;
-  border-right: .8px solid #0000002e;
   justify-content: space-evenly;
 }
 
@@ -224,19 +222,42 @@
   justify-content: space-evenly;
 }
 
+.end .end-container .categories-container .categ-stories-container .categ-story-text .genre {
+  font-size: 2vw;
+  text-decoration: underline;
+}
+
+.end .end-container .categories-container .categ-stories-container .categ-story-text .title {
+  font-size: 1.5vw;
+}
+
+.end .end-container .categories-container .categ-stories-container .categ-story-text .starter {
+  font-size: smaller;
+}
+
 .end .end-container .categories-container .categ-stories-container .categ-story-text .cont-count {
-  color: tomato;
+  color: red;
+  font-size: small;
+}
+
+.end .end-container .categories-container .categ-stories-container .categ-story-text .likes {
+  font-size: larger;
+}
+
+.end .end-container .categories-container .categ-stories-container .categ-story-text .likes i {
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .end .end-container .categories-container .categ-stories-container .categ-story-image {
-  height: 275px;
+  height: 15vw;
   width: auto;
   margin-right: 35px;
   margin-top: 60px;
 }
 
 .end .end-container .categories-container .categ-stories-container .categ-story-image2 {
-  height: 200px;
+  height: 12vw;
   width: auto;
   margin-right: 35px;
   margin-top: 60px;
@@ -249,7 +270,7 @@
 }
 
 .end .end-container .image-container .wridders-img {
-  height: 750px;
+  height: 48vw;
   margin: 0 auto;
 }
 
@@ -269,4 +290,27 @@
 .total-likes h3 {
   display: inline-block;
   margin-top: 10px;
+}
+
+@media only screen and (max-width: 980px) {
+  .categ-story1 {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .categ-story2 {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .categ-story3 {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .categ-story4 {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
 }
