@@ -79,7 +79,13 @@
             <h1 class="feature-title">WRITER'S BLOCK?</h1>
             <div class="prompt-box"></div>
             <button class="continue-button prompt-button">GENERATE A STORY STARTER</button>
-            <textarea class="story-starter-text-area"></textarea>
+            <form class="story-starter story-submit" action="/stories" method="post">
+              <label for="title">Enter the title of your story:</label>
+              <input type="text" name="title" id="title" class="story-starter-text-area">
+              <label for="story-content">Enter your content</label>
+              <textarea name="content" id="story-content" class="story-starter-text-area"></textarea>
+              <button class="button-mainpage" type="submit">SUBMIT</button>
+            </form>
           </div>
         </div>
 
