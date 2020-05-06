@@ -62,6 +62,16 @@ Order BY RANDOM()
 LIMIT $1
 `;
 
+const getAllTopStories = `
+SELECT content, title, users.name, to_char(AVG (rating),'9D9') AS average_rating, stories.id
+FROM stories
+JOIN users ON stories.author_id = users.id
+JOIN story_ratings ON story_ratings.story_id = stories.id
+GROUP BY stories.content, title, users.name, stories.id
+ORDER BY average_rating DESC
+LIMIT 20;
+`;
+
 module.exports = {
   selectAllStories,
   getCompleteStoryById,
@@ -70,5 +80,6 @@ module.exports = {
   getStoryOfTheWeek,
   getRandomIncompleteStory,
   getAllUnfinishedStories,
-  getRandomCompleteStory
+  getRandomCompleteStory,
+  getAllTopStories
 };
