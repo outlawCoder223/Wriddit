@@ -225,7 +225,12 @@
 }
 
 .end .end-container .categories-container .categ-stories-container .categ-story-text .cont-count {
-  color: tomato;
+  color: red;
+}
+
+.end .end-container .categories-container .categ-stories-container .categ-story-text i {
+  padding-right: 10px;
+  padding-left: 30px;
 }
 
 .end .end-container .categories-container .categ-stories-container .categ-story-image {
