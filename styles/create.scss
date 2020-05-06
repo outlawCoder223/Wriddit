@@ -1,4 +1,4 @@
-#create-story {
+.create-story {
   // margin-top: 150px;
   margin: 150px auto 0 auto;
   width: 80%;
@@ -6,6 +6,11 @@
   input {
     background-color: #d7d4d4;
     border: none;
+  }
+
+  p {
+    font-size: 2.5rem;
+    font-family: 'Jost';
   }
 
   input:focus {
@@ -49,4 +54,5 @@
     color: #FFFFFF;
     font-family: 'Jost', sans-serif;
   }
+
 }

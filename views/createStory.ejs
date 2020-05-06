@@ -20,12 +20,22 @@
 
   <body>
     <%- include('partials/_header') %>
-    <form action="/stories" method="post" id="create-story">
-      <label for="title">Enter the title of your story:</label>
-      <input type="text" name="title" id="title">
-      <label for="story-content">Enter your content</label>
-      <textarea name="content" id="story-content"></textarea>
-      <button type="submit">Submit</button>
-    </form>
+    <main class="create-story">
+
+      <form action="/stories" method="post" id="create-story">
+        <label for="title">Enter the title of your story:</label>
+        <input type="text" name="title" id="title">
+        <div class="story-starter">
+          <p>WRITER'S BLOCK?</p>
+          <div class="prompt-box"></div>
+          <button class="continue-button prompt-button">GENERATE A STORY STARTER</button>
+
+        </div>
+        <label for="story-content">Enter your content</label>
+        <textarea name="content" id="story-content"></textarea>
+        <button type="submit">Submit</button>
+      </form>
+
+    </main>
   </body>
 </html>
