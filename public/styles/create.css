@@ -8,6 +8,11 @@
   border: none;
 }
 
+.create-story p {
+  font-size: 2.5rem;
+  font-family: 'Jost';
+}
+
 .create-story input:focus {
   outline: none;
   border: 1px solid #000000;
@@ -41,14 +46,6 @@
 }
 
 .create-story button {
-  background-color: #438180;
-  padding: 8px 16px;
-  border-radius: 5px;
-  color: #FFFFFF;
-  font-family: 'Jost', sans-serif;
-}
-
-.create-story #prompt-btn {
   background-color: #438180;
   padding: 8px 16px;
   border-radius: 5px;
