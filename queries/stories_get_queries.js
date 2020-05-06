@@ -44,7 +44,14 @@ JOIN users ON author_id = users.id
 WHERE state LIKE '%In Progress%'
 Order BY RANDOM()
 LIMIT $1
-`
+`;
+
+const getAllUnfinishedStories = `
+SELECT stories.title, users.name, stories.content, stories.id
+FROM stories
+JOIN users ON stories.author_id = users.id
+WHERE state LIKE '%rogr%';
+`;
 
 module.exports = {
   selectAllStories,
@@ -52,5 +59,6 @@ module.exports = {
   getIncompleteStoryById,
   getActiveContributions,
   getStoryOfTheWeek,
-  getRandomIncompleteStory
+  getRandomIncompleteStory,
+  getAllUnfinishedStories
 };
