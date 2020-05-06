@@ -7,7 +7,8 @@ const { selectAllStories,
   getIncompleteStoryById,
   getActiveContributions,
   getRandomIncompleteStory,
-  getAllUnfinishedStories
+  getAllUnfinishedStories,
+  getRandomCompleteStory
 } = require('../queries/stories_get_queries');
 
 const {
@@ -39,19 +40,23 @@ module.exports = (db) => {
   //browse all stories
   router.get('/', (req, res) => {
     const user = req.session.user;
+    const templateVars = { user };
     db.query(getRandomIncompleteStory, [3])
       .then((data) => {
-        const templateVars = {
-          first: data.rows[0],
-          second: data.rows[1],
-          third: data.rows[2],
-          user
-        }
-        console.log('first story:', data.rows[0])
-        console.log('second story:', data.rows[1])
-        console.log('third story:', data.rows[2])
-        res.render('stories', templateVars);
+        templateVars.fourth = data.rows[0];
+        templateVars.fifth = data.rows[1];
+        templateVars.sixth = data.rows[2];
+
       })
+      .then(() => {
+        db.query(getRandomCompleteStory, [3])
+          .then((data) => {
+            templateVars.first = data.rows[0];
+            templateVars.second = data.rows[1];
+            templateVars.third = data.rows[2];
+            res.render('stories', templateVars);
+          })
+      });
   });
 
   //create a new story
