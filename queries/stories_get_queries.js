@@ -38,7 +38,7 @@ WHERE stories.name = $1
 `;
 
 const getRandomIncompleteStory = `
-SELECT content, title, users.name, state
+SELECT content, title, users.name, state, stories.id
 FROM stories
 JOIN users ON author_id = users.id
 WHERE state LIKE '%In Progress%'

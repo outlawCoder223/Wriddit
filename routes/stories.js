@@ -38,12 +38,17 @@ module.exports = (db) => {
     const user = req.session.user;
     db.query(getRandomIncompleteStory, [3])
       .then((data) => {
+        const templateVars = {
+          first: data.rows[0],
+          second: data.rows[1],
+          third: data.rows[2],
+          user
+        }
         console.log('first story:', data.rows[0])
         console.log('second story:', data.rows[1])
         console.log('third story:', data.rows[2])
+        res.render('stories', templateVars);
       })
-    res.render('stories',{user});
-    res.render('stories',{user});
   });
 
   //create a new story
