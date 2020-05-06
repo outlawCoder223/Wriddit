@@ -70,7 +70,7 @@
             <div class="feature-story-first-section">
               <img class="feature-image" src="https://wfdd-live.s3.amazonaws.com/styles/slideshow/s3/images/slideshow/The-Sci-Fi-Strangeness-And-Canadian-Sensuality-Of-Cartoonist-Michael-DeForge-522904049-1491563707.jpg?itok=-1zh_Kx8">
               <h1 class="feature-title">FEATURE STORY OF THE WEEK</h1>
-              <p><%= seventh.content %></p>
+              <p><%= seventh.content.slice(0, 390).trim() %>...</p>
               <a href="/stories/<%= seventh.id %>"><button class="button-mainpage">READ THE STORY</button></a>
             </div>
           </div>
