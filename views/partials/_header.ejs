@@ -5,7 +5,7 @@
 
 
 
-      <a class='logo' href="/stories">WRIDDIT</a>
+    <a class='logo' href="/stories">WRIDDIT</a>
 
 
 
@@ -14,21 +14,21 @@
       <ul class="header-menu">
         <% if (user) { %>
 
-          <li class='header-link-1'>
-            <a class='header-link' href="/stories">Home</a>
-          </li>
+        <li class='header-link-1'>
+          <a class='header-link' href="/stories">Home</a>
+        </li>
 
-          <li class='header-link-2'>
-            <a class='header-link' href="#">my Profile</a>
-          </li>
+        <li class='header-link-2'>
+          <a class='header-link' href="#"><%= username %></a>
+        </li>
 
-            <li class='header-link-3'>
-              <a class='header-link' href="/logout">Logout</a>
-              <% } else { %>
-              <li class='header-link-3'>
-                <a class='header-link' href="/login/1">Login</a>
-              </li>
-              <% } %>
+        <li class='header-link-3'>
+          <a class='header-link' href="/logout">Logout</a>
+          <% } else { %>
+        <li class='header-link-3'>
+          <a class='header-link' href="/login/1">Login</a>
+        </li>
+        <% } %>
       </ul>
     </div>
   </div>
@@ -46,6 +46,9 @@
         <a class='nav-link' href="/stories/unfinished">UNFINISHED STORIES</a>
       </li>
       <li class='nav-link-4'>
+        <a class='nav-link' href="/stories/myStories">MY STORIES</a>
+      </li>
+      <li class='nav-link-5'>
         <a class='nav-link' href="/create">CREATE A NEW STORY</a>
       </li>
     </ul>
