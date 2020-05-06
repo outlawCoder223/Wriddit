@@ -3,6 +3,7 @@ main {
   margin: 0 auto;
   margin-top: 150px;
   width: 80%;
+  margin-bottom: 51px;
 
 }
 
@@ -104,7 +105,8 @@ main {
   padding: 5px;
   margin: 10px 0;
   font-size: 1rem;
-  margin-top: 31px;
+  margin-top: 60px;
+  font-family: 'Jost';
 
 
   footer {
@@ -119,7 +121,6 @@ main {
 
     p {
       display: inline-block;
-      margin: 0;
       font-family: 'Jost';
     }
 
@@ -135,10 +136,9 @@ main {
 
 .upvote {
   background-color: #e6dfdf;
-  border: none;
-  // opacity: 0.5;
-
+  outline: none;
   opacity: 1;
+  display: contents;
 }
 
 .upvote:hover {
@@ -162,10 +162,12 @@ main {
 
 .story-text {
   font-family: 'Jost';
+  margin-bottom: 140px;
 }
 
 #contribution-container {
-  padding-top: 18%;
+  padding-top: 12%;
+  padding-bottom: 7%;
 
 }
 
@@ -176,4 +178,28 @@ main {
 
 }
 
+.test {
+  height: 100vh;
+}
 
+.color {
+  color: red;
+}
+
+.upvote-box {
+  margin-left: 12px;
+}
+
+.button-id-and-merge h4{
+ font-weight: 400;
+}
+
+.button-id-and-merge {
+  margin-right: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.div-content {
+  font-size: 21px;
+  margin: 1rem;
+}

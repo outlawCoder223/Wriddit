@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>My Stories</title>
     <link href="https://fonts.googleapis.com/css?family=Jost:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/landing.css" type="text/css" />
     <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/unfinished.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/myStories.css" type="text/css" />
 
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -19,18 +19,24 @@
 
     <%- include('partials/_header') %>
 
+
     <main>
 
-      <section id="unfinished-stories-container">
+      <div class="title">
+        <h1 class="title-text">MY STORIES</h1>
+      </div>
+
+      <section id="my-stories-container">
         <% for (const item of stories) { %>
-          <article class="unfinished">
-            <a class='unfinished-author anchor' href="/stories/<%= item.id %>">AUTHOR: <%= item.name %></a>
-            <a class='unfinished-name anchor' href="/stories/<%= item.id %>">STORY NAME: <%= item.title %></a>
-            <h3 class="unfinished-content anchor"> <%= item.content %> </h3>
+        <article class="my-stories">
+          <!-- <a class='my-stories-author anchor' href="/stories/<%= item.id %>">AUTHOR: <%= item.name %></a> -->
+          <a class='my-stories-name anchor' href="/stories/<%= item.id %>"><%= item.title %></a>
+          <a class='my-stories-status anchor' href="/stories/<%= item.id %>"><%= item.state %></a>
+          <h3 class="my-stories-content"> <%= item.content %> </h3>
 
-          </article>
+        </article>
 
-          <% } %>
+        <% } %>
       </section>
 
 
