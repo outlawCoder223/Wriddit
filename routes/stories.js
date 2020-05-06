@@ -25,6 +25,8 @@ const { getContributionsByStoryId,
   getContributionById
 } = require('../queries/contributions_queries');
 
+const { getUserName } = require('../queries/users_get_queries')
+
 
 
 /**************ESSENTIAL ROUTES***************
@@ -40,24 +42,38 @@ const { getContributionsByStoryId,
 module.exports = (db) => {
   //browse all stories
   router.get('/', (req, res) => {
+
     const user = req.session.user;
     const templateVars = { user };
-    db.query(getRandomIncompleteStory, [4])
+    db
+      .query(getUserName, [req.session.user])
+      .then(data => {
+        templateVars['username'] = data.rows[0].name;
+      })
+      .then(() => db.query(getRandomIncompleteStory, [4]))
+
       .then((data) => {
         templateVars.fourth = data.rows[0];
         templateVars.fifth = data.rows[1];
         templateVars.sixth = data.rows[2];
         templateVars.seventh = data.rows[3];
-
+      })
+      // get complete stories
+      .then(() => db.query(getRandomCompleteStory, [3]))
+      .then((data) => {
+        templateVars.first = data.rows[0];
+        templateVars.second = data.rows[1];
+        templateVars.third = data.rows[2];
       })
       .then(() => {
-        db.query(getRandomCompleteStory, [3])
-          .then((data) => {
-            templateVars.first = data.rows[0];
-            templateVars.second = data.rows[1];
-            templateVars.third = data.rows[2];
-            res.render('stories', templateVars);
-          })
+        console.log(templateVars);
+        res.render('stories', templateVars);
+      })
+      .catch(err => {
+        console.log(err);
+        res
+          .status(500)
+          .json({ error: err.message });
       });
   });
 
@@ -80,7 +96,6 @@ module.exports = (db) => {
   });
 
   //generate a writing prompt
-  //TODO implement in FE
   router.post('/update', (req, res) => {
     const options = {
       uri: 'https://ineedaprompt.com/dictionary/default/prompt?q=adj+noun+adv+verb+noun+location',
@@ -89,37 +104,45 @@ module.exports = (db) => {
 
     rp(options)
       .then((data) => {
-        console.log(data.english);
+        // console.log(data.english);
         res.json(data);
-        // jQ requests this route; this is returned; then update with that json
       })
       .catch((err) => {
         console.log(err);
       });
   });
 
-  router.get('/unfinished', (req,res) => {
+  router.get('/unfinished', (req, res) => {
     const query = getAllUnfinishedStories;
     const user = req.session.user;
     const templateVars = { user };
 
-    db.query(query)
+    db
+      .query(getUserName, [req.session.user])
+      .then(data => {
+        templateVars['username'] = data.rows[0].name;
+      })
+      .then(() => db.query(query))
       .then(data => {
         templateVars['stories'] = data.rows;
         res.render('unfinished', templateVars);
-
       })
       .catch((err) => {
         console.log(err);
       });
   });
 
-  router.get('/topStories', (req,res) => {
+  router.get('/topStories', (req, res) => {
     const query = getAllTopStories;
     const user = req.session.user;
     const templateVars = { user };
 
-    db.query(query)
+    db
+      .query(getUserName, [req.session.user])
+      .then(data => {
+        templateVars['username'] = data.rows[0].name;
+      })
+      .then(() => db.query(query))
       .then(data => {
         templateVars['stories'] = data.rows;
         res.render('topStories', templateVars);
@@ -136,31 +159,39 @@ module.exports = (db) => {
     const query = getCompleteStoryById;
     const id = req.params.story_id;
     const user = req.session.user;
-    db.query(query, [id])
+    const templateVars = { user };
+    const fct = (story) => {
+      if (req.session.user) templateVars.loggedIn = true;
+      if (story.state !== 'Complete') {
+        res.redirect(`/stories/${id}/contributions`);
+      } else {
+        res.render('story', templateVars)
+      }
+    }
+
+    db
+      .query(getUserName, [req.session.user])
+      .then(data => {
+        templateVars['username'] = data.rows[0].name;
+      })
+      .then(() => db.query(query, [id]))
       .then(data => {
         const story = data.rows[0];
-        const templateVars = {
-          title: story.title,
-          content: story.content,
-          author: story.name,
-          state: story.state,
-          loggedIn: false,
-          id,
-          user,
-        };
-        if (req.session.user) templateVars.loggedIn = true;
-        if (story.state !== 'Complete') {
-          res.redirect(`/stories/${id}/contributions`);
-        } else {
-          res.render('story', templateVars);
-        }
-
+        templateVars['title'] = story.title;
+        templateVars['content'] = story.content;
+        templateVars['author'] = story.name;
+        templateVars['state'] = story.state;
+        templateVars['loggedIn'] = false;
+        templateVars['id'] = id;
+        fct(story);
       })
       .catch(err => {
         res
           .status(500)
           .json({ error: err.message });
       });
+
+
   });
 
   //read an incomplete story
@@ -171,22 +202,30 @@ module.exports = (db) => {
     const user = req.session.user;
     const templateVars = { loggedIn: false, complete: false, user };
     if (req.session.user) templateVars.loggedIn = true;
-    db.query(query1, [id])
+
+    db
+      .query(getUserName, [req.session.user])
       .then(data => {
-        templateVars.contributions = data.rows;
-        db.query(query2, [id])
+        templateVars['username'] = data.rows[0].name;
+      })
+      .then(() => {
+        db.query(query1, [id])
           .then(data => {
-            const story = data.rows[0];
-            templateVars.title = story.title;
-            templateVars.content = story.content;
-            templateVars.author = story.name;
-            templateVars.state = story.state;
-            templateVars.id = id;
-            if (story.state === 'Complete') {
-              res.redirect(`/stories/${id}`);
-            } else {
-              res.render('story', templateVars);
-            }
+            templateVars.contributions = data.rows;
+            db.query(query2, [id])
+              .then(data => {
+                const story = data.rows[0];
+                templateVars.title = story.title;
+                templateVars.content = story.content;
+                templateVars.author = story.name;
+                templateVars.state = story.state;
+                templateVars.id = id;
+                if (story.state === 'Complete') {
+                  res.redirect(`/stories/${id}`);
+                } else {
+                  res.render('story', templateVars);
+                }
+              })
           })
           .catch(err => {
             res
