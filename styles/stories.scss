@@ -265,4 +265,13 @@
   background-repeat: no-repeat;
 }
 
+.total-likes {
+  img {
+    display: inline-block;
+  }
 
+  h3 {
+    display: inline-block;
+    margin-top: 10px;
+  }
+}

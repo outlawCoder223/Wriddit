@@ -261,3 +261,12 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+.total-likes img {
+  display: inline-block;
+}
+
+.total-likes h3 {
+  display: inline-block;
+  margin-top: 0;
+}
