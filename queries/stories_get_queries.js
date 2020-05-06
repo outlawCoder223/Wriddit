@@ -37,10 +37,18 @@ JOIN users ON stories.author_id = users.id
 WHERE stories.name = $1
 `;
 
+const getAllUnfinishedStories = `
+SELECT stories.title, users.name, stories.content, stories.id
+FROM stories
+JOIN users ON stories.author_id = users.id
+WHERE state LIKE '%rogr%';
+`;
+
 module.exports = {
   selectAllStories,
   getCompleteStoryById,
   getIncompleteStoryById,
   getActiveContributions,
-  getStoryOfTheWeek
+  getStoryOfTheWeek,
+  getAllUnfinishedStories
 };

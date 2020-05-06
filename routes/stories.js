@@ -5,7 +5,8 @@ const rp = require('request-promise-native');
 const { selectAllStories,
   getCompleteStoryById,
   getIncompleteStoryById,
-  getActiveContributions
+  getActiveContributions,
+  getAllUnfinishedStories
 } = require('../queries/stories_get_queries');
 
 const {
@@ -20,6 +21,8 @@ const { getContributionsByStoryId,
   mergeContribution2,
   getContributionById
 } = require('../queries/contributions_queries');
+
+
 
 /**************ESSENTIAL ROUTES***************
  * GET / -- done with hardcoding
@@ -47,6 +50,7 @@ module.exports = (db) => {
       .then((data) => {
         const storyId = data.rows[0].id
         res.redirect(`/stories/${storyId}/contributions`)
+
       })
       .catch(err => {
         res
@@ -68,6 +72,23 @@ module.exports = (db) => {
         console.log(data.english);
         res.json(data);
         // jQ requests this route; this is returned; then update with that json
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
+  router.get('/unfinished', (req,res) => {
+    const query = getAllUnfinishedStories;
+    const user = req.session.user;
+    const templateVars = { user };
+
+    db.query(query)
+      .then(data => {
+        templateVars['stories'] = data.rows;
+        console.log(templateVars);
+        res.render('unfinished', templateVars);
+
       })
       .catch((err) => {
         console.log(err);
@@ -124,7 +145,7 @@ module.exports = (db) => {
             templateVars.title = story.title;
             templateVars.content = story.content;
             templateVars.author = story.name;
-            templateVars.state = story.state
+            templateVars.state = story.state;
             templateVars.id = id;
             if (story.state === 'Complete') {
               res.redirect(`/stories/${id}`);
@@ -155,7 +176,7 @@ module.exports = (db) => {
           .then((data) => {
             const result = JSON.stringify(data.rows[0]);
             res.end(result);
-          })
+          });
       })
       .catch(err => {
         res
@@ -179,7 +200,7 @@ module.exports = (db) => {
         return db.query(getContributionById, [contribution_id])
           .then(data => {
             return mergeContent += ' ' + data.rows[0].content;
-          })
+          });
       })
 
       //Update story content in DB
@@ -188,18 +209,18 @@ module.exports = (db) => {
           .then(() => {
             return db.query(`
         UPDATE stories SET content = $1
-        WHERE stories.id = $2;`, [mergeContent, story_id])
-          })
+        WHERE stories.id = $2;`, [mergeContent, story_id]);
+          });
       })
       .then(() => {
         //update all contribution statuses related to that story
-        return db.query(mergeContribution2, [story_id])
+        return db.query(mergeContribution2, [story_id]);
       })
       .then(() => {
         res.status(201).send();
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
         res
           .status(500)
           .json({ error: err.message });
@@ -213,9 +234,9 @@ module.exports = (db) => {
 
     db.query(query, [storyId])
       .then(() => {
-        console.log('Changed story state to complete.')
+        console.log('Changed story state to complete.');
       });
-    res.status(200).send()
+    res.status(200).send();
   });
 
   return router;
