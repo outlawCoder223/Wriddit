@@ -5,7 +5,8 @@ const rp = require('request-promise-native');
 const { selectAllStories,
   getCompleteStoryById,
   getIncompleteStoryById,
-  getActiveContributions
+  getActiveContributions,
+  getRandomIncompleteStory
 } = require('../queries/stories_get_queries');
 
 const {
@@ -35,6 +36,13 @@ module.exports = (db) => {
   //browse all stories
   router.get('/', (req, res) => {
     const user = req.session.user;
+    db.query(getRandomIncompleteStory, [3])
+      .then((data) => {
+        console.log('first story:', data.rows[0])
+        console.log('second story:', data.rows[1])
+        console.log('third story:', data.rows[2])
+      })
+    res.render('stories',{user});
     res.render('stories',{user});
   });
 
