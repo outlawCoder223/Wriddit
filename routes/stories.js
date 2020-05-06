@@ -25,9 +25,9 @@ const { getContributionsByStoryId,
   getContributionById
 } = require('../queries/contributions_queries');
 
-const { getUserName, getStoriesByUser } = require('../queries/users_get_queries')
+const { getUserName, getStoriesByUser } = require('../queries/users_get_queries');
 
-const { getStoryByGenreName } = require('../queries/genres_queries')
+const { getStoryByGenreName } = require('../queries/genres_queries');
 
 
 
@@ -57,12 +57,12 @@ module.exports = (db) => {
           first: data[1].rows[0],
           second: data[1].rows[1],
           third: data[1].rows[2]
-        }
+        };
         templateVars.complete = {
           first: data[2].rows[0],
           second: data[2].rows[1],
           third: data[2].rows[2]
-        }
+        };
         templateVars.seventh = data[1].rows[3];
       })
       .then(() => {
@@ -83,8 +83,8 @@ module.exports = (db) => {
     const content = req.body.content;
     db.query(createNewStory, [content, title, authorId])
       .then((data) => {
-        const storyId = data.rows[0].id
-        res.redirect(`/stories/${storyId}/contributions`)
+        const storyId = data.rows[0].id;
+        res.redirect(`/stories/${storyId}/contributions`);
 
       })
       .catch(err => {
@@ -184,9 +184,9 @@ module.exports = (db) => {
       if (story.state !== 'Complete') {
         res.redirect(`/stories/${id}/contributions`);
       } else {
-        res.render('story', templateVars)
+        res.render('story', templateVars);
       }
-    }
+    };
 
     db
       .query(getUserName, [req.session.user])
@@ -244,7 +244,7 @@ module.exports = (db) => {
                 } else {
                   res.render('story', templateVars);
                 }
-              })
+              });
           })
           .catch(err => {
             res
