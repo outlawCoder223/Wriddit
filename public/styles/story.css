@@ -133,6 +133,7 @@ main {
 .contribution footer h4 {
   display: inline-block;
   margin: 0;
+  font-weight: 300;
 }
 
 .contribution footer p {
