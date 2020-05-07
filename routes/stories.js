@@ -104,6 +104,7 @@ module.exports = (db) => {
   });
 
   //generate a writing prompt
+  // /writing-prompt
   router.post('/update', (req, res) => {
     const options = {
       uri: 'https://ineedaprompt.com/dictionary/default/prompt?q=adj+noun+adv+verb+noun+location',
@@ -120,6 +121,7 @@ module.exports = (db) => {
       });
   });
 
+  // get all stories that are unfinished /stories/unfinished
   router.get('/unfinished', (req, res) => {
     const query = getAllUnfinishedStories;
     const user = req.session.user;
@@ -140,6 +142,7 @@ module.exports = (db) => {
       });
   });
 
+  // get all stories that user has created /profile
   router.get('/myStories', (req, res) => {
     const query = getAllUnfinishedStories;
     const user = req.session.user;
@@ -160,6 +163,7 @@ module.exports = (db) => {
       });
   });
 
+  // get top stories by like
   router.get('/topStories', (req, res) => {
     const query = getAllTopStories;
     const user = req.session.user;
@@ -330,6 +334,7 @@ module.exports = (db) => {
   });
 
   //mark a story complete
+  // hidden input field
   router.post('/:story_id/complete', (req, res) => {
     const query = markStoryComplete;
     const storyId = req.body.storyId;
