@@ -39,12 +39,12 @@
       </section>
       <section id="contribution-container">
         <% for (const item of contributions) { %>
-          <article class="contribution">
+          <article class="contribution" data-id="<%= item.id %>">
               <p class="div-content"><%= item.content %></p>
               <footer>
                 <div class="upvote-box">
-                  <button class="upvote" ><img src="/images/hands-and-gestures.png" alt=""></button>
-                  <p><%= item.upvotes %></p>
+                  <button class="upvote " ><img src="/images/hands-and-gestures.png" alt=""></button>
+                  <p class="upvote-number"><%= item.upvotes %></p>
                 </div>
                 <div class="button-id-and-merge">
                   <h4><%= item.name %></h4>

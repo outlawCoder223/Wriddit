@@ -333,15 +333,28 @@ module.exports = (db) => {
   });
 
   //mark a story complete
-  router.post('/:story_id/complete', (req, res) => {
+  router.post('/:stqory_id/complete', (req, res) => {
     const query = markStoryComplete;
     const storyId = req.body.storyId;
 
     db.query(query, [storyId])
       .then(() => {
         console.log('Changed story state to complete.');
+        res.status(200).send();
       });
-    res.status(200).send();
+
+  });
+
+  router.post('/contributionupvote', (req,res) => {
+    const query = updateLikesofStory;
+    const contributionid = req.body.contId;
+
+    db.query(query, [contributionid])
+      .then((response) => {
+
+        res.status(200).json({upvotes: response.rows[0].upvotes});
+      });
+
   });
 
 
