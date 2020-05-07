@@ -10,7 +10,7 @@ $(document).ready(() => {
     const data = {
       story_id: storyId,
       content: content,
-    }
+    };
 
     $.post('/stories/:story_id/contributions',data)
       .done(function(res) {
@@ -24,37 +24,32 @@ $(document).ready(() => {
 
     const contribution = $(this).attr('id');
     const url = window.location.pathname;
-    const storyId = getStoryId(url)
+    const storyId = getStoryId(url);
 
     $.post(url + `/${contribution}`, {story_id: storyId, contribution_id: contribution})
       .then(function() {
         window.location.reload();
-      })
+      });
   });
 
   // dummy upvote functionality
   $('#contribution-container').on('click','.upvote',function(event) {
     event.preventDefault();
-    const self = this
-    if ($(self).hasClass('on')) {
-      const upvoteCount = $(self).siblings('p')[0].innerHTML;
+    const self = this;
 
-      $(self).siblings('p')[0].innerHTML = Number(upvoteCount) - 1;
-      $(self).css('opacity', 0.5);
-      $(self).toggleClass('on');
-    } else {
-      const upvoteCount = $(self).siblings('p')[0].innerHTML;
+    const article = $(event.target).closest("article");
+    const contId = article.data('id');
 
-      $(self).siblings('p')[0].innerHTML = Number(upvoteCount) + 1;
-      $(self).css('opacity', 1);
-      $(self).toggleClass('on');
-      $(self).addClass('on');
-    }
+
+    $.post('/stories/contributionupvote', {contId})
+      .then(function(res) {
+        article.find('.upvote-number').text(res.upvotes);
+      });
   });
 
   $('#mark-complete').click(function(event) {
     const url = window.location.pathname;
-    const storyId = getStoryId(url)
+    const storyId = getStoryId(url);
 
     $.post(`/stories/${storyId}/complete`, {storyId})
       .then(function() {
