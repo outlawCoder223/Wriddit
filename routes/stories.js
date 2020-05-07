@@ -112,43 +112,14 @@ module.exports = (myDB) => {
   });
 
   //append a contribution to a story
-  // router.post('/:story_id/contributions/:contribution_id', (req, res) => {
-  //   const contribution_id = req.params.contribution_id;
-  //   const story_id = req.params.story_id;
-
-  //   db.query(getCompleteStoryById, [story_id])
-  //     .then(data => {
-  //       return data.rows[0].content;
-  //     })
-  //     .then(mergeContent => {
-  //       return db.query(getContributionById, [contribution_id])
-  //         .then(data => {
-  //           return mergeContent += ' ' + data.rows[0].content;
-  //         });
-  //     })
-  //     //Update story content in DB
-  //     .then(mergeContent => {
-  //       return db.query(mergeContribution1, [contribution_id])
-  //         .then(() => {
-  //           return db.query(`
-  //       UPDATE stories SET content = $1
-  //       WHERE stories.id = $2;`, [mergeContent, story_id]);
-  //         });
-  //     })
-  //     .then(() => {
-  //       //update all contribution statuses related to that story
-  //       return db.query(mergeContribution2, [story_id]);
-  //     })
-  //     .then(() => {
-  //       res.status(201).send();
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //       res
-  //         .status(500)
-  //         .json({ error: err.message });
-  //     });
-  // });
+  router.post('/:story_id/contributions/:contribution_id', (req, res) => {
+    const contributionId = req.params.contribution_id;
+    const storyId = req.params.story_id;
+    myDB.merge(storyId, contributionId)
+    .then(() => {
+      res.status(201).send();
+    })
+  });
 
   //mark a story complete
   router.post('/:story_id/complete', (req, res) => {
