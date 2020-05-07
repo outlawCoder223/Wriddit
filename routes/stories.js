@@ -51,10 +51,6 @@ module.exports = (db) => {
     const promise2 = db.query(getRandomIncompleteStory, [4]);
     const promise3 = db.query(getRandomCompleteStory, [3]);
     const promise4 = db.query(getStoryByGenreName);
-    // db.query(getStoryByGenreName)
-    //   .then((data) => {
-    //     console.log(data.rows)
-    //   });
     Promise.all([promise1, promise2, promise3, promise4])
       .then((data) => {
         templateVars.username = data[0].rows[0].name;
