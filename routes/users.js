@@ -1,26 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-const { getUserName, getStoriesByUser } = require('../queries/users_get_queries')
-/**************ESSENTIAL ROUTES***************
- * login get /login/:id
- * logout get /logout
- * homepage get /
- */
-
-module.exports = (db) => {
+module.exports = (myDB) => {
   router.get('/myStories', (req, res) => {
     const user = req.session.user;
     const templateVars = { user };
-
-    db
-      .query(getUserName, [req.session.user])
-      .then(data => {
-        templateVars['username'] = data.rows[0].name;
-      })
-      .then(() => db.query(getStoriesByUser, [user]))
-      .then(data => {
-        templateVars['stories'] = data.rows;
+    const promise1 = myDB.getUsername(user);
+    const promise2 = myDB.getByUser(user)
+    Promise.all([promise1, promise2])
+      .then((data) => {
+        templateVars.username = data[0].rows[0].name;
+        templateVars.stories = data[1].rows;
         res.render('myStories', templateVars);
       })
       .catch((err) => {

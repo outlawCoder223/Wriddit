@@ -30,15 +30,15 @@ const { getUserName } = require('../queries/users_get_queries');
 
 const { getStoryByGenreName } = require('../queries/genres_queries');
 
-module.exports = (db) => {
+module.exports = (myDB) => {
   //browse all stories
   router.get('/', (req, res) => {
     const user = req.session.user;
     const templateVars = { user };
-    const promise1 = db.query(getUserName, [user]);
-    const promise2 = db.query(getRandomIncompleteStory, [4]);
-    const promise3 = db.query(getRandomCompleteStory, [3]);
-    const promise4 = db.query(getStoryByGenreName);
+    const promise1 = myDB.getUsername(user);
+    const promise2 = myDB.getRandomIncomplete(4);
+    const promise3 = myDB.getRandomComplete(3);
+    const promise4 = myDB.getByGenre();
     Promise.all([promise1, promise2, promise3, promise4])
       .then((data) => {
         templateVars.username = data[0].rows[0].name;
@@ -78,7 +78,7 @@ module.exports = (db) => {
     const title = req.body.title;
     const content = req.body.content;
     const genre = req.body.genre;
-    db.query(createNewStory, [content, title, authorId, genre])
+    myDB.createStory(content, title, authorId, genre)
       .then((data) => {
         const storyId = data.rows[0].id;
         res.redirect(`/stories/${storyId}/contributions`);
@@ -111,8 +111,8 @@ module.exports = (db) => {
   router.get('/unfinished', (req, res) => {
     const user = req.session.user;
     const templateVars = { user };
-    const promise1 = db.query(getUserName, [req.session.user]);
-    const promise2 = db.query(getAllUnfinishedStories);
+    const promise1 = myDB.getUsername(user);
+    const promise2 = myDB.getUnfinished();
     Promise.all([promise1, promise2])
       .then((data) => {
         templateVars.username = data[0].rows[0].name;
@@ -128,8 +128,8 @@ module.exports = (db) => {
   router.get('/topStories', (req, res) => {
     const user = req.session.user;
     const templateVars = { user };
-    const promise1 = db.query(getUserName, [req.session.user]);
-    const promise2 = db.query(getAllTopStories);
+    const promise1 = myDB.getUsername(user);
+    const promise2 = myDB.getTop();
     Promise.all([promise1, promise2])
       .then(data => {
         templateVars.username = data[0].rows[0].name;
@@ -146,16 +146,16 @@ module.exports = (db) => {
     const id = req.params.story_id;
     const user = req.session.user;
     const templateVars = { user };
-    const promise1 = db.query(getUserName, [req.session.user]);
-    const promise2 = db.query(getCompleteStoryById, [id]);
+    const promise1 = myDB.getUsername(user);
+    const promise2 = myDB.getComplete(id);
     const fct = (story) => {
       if (req.session.user) templateVars.loggedIn = true;
       (story.state !== 'Complete') ? res.redirect(`/stories/${id}/contributions`) : res.render('story', templateVars);
     };
     Promise.all([promise1, promise2])
       .then(data => {
-        templateVars.username = data[0].rows[0].name;
         const story = data[1].rows[0];
+        templateVars.username = data[0].rows[0].name;
         templateVars.title = story.title;
         templateVars.content = story.content;
         templateVars.author = story.name;
@@ -177,15 +177,15 @@ module.exports = (db) => {
     const id = req.params.story_id;
     const user = req.session.user;
     const templateVars = { loggedIn: false, complete: false, user };
-    const promise1 = db.query(getActiveContributions, [id]);
-    const promise2 = db.query(getIncompleteStoryById, [id]);
-    const promise3 = db.query(getUserName, [user]);
+    const promise1 = myDB.getContributions(id);
+    const promise2 = myDB.getComplete(id);
+    const promise3 = myDB.getUsername(user);
     if (req.session.user) templateVars.loggedIn = true;
     Promise.all([promise1, promise2, promise3])
       .then(data => {
+        const story = data[1].rows[0];
         templateVars.username = data[2].rows[0].name;
         templateVars.contributions = data[0].rows;
-        const story = data[1].rows[0];
         templateVars.title = story.title;
         templateVars.content = story.content;
         templateVars.author = story.name;
@@ -211,10 +211,10 @@ module.exports = (db) => {
     const contributor_id = req.session.user;
     const content = req.body.content;
 
-    db.query(createContribution, [storyId, content, contributor_id])
+    myDB.newContribution(storyId, content, contributor_id)
       .then((data) => {
         const contributionId = data.rows[0].id;
-        return db.query(renderNewContribution, [contributionId])
+        return myDB.renderContribution(contributionId);
       })
       .then((data) => {
         const result = JSON.stringify(data.rows[0]);
@@ -228,49 +228,49 @@ module.exports = (db) => {
   });
 
   //append a contribution to a story
-  router.post('/:story_id/contributions/:contribution_id', (req, res) => {
-    const contribution_id = req.params.contribution_id;
-    const story_id = req.params.story_id;
+  // router.post('/:story_id/contributions/:contribution_id', (req, res) => {
+  //   const contribution_id = req.params.contribution_id;
+  //   const story_id = req.params.story_id;
 
-    db.query(getCompleteStoryById, [story_id])
-      .then(data => {
-        return data.rows[0].content;
-      })
-      .then(mergeContent => {
-        return db.query(getContributionById, [contribution_id])
-          .then(data => {
-            return mergeContent += ' ' + data.rows[0].content;
-          });
-      })
-      //Update story content in DB
-      .then(mergeContent => {
-        return db.query(mergeContribution1, [contribution_id])
-          .then(() => {
-            return db.query(`
-        UPDATE stories SET content = $1
-        WHERE stories.id = $2;`, [mergeContent, story_id]);
-          });
-      })
-      .then(() => {
-        //update all contribution statuses related to that story
-        return db.query(mergeContribution2, [story_id]);
-      })
-      .then(() => {
-        res.status(201).send();
-      })
-      .catch(err => {
-        console.log(err);
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
+  //   db.query(getCompleteStoryById, [story_id])
+  //     .then(data => {
+  //       return data.rows[0].content;
+  //     })
+  //     .then(mergeContent => {
+  //       return db.query(getContributionById, [contribution_id])
+  //         .then(data => {
+  //           return mergeContent += ' ' + data.rows[0].content;
+  //         });
+  //     })
+  //     //Update story content in DB
+  //     .then(mergeContent => {
+  //       return db.query(mergeContribution1, [contribution_id])
+  //         .then(() => {
+  //           return db.query(`
+  //       UPDATE stories SET content = $1
+  //       WHERE stories.id = $2;`, [mergeContent, story_id]);
+  //         });
+  //     })
+  //     .then(() => {
+  //       //update all contribution statuses related to that story
+  //       return db.query(mergeContribution2, [story_id]);
+  //     })
+  //     .then(() => {
+  //       res.status(201).send();
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //       res
+  //         .status(500)
+  //         .json({ error: err.message });
+  //     });
+  // });
 
   //mark a story complete
   router.post('/:story_id/complete', (req, res) => {
     const storyId = req.body.storyId;
 
-    db.query(markStoryComplete, [storyId])
+    myDB.storyComplete(storyId)
       .then(() => {
         console.log('Changed story state to complete.');
         res.status(200).send();
@@ -279,10 +279,9 @@ module.exports = (db) => {
   });
 
   router.post('/contributionupvote', (req,res) => {
-    const query = updateLikesofStory;
-    const contributionid = req.body.contId;
+    const contributionId = req.body.contId;
 
-    db.query(query, [contributionid])
+    myDB.like(contributionId)
       .then((response) => {
 
         res.status(200).json({upvotes: response.rows[0].upvotes});

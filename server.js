@@ -15,7 +15,7 @@ const morgan = require('morgan');
 const { Pool } = require('pg');
 const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
-
+const myDB = require('./lib/queryLib')(db)
 db.connect();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -48,8 +48,8 @@ const usersRoutes = require('./routes/users');
 // Mount all resource routes
 
 app.use('/', mainRoutes(db));
-app.use('/stories', storiesRoutes(db));
-app.use('/users', usersRoutes(db));
+app.use('/stories', storiesRoutes(myDB));
+app.use('/users', usersRoutes(myDB));
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
