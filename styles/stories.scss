@@ -95,20 +95,22 @@
 
 .button-mainpage {
   background-color: white;
-  border: none;
-  color: black;
-  padding: 9px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 12px;
-  margin-bottom: 6px;
-  margin-top: 4px;
-  margin-right: 1px;
-  width: 150px;
+
+    border: none;
+    color: black;
+    padding: 9px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    margin-bottom: 6px;
+    margin-right: 1px;
+    width: 150px;
+    margin-top: 17px;
+
 }
 
 .story-starter-text-area {
@@ -190,6 +192,9 @@
       font-family: 'Jost';
       font-weight: 300;
       text-align: center;
+      padding-bottom: 31px;
+    padding-right: 31px;
+
 
     }
 
@@ -314,6 +319,7 @@
     display: flex;
     align-items: center;
     padding-left: 3%;
+    margin-top: 41px;
 
 
     .wridders-img {
@@ -349,6 +355,11 @@
 .story-submit input{
   height: auto;
 }
+
+.generator-genre {
+  padding-top: 21px;
+}
+
 
 
 
