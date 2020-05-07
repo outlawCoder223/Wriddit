@@ -52,3 +52,15 @@
   color: #FFFFFF;
   font-family: 'Jost', sans-serif;
 }
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: black;
+}
+
+a:active {
+  color: black;
+}
