@@ -133,6 +133,7 @@ module.exports = (myDB) => {
 
   });
 
+  // upvote
   router.post('/contributionupvote', (req,res) => {
     const contributionId = req.body.contId;
 
