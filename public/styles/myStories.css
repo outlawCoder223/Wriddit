@@ -54,6 +54,11 @@
   text-decoration: underline;
 }
 
+.title-text {
+  font-family: 'Jost';
+  font-weight: 400;
+}
+
 .anchor {
   color: black;
 }
