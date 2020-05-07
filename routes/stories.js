@@ -158,11 +158,11 @@ module.exports = (db) => {
 
   // read a complete story
   router.get('/:story_id', (req, res) => {
-
-    const query = getCompleteStoryById;
     const id = req.params.story_id;
     const user = req.session.user;
     const templateVars = { user };
+    const promise1 = db.query(getUserName, [req.session.user]);
+    const promise2 = db.query(getCompleteStoryById, [id]);
     const fct = (story) => {
       if (req.session.user) templateVars.loggedIn = true;
       if (story.state !== 'Complete') {
@@ -171,22 +171,17 @@ module.exports = (db) => {
         res.render('story', templateVars);
       }
     };
-
-    db
-      .query(getUserName, [req.session.user])
+    Promise.all([promise1, promise2])
       .then(data => {
-        templateVars['username'] = data.rows[0].name;
-      })
-      .then(() => db.query(query, [id]))
-      .then(data => {
-        const story = data.rows[0];
-        templateVars['title'] = story.title;
-        templateVars['content'] = story.content;
-        templateVars['author'] = story.name;
-        templateVars['state'] = story.state;
-        templateVars['photo_url'] = story.photo_url;
-        templateVars['loggedIn'] = false;
-        templateVars['id'] = id;
+        templateVars.username = data[0].rows[0].name;
+        const story = data[1].rows[0];
+        templateVars.title = story.title;
+        templateVars.content = story.content;
+        templateVars.author = story.name;
+        templateVars.state = story.state;
+        templateVars.photo_url = story.photo_url;
+        templateVars.loggedIn = false;
+        templateVars.id = id;
         fct(story);
       })
       .catch(err => {
