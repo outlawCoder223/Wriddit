@@ -1,3 +1,5 @@
+// Javascript for create a new story page
+
 $(document).ready(() => {
   $('#title').focus();
   const renderPrompt = (prompt) => {
