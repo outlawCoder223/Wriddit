@@ -89,7 +89,8 @@ module.exports = (db) => {
     const authorId = req.session.user;
     const title = req.body.title;
     const content = req.body.content;
-    db.query(createNewStory, [content, title, authorId])
+    const genre = req.body.genre;
+    db.query(createNewStory, [content, title, authorId, genre])
       .then((data) => {
         const storyId = data.rows[0].id;
         res.redirect(`/stories/${storyId}/contributions`);
