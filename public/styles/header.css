@@ -1,3 +1,7 @@
+.header-link-1:hover {
+  columns: black;
+}
+
 .mainheader {
   background-color: #438180;
   font-family: 'Jost', sans-serif;

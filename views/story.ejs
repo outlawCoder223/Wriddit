@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/story.js"></script>
+
   </head>
+
   <body>
 
     <%- include('partials/_header') %>
@@ -23,41 +24,42 @@
         <h1><%= title %></h1>
         <h3>STARTED BY <%= author %></h3>
         <% if (state !== 'Complete' && loggedIn && username === author) { %>
-          <button id="mark-complete">Mark Complete</button>
+        <button id="mark-complete">Mark Complete</button>
         <% } %>
       </section>
       <p class="story-text"><%= content %></p>
       <% if (state !== 'Complete') { %>
       <section class="contribution-form">
         <form id="new-contribution" action="/stories/:story_id/:contribution_id" method="post">
-        <label class="contribution-label" for="contribution">What happens next...</label>
-        <textarea name="contribution" id="add-contribution" cols="30" rows="10"></textarea>
-        <div>
-          <button type="submit">Submit</button>
-        </div>
+          <label class="contribution-label" for="contribution">What happens next...</label>
+          <textarea name="contribution" id="add-contribution" cols="30" rows="10"></textarea>
+          <div>
+            <button type="submit">Submit</button>
+          </div>
         </form>
       </section>
       <section id="contribution-container">
         <% for (const item of contributions) { %>
-          <article class="contribution" data-id="<%= item.id %>">
-              <p class="div-content"><%= item.content %></p>
-              <footer>
-                <div class="upvote-box">
-                  <button class="upvote " ><img src="/images/hands-and-gestures.png" alt=""></button>
-                  <p class="upvote-number"><%= item.upvotes %></p>
-                </div>
-                <div class="button-id-and-merge">
-                  <h4><%= item.name %></h4>
-                  <% if (loggedIn && username === author ) { %>
-                    <button id="<%= item.id %>" class="merge">Merge</button>
-                  <% } %>
-                </div>
-              </footer>
-          </article>
+        <article class="contribution" data-id="<%= item.id %>">
+          <p class="div-content"><%= item.content %></p>
+          <footer>
+            <div class="upvote-box">
+              <button class="upvote"><img src="/images/hands-and-gestures.png" alt=""></button>
+              <p class="upvote-number"><%= item.upvotes %></p>
+            </div>
+            <div class="button-id-and-merge">
+              <h4><%= item.name %></h4>
+              <% if (loggedIn && username === author ) { %>
+              <button id="<%= item.id %>" class="merge">Merge</button>
+              <% } %>
+            </div>
+          </footer>
+        </article>
         <% } %>
       </section>
       <% } %>
     </main>
+    <script type="text/javascript" src="/scripts/story.js"></script>
   </body>
 
   <%- include('partials/_footer') %>

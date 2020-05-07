@@ -38,7 +38,7 @@ module.exports = (db) => {
       .query(getUserName, [req.session.user])
       .then(data => {
         templateVars['username'] = data.rows[0].name;
-        res.redirect(`/stories/2/contributions`);
+        res.redirect(`/stories/48/contributions`);
       })
       .catch(err => {
         console.log(err);

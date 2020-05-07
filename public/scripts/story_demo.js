@@ -2,8 +2,13 @@
 
 // create new contribution when form submitted
 $(document).ready(() => {
+
+
+
   $('#new-contribution').on('submit', function (event) {
     event.preventDefault();
+    const $formInput = $('#add-contribution');
+    const $contribution = $formInput.val();
     const url = window.location.pathname;
     const storyId = getStoryId(url);
     const content = $(this).children('textarea')[0].value;
@@ -11,6 +16,29 @@ $(document).ready(() => {
       story_id: storyId,
       content: content,
     };
+    // console.log($contribution.split(' ').length);
+    // console.log($content.split(' ').length);
+
+    const contentLength = $contribution.split(' ').length;
+    console.log($contribution);
+
+    const $errorNoText = $('.error-no-text');
+    const $errorOver500 = $('.error-over-500');
+
+    $errorNoText.slideUp();
+    $errorOver500.slideUp();
+
+    if ($contribution === '') {
+      console.log('hello');
+      $errorNoText.slideDown();
+      return;
+    }
+
+    if (contentLength > 300) {
+      $errorOver500.slideDown();
+      return;
+    }
+
 
     $.post('/stories/:story_id/contributions', data)
       .done(function (res) {
@@ -18,22 +46,8 @@ $(document).ready(() => {
       });
   });
 
-  // merge contribution into story body and erase all previous contributions.
-  $('.merge').on('click', function (event) {
-    event.preventDefault();
-
-    const contribution = $(this).attr('id');
-    const url = window.location.pathname;
-    const storyId = getStoryId(url);
-
-    $.post(url + `/${contribution}`, { story_id: storyId, contribution_id: contribution })
-      .then(function () {
-        window.location.reload();
-      });
-  });
-
   // dummy upvote functionality
-  $('#contribution-container').on('click', '.upvote', function (event) {
+  $('#contribution-container').one('click', '.upvote', function (event) {
     event.preventDefault();
     const self = this;
 
@@ -73,8 +87,8 @@ $(document).ready(() => {
     <article class="contribution">
                 <p class="div-content">${post.content}</p>
                 <footer>
-                <div class="upvote-box">
-                    <button class="upvote"><img src="/images/hands-and-gestures.png" alt=""></button>
+                  <div class="upvote-box">
+                    <button class="upvote" ><img src="/images/hands-and-gestures.png" alt=""></button>
                     <p>${post.upvotes}</p>
                   </div>
                   <div class="button-id-and-merge">

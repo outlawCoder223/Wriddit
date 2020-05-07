@@ -57,6 +57,34 @@ main {
     font-family: 'Jost';
   }
 
+  .error-no-text {
+    display: none;
+    border: solid 0.4rem tomato;
+    color: tomato;
+    font-weight: bold;
+    margin-bottom: 1rem;
+
+    span {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  .error-over-500 {
+    display: none;
+    border: solid 0.4rem tomato;
+    color: tomato;
+    font-weight: bold;
+    margin-bottom: 1rem;
+
+    span {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
   textarea {
     width: 100%;
     font-size: 1rem;
@@ -117,6 +145,7 @@ main {
     h4 {
       display: inline-block;
       margin: 0;
+      font-weight: 300;
     }
 
     p {
@@ -197,3 +226,7 @@ main {
   margin: 1rem;
   white-space: pre-wrap;
 }
+
+a {color:black;}
+a:hover {color:black;}
+a:active {color:black;}

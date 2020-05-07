@@ -310,6 +310,10 @@ a:active {
   padding-left: 10px;
 }
 
+.end .end-container .categories-container .categ-stories-container .categ-story-text3 {
+  width: 50%;
+}
+
 .end .end-container .categories-container .categ-stories-container .categ-story-image {
   height: 15vw;
   width: auto;
@@ -323,6 +327,12 @@ a:active {
   margin-right: 35px;
 }
 
+.end .end-container .categories-container .categ-stories-container .categ-story-image3 {
+  height: 10vw;
+  width: auto;
+  padding-right: 20px;
+}
+
 .end .end-container .categories-container .categ-stories-container .image-container {
   width: 35%;
 }
@@ -334,7 +344,8 @@ a:active {
 }
 
 .end .end-container .image-container .wridders-img {
-  height: 33vw;
+  margin-top: 112px;
+  height: 38vw;
   margin: 0 auto;
 }
 
@@ -369,5 +380,5 @@ select#genre {
 }
 
 .end .end-container .categories-container .categ-stories-container .categ-story-image.action-picture {
-  height: 8vw;
+  height: 15vw;
 }
