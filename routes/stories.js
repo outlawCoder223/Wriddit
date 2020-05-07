@@ -91,7 +91,6 @@ module.exports = (db) => {
   });
 
   //generate a writing prompt
-  // /writing-prompt
   router.post('/update', (req, res) => {
     const options = {
       uri: 'https://ineedaprompt.com/dictionary/default/prompt?q=adj+noun+adv+verb+noun+location',
@@ -215,11 +214,11 @@ module.exports = (db) => {
     db.query(createContribution, [storyId, content, contributor_id])
       .then((data) => {
         const contributionId = data.rows[0].id;
-        db.query(renderNewContribution, [contributionId])
-          .then((data) => {
-            const result = JSON.stringify(data.rows[0]);
-            res.end(result);
-          });
+        return db.query(renderNewContribution, [contributionId])
+      })
+      .then((data) => {
+        const result = JSON.stringify(data.rows[0]);
+        res.end(result);
       })
       .catch(err => {
         res
