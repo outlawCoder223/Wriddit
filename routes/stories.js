@@ -50,35 +50,20 @@ module.exports = (myDB) => {
   // get all stories that are unfinished /stories/unfinished
   router.get('/unfinished', (req, res) => {
     const user = req.session.user;
-    const templateVars = { user };
-    const promise1 = myDB.getUsername(user);
-    const promise2 = myDB.getUnfinished();
-    Promise.all([promise1, promise2])
-      .then((data) => {
-        templateVars.username = data[0].rows[0].name;
-        templateVars.stories = data[1].rows;
+    myDB.browseUnfinished(user)
+      .then((templateVars) => {
         res.render('unfinished', templateVars)
       })
-      .catch((err) => {
-        console.log(err);
-      });
   });
 
   // get top stories by like
   router.get('/topStories', (req, res) => {
     const user = req.session.user;
-    const templateVars = { user };
-    const promise1 = myDB.getUsername(user);
-    const promise2 = myDB.getTop();
-    Promise.all([promise1, promise2])
-      .then(data => {
-        templateVars.username = data[0].rows[0].name;
-        templateVars.stories = data[1].rows;
+    myDB.getTopStories(user)
+      .then((templateVars) => {
         res.render('topStories', templateVars)
-      })
-      .catch((err) => {
-        console.log(err);
       });
+
   });
 
   // read a complete story
