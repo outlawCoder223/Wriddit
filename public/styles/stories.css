@@ -310,6 +310,10 @@ a:active {
   padding-left: 10px;
 }
 
+.end .end-container .categories-container .categ-stories-container .categ-story-text3 {
+  width: 50%;
+}
+
 .end .end-container .categories-container .categ-stories-container .categ-story-image {
   height: 15vw;
   width: auto;
@@ -321,6 +325,12 @@ a:active {
   width: auto;
   margin-left: -10px;
   margin-right: 35px;
+}
+
+.end .end-container .categories-container .categ-stories-container .categ-story-image3 {
+  height: 10vw;
+  width: auto;
+  padding-right: 20px;
 }
 
 .end .end-container .categories-container .categ-stories-container .image-container {
