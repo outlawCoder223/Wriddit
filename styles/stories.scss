@@ -109,6 +109,7 @@
     margin-top: 4px;
     margin-right: 1px;
     width: 150px;
+    margin-top: 17px;
 }
 
 .story-starter-text-area {
@@ -192,6 +193,9 @@
       font-family: 'Jost';
       font-weight: 300;
       text-align: center;
+      padding-bottom: 31px;
+    padding-right: 31px;
+
 
     }
 
@@ -316,6 +320,7 @@
     display: flex;
     align-items: center;
     padding-left: 3%;
+    margin-top: 41px;
 
 
     .wridders-img {
@@ -351,6 +356,11 @@
 .story-submit input{
   height: auto;
 }
+
+.generator-genre {
+  padding-top: 21px;
+}
+
 
 
 
