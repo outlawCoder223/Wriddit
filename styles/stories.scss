@@ -73,6 +73,7 @@
 
 .story-image {
   width: 8.5rem;
+  align-self: center;
 }
 
 .author-name {
@@ -89,6 +90,7 @@
 
 .mainpage-header {
   font-size: 20px;
+  font-style: italic;
 }
 
 .button-mainpage {
@@ -136,6 +138,7 @@
 
 .catchphrase h2 {
   margin-left: 12px;
+  font-style: italic;
 }
 
 @font-face {
@@ -179,12 +182,17 @@
 
   .categories-container {
     flex: 1 1 75%;
+    margin-top: 20px;
 
     .categories-header {
-      font-size: 4.2vw;
+      font-size: 60px;
       border-bottom: .8px solid #0000002e;
       color: black;
-      margin: 0 0 0 85px;
+      margin: 0px 3%;
+      font-family: 'Jost';
+      font-weight: 300;
+      text-align: center;
+
     }
 
     .categ-stories-container {
@@ -195,44 +203,81 @@
       .categ-story1 {
         flex: 1 1 50%;
         display: flex;
-        // border-right: .8px solid #0000002e;
+        border-right: .8px solid #0000002e;
         justify-content: space-evenly;
+        .categ-story-text {
+            border-bottom: .8px solid #0000002e;
+            padding-bottom: 10px;
         }
+        .image-container {
+          border-bottom: .8px solid #0000002e;
+          margin-right: 10px;
+
+        }
+      }
+
         .categ-story2 {
           flex: 1 1 50%;
           display: flex;
           justify-content: space-evenly;
+          padding-left: 20px;
+          .categ-story-text {
+            border-bottom: .8px solid #0000002e;
+            margin-left: 10px;
+            padding-bottom: 10px;
+        }
+          .image-container {
+            border-bottom: .8px solid #0000002e;
+            margin-right: 50px;
+          }
         }
         .categ-story3 {
           flex: 1 1 50%;
           display: flex;
-          // border-right: .8px solid #0000002e;
+          border-right: .8px solid #0000002e;
           justify-content: space-evenly;
         }
         .categ-story4 {
           flex: 1 1 50%;
           display: flex;
           justify-content: space-evenly;
+          padding-left: 20px;
+
         }
 
         .categ-story-text {
 
+          width: 60%;
+
+
           .genre {
+            font-weight: 400;
+            font-family: 'Jost';
             font-size: 2vw;
             text-decoration: underline;
+            margin-bottom: 2px;
           }
 
           .title {
-            font-size: 1.5vw;
+            font-size: 1.3vw;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Jost';
+            margin-top: 8px;
+            margin-bottom: 8px
           }
 
           .starter {
-            font-size: smaller;
+            font-size: 1.1vw;
+            font-weight: 200;
+            font-family: 'Jost';
           }
 
           .cont-count {
             color: red;
             font-size: small;
+            margin-top: 6px;
+            margin-bottom: 10px;
             }
 
             .likes {
@@ -243,20 +288,25 @@
                 padding-left: 10px;
               }
             }
+
         }
 
         .categ-story-image {
           height: 15vw;
           width: auto;
-          margin-right: 35px;
-          margin-top: 60px;
+          margin-right: 35px
+
         }
 
         .categ-story-image2 {
           height: 12vw;
           width: auto;
+          margin-left: -32px;
           margin-right: 35px;
-          margin-top: 60px;
+
+        }
+        .image-container {
+          width: 35%;
         }
     }
   }
@@ -265,6 +315,8 @@
     flex: 1 1 25%;
     display: flex;
     align-items: center;
+    padding-left: 3%;
+
 
     .wridders-img {
       height: 48vw;
@@ -299,6 +351,9 @@
 .story-submit input{
   height: auto;
 }
+
+
+
 
 // @media only screen and (min-width: 980px) {
 //   .categ-story1 {
