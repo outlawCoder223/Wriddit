@@ -214,11 +214,7 @@ module.exports = (db) => {
         if (story.state === 'Complete') {
           res.redirect(`/stories/${id}`);
         } else {
-          if (user === 1) {
-            res.render('story', templateVars);
-          } else {
-            res.render('demo_story', templateVars);
-          }
+          (user === 1) ? res.render('story', templateVars) : res.render('demo_story', templateVars);
         }
       })
       .catch(err => {
@@ -230,16 +226,14 @@ module.exports = (db) => {
 
   //create a new contribution to a story
   router.post('/:story_id/contributions', (req, res) => {
-    const query1 = createContribution;
-    const query2 = renderNewContribution;
     const storyId = req.body.story_id;
     const contributor_id = req.session.user;
     const content = req.body.content;
 
-    db.query(query1, [storyId, content, contributor_id])
+    db.query(createContribution, [storyId, content, contributor_id])
       .then((data) => {
         const contributionId = data.rows[0].id;
-        db.query(query2, [contributionId])
+        db.query(renderNewContribution, [contributionId])
           .then((data) => {
             const result = JSON.stringify(data.rows[0]);
             res.end(result);
