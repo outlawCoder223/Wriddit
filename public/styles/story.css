@@ -146,16 +146,13 @@ main {
 .story-text {
   font-family: 'Jost';
   margin-bottom: 140px;
+  white-space: pre-wrap;
 }
 
 @font-face {
   font-family: 'jost-3';
   src: url("../fonts/Jost-VariableFont_ital,wght.ttf");
   font-weight: 300;
-}
-
-.test {
-  height: 100vh;
 }
 
 .color {
