@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const rp = require('request-promise-native');
 
-const { selectAllStories,
+const {
   getCompleteStoryById,
   getIncompleteStoryById,
   getActiveContributions,
@@ -18,7 +18,7 @@ const {
   updateLikesofStory
 } = require('../queries/stories_post_queries');
 
-const { getContributionsByStoryId,
+const {
   createContribution,
   renderNewContribution,
   mergeContribution1,
@@ -26,7 +26,7 @@ const { getContributionsByStoryId,
   getContributionById
 } = require('../queries/contributions_queries');
 
-const { getUserName, getStoriesByUser } = require('../queries/users_get_queries');
+const { getUserName } = require('../queries/users_get_queries');
 
 const { getStoryByGenreName } = require('../queries/genres_queries');
 
@@ -274,8 +274,21 @@ module.exports = (db) => {
     db.query(markStoryComplete, [storyId])
       .then(() => {
         console.log('Changed story state to complete.');
+        res.status(200).send();
       });
-    res.status(200).send();
+
+  });
+
+  router.post('/contributionupvote', (req,res) => {
+    const query = updateLikesofStory;
+    const contributionid = req.body.contId;
+
+    db.query(query, [contributionid])
+      .then((response) => {
+
+        res.status(200).json({upvotes: response.rows[0].upvotes});
+      });
+
   });
   return router;
 };

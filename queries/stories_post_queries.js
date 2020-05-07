@@ -9,7 +9,10 @@ UPDATE stories SET state = 'Complete' WHERE id = $1 RETURNING *;
 
 
 const updateLikesofStory = `
-UPDATE contributions SET upvotes = $1 WHERE id = $2 RETURNING *;
+UPDATE contributions
+SET upvotes = upvotes + 1
+WHERE id = $1
+RETURNING *;
 `;
 
 module.exports = {
