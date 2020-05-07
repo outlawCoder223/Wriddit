@@ -43,11 +43,13 @@ app.use(express.static("public"));
 
 const mainRoutes = require('./routes/main');
 const storiesRoutes = require('./routes/stories');
+const usersRoutes = require('./routes/users');
 
 // Mount all resource routes
 
 app.use('/', mainRoutes(db));
 app.use('/stories', storiesRoutes(db));
+app.use('/users', usersRoutes(db));
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
