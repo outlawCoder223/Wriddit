@@ -175,4 +175,5 @@ main {
 .div-content {
   font-size: 21px;
   margin: 1rem;
+  white-space: pre-wrap;
 }
