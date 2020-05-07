@@ -334,7 +334,8 @@ a:active {
 }
 
 .end .end-container .image-container .wridders-img {
-  height: 33vw;
+  margin-top: 112px;
+  height: 38vw;
   margin: 0 auto;
 }
 
@@ -369,5 +370,5 @@ select#genre {
 }
 
 .end .end-container .categories-container .categ-stories-container .categ-story-image.action-picture {
-  height: 8vw;
+  height: 15vw;
 }

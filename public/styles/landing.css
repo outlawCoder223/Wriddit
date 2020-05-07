@@ -212,3 +212,15 @@ section {
   src: url("../fonts/Jost-SemiBold.ttf");
   font-weight: normal;
 }
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: black;
+}
+
+a:active {
+  color: black;
+}
