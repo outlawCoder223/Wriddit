@@ -12,7 +12,7 @@ SELECT title, content, users.name, genres.name, to_char(AVG (rating),'9D9') AS a
   ;
 
 const getStoryByGenreName = `
-SELECT DISTINCT ON(genre) genre, title, users.name, likes
+SELECT DISTINCT ON(genre) genre, title, users.name, likes, stories.id, photo_url
 FROM stories
 JOIN users ON users.id = author_id
 WHERE likes > 100
