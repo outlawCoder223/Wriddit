@@ -26,7 +26,7 @@
         <section class="header-top-stories">
           <h1 class="mainpage-header">TOP STORIES</h1>
           <div class="header-top-stories-one">
-            <img class="story-image" src="https://i.pinimg.com/originals/85/bd/13/85bd1361a9180a835637f4a3ab4a4aa5.jpg">
+            <img class="story-image" src=<%= complete.first.photo_url %>>
             <h1 class="story-name"><%= complete.first.title %></h1>
             <h2 class="author-name"><%= complete.first.name %></h2>
             <a href="/stories/<%= complete.first.id %>"><button class="button-mainpage">READ THE STORY</button></a>
@@ -37,7 +37,7 @@
           </div>
           <div class="header-top-stories-two">
             <div class="top-story-image-two"></div>
-            <img class="story-image" src="https://66.media.tumblr.com/tumblr_m6ilt1dzEh1rrqne4o1_500.jpg">
+            <img class="story-image" src=<%= complete.second.photo_url %>>
             <h1 class="story-name"><%= complete.second.title %></h1>
             <h2 class="author-name"><%= complete.second.name %></h2>
             <a href="/stories/<%= complete.second.id %>"><button class="button-mainpage">READ THE STORY</button></a>
@@ -47,7 +47,7 @@
             </div>
           </div>
           <div class="header-top-stories-three">
-            <img class="story-image" src="https://studygroupcomics.com/main/wp-content/uploads/2012/10/inccov.gif">
+            <img class="story-image" src=<%= complete.third.photo_url %>>
             <h1 class="story-name"><%= complete.third.title %></h1>
             <h2 class="author-name"><%= complete.third.name %></h2>
             <a href="/stories/<%= complete.third.id %>"><button class="button-mainpage">READ THE STORY</button></a>
@@ -77,13 +77,13 @@
               <label class="generator-genre" for="genre">Choose a genre</label>
               <select name="genre" id="genre">
                 <option value="">--Please choose an option--</option>
-                <option value="romance">Romance</option>
-                <option value="crime">Crime</option>
-                <option value="sci-fi">Sci-fi</option>
-                <option value="horror">Horror</option>
-                <option value="fantasy">Fantasy</option>
-                <option value="action">Action</option>
-                <option value="comedy">Comedy</option>
+                <option value="Romance">Romance</option>
+                <option value="Crime">Crime</option>
+                <option value="Sci-fi">Sci-fi</option>
+                <option value="Horror">Horror</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
               </select>
               <label class="generator-genre" for="story-content">Enter your content</label>
               <textarea name="content" id="story-content" class="story-starter-text-area"></textarea>
@@ -94,21 +94,21 @@
         <div class="unfinished-stories">
           <h1 class="mainpage-header">UNFINISHED STORIES</h1>
           <div class="unfinished-stories-one">
-            <img class="story-image" src="https://www.booooooom.com/wp-content/uploads/2014/12/michael-deforge05.jpg">
+            <img class="story-image" src=<%= incomplete.first.photo_url %>>
             <h1 class="story-name"><%= incomplete.first.title %></h1>
             <h2 class="author-name"><%= incomplete.first.name %></h2>
             <h2 class="contributions">ALREADY 320 CONTRIBUTIONS</h2>
             <a href="/stories/<%= incomplete.first.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
           <div class="unfinished-stories-two">
-            <img class="story-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQJSfOorI6keldTIKVd6UcGhyxSlFvRcQwN9rngGVZaAi1L2m28&usqp=CAU">
+            <img class="story-image" src=<%= incomplete.second.photo_url %>>
             <h1 class="story-name"><%= incomplete.second.title %></h1>
             <h2 class="author-name"><%= incomplete.second.name %></h2>
             <h2 class="contributions">ALREADY 436 CONTRIBUTIONS</h2>
             <a href="/stories/<%= incomplete.second.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
           <div class="unfinished-stories-three">
-            <img class="story-image" src="https://www.booooooom.com/wp-content/uploads/2014/12/michael-deforge06.jpg">
+            <img class="story-image" src=<%= incomplete.third.photo_url %>>
             <h1 class="story-name"><%= incomplete.third.title %></h1>
             <h2 class="author-name"><%= incomplete.third.name %></h2>
             <h2 class="contributions">ALREADY 924 CONTRIBUTIONS</h2>
@@ -128,10 +128,10 @@
               <div class="categ-story1">
                 <div class="categ-story-text">
                   <p class="genre">ROMANCE</p>
-                  <p class="title">I LOVE THIS PIE</p>
-                  <p class="starter">STARTED BY SARAH MUSK</p>
+                  <p class="title"><%= genres.romance.title %></p>
+                  <p class="starter">STARTED BY <%= genres.romance.name %></p>
                   <p class="cont-count"> ALREADY 530 CONTRIBUTIONS</p>
-                  <p class="likes"><i class="far fa-hand-point-left"></i>320</p>
+                  <p class="likes"><i class="far fa-hand-point-left"></i><%= genres.romance.likes %></p>
                 </div> <!-- closing cateßg-story-text-->
                 <div class="image-container">
                   <img class="categ-story-image" src="https://4.bp.blogspot.com/-7c6blPMiflE/U4Pvf6sbV8I/AAAAAAAAExM/cTSIOnWMLio/s1600/ABodyBeneath.jpg">
@@ -140,10 +140,10 @@
               <div class="categ-story2">
                 <div class="categ-story-text">
                   <p class="genre">ACTION</p>
-                  <p class="title">CRAZY TIMES IN ROME</p>
-                  <p class="starter">STARTED BY DARYL WOOPS</p>
+                  <p class="title"><%= genres.action.title %></p>
+                  <p class="starter">STARTED BY <%= genres.action.name %></p>
                   <p class="cont-count"> ALREADY 686 CONTRIBUTIONS</p>
-                  <p class="likes"><i class="far fa-hand-point-left"></i>480</p>
+                  <p class="likes"><i class="far fa-hand-point-left"></i><%= genres.action.likes %></p>
                 </div>
                 <div class="image-container">
                   <img class="categ-story-image" src="https://fantagraphics.com/images/flog/mike/201101/ppit-nyer-deforge.jpg"></div>
@@ -151,23 +151,21 @@
               <div class="categ-story3">
                 <div class="categ-story-text">
                   <p class="genre">COMEDY</p>
-                  <p class="title">THIS IS SO FUNNY</p>
-                  <p class="starter">STARTED BY COMEDY GUY</p>
+                  <p class="title"><%= genres.comedy.title %></p>
+                  <p class="starter">STARTED BY <%= genres.comedy.name %></p>
                   <p class="cont-count"> ALREADY 497 CONTRIBUTIONS</p>
-                  <p class="likes"><i class="far fa-hand-point-left"></i>990</p>
+                  <p class="likes"><i class="far fa-hand-point-left"></i><%= genres.comedy.likes %></p>
                 </div>
                 <div class="image-container">
                   <img class="categ-story-image" src="https://images.squarespace-cdn.com/content/51b79387e4b06b939d343f1c/1371014039488-BOE91F3UGEUQBI3N6QFH/michael_deforge_03.jpg?content-type=image%2Fjpeg"></div>
               </div>
-
-
               <div class="categ-story4">
                 <div class="categ-story-text">
                   <p class="genre">CRIME</p>
-                  <p class="title">WHERE DID THE PIZZA GO</p>
-                  <p class="starter">STARTED BY LARRY BIRD</p>
+                  <p class="title"><%= genres.crime.title %></p>
+                  <p class="starter">STARTED BY <%= genres.crime.name %></p>
                   <p class="cont-count"> ALREADY 976 CONTRIBUTIONS</p>
-                  <p class="likes"><i class="far fa-hand-point-left"></i>688</p>
+                  <p class="likes"><i class="far fa-hand-point-left"></i><%= genres.crime.likes %></p>
                 </div>
                 <div class="image-container">
                   <img class="categ-story-image2" src="http://images.tcj.com/2011/10/tcjgag9.jpg"></div>
