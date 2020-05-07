@@ -1,5 +1,5 @@
 #unfinished-stories-container {
-  padding-top: 15%;
+  padding-top: 3%;
 }
 
 .unfinished {
@@ -38,6 +38,13 @@
 .unfinished-name:hover {
   text-decoration: underline;
 
+}
+
+.unfinished-stories-header {
+  text-align: center;
+  margin-top: 200px;
+  font-family: 'Jost';
+  font-weight: 400;
 }
 
 .anchor {color:black;}

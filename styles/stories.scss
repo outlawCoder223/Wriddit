@@ -1,6 +1,6 @@
 a {color:black;}
 
-a:visited {color:black;}
+
 
 a:hover {color:black;}
 
@@ -178,7 +178,7 @@ a:active {color:black;}
 
 .feature-image {
   float: right;
-  width: 400px;
+  width: 330px;
 }
 
 .end {
@@ -223,7 +223,7 @@ a:active {color:black;}
         }
         .image-container {
           border-bottom: .8px solid #0000002e;
-          margin-right: 10px;
+          margin-right: 23px;
 
         }
       }
@@ -306,14 +306,13 @@ a:active {color:black;}
         .categ-story-image {
           height: 15vw;
           width: auto;
-          margin-right: 35px
-
+          margin-right: 35px;
         }
 
         .categ-story-image2 {
-          height: 12vw;
+          height: 15vw;
           width: auto;
-          margin-left: -32px;
+          margin-left: -10px;
           margin-right: 35px;
 
         }
@@ -327,12 +326,11 @@ a:active {color:black;}
     flex: 1 1 25%;
     display: flex;
     align-items: center;
-    padding-left: 3%;
-    margin-top: 41px;
+
 
 
     .wridders-img {
-      height: 48vw;
+      height: 33vw;
       margin: 0 auto;
     }
 
@@ -372,6 +370,15 @@ a:active {color:black;}
 select#genre {
   height: 38px;
 }
+
+.end .end-container .categories-container .categ-stories-container .categ-story-image.action-picture {
+  height: 8vw;
+
+
+}
+
+
+
 
 
 
