@@ -254,7 +254,12 @@ module.exports = (db) => {
                 if (story.state === 'Complete') {
                   res.redirect(`/stories/${id}`);
                 } else {
-                  res.render('story', templateVars);
+                  if (user === 1) {
+                    res.render('story', templateVars);
+                  } else {
+                    res.render('demo_story', templateVars);
+                  }
+
                 }
               });
           })
