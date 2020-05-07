@@ -41,19 +41,13 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 
-const contributionsRoutes = require('./routes/contributions');
-const genresRoutes = require('./routes/genres');
 const mainRoutes = require('./routes/main');
-// const storiesRoutes = require('./routes/stories'); //TESTING
 const storiesRoutes = require('./routes/stories');
-const usersRoutes = require('./routes/users');
 
 // Mount all resource routes
-app.use('/contributions', contributionsRoutes(db));
-app.use('/genres', genresRoutes(db));
+
 app.use('/', mainRoutes(db));
 app.use('/stories', storiesRoutes(db));
-app.use('/users', usersRoutes(db));
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

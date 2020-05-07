@@ -1,5 +1,4 @@
-// Javascript for single story page.
-
+// Javascript for /stories
 
 $(document).ready(() => {
 

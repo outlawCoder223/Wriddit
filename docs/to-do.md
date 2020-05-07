@@ -4,11 +4,11 @@
 
 * [x] Repo created and shared w/ collaborators
 
-* [ ] All necessary packages included
+* [x] All necessary packages included
 
-* [ ] .gitignore configured
+* [x] .gitignore configured
 
-* [ ] package.json update w/ all relevant information about project
+* [x] package.json update w/ all relevant information about project
 
 * [ ] README.md finished
 
@@ -24,15 +24,15 @@
 
 * [x] Routes created
 
-* [ ] GET requests respond w/ correct resourses
+* [x] GET requests respond w/ correct resourses
 
-* [ ] POST requests post/update database
+* [x] POST requests post/update database
 
 * [x] User cookie set
 
 * [x] User cookie removed on Logout
 
-* [ ] DB queries
+* [x] DB queries
 
 ------------------
 
@@ -54,13 +54,13 @@
 
 * [x] Header finished
 
-* [ ] Homepage finished
+* [x] Homepage finished
 
-  * [ ] Stories appear on homepage
+  * [x] Stories appear on homepage
 
-    * [ ] Stories are incomplete or complete
+    * [x] Stories are incomplete or complete
 
-  * [ ] User can click on a link to take them to create a story
+  * [x] User can click on a link to take them to create a story
 
   * [ ] User can click any story on the homepage
 

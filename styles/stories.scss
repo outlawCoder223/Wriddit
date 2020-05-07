@@ -95,6 +95,7 @@
 
 .button-mainpage {
   background-color: white;
+
     border: none;
     color: black;
     padding: 9px;
@@ -106,15 +107,14 @@
     cursor: pointer;
     border-radius: 12px;
     margin-bottom: 6px;
-    margin-top: 4px;
     margin-right: 1px;
     width: 150px;
     margin-top: 17px;
+
 }
 
 .story-starter-text-area {
   height: 50%;
-  // margin-top: 7%;
   border: none;
   overflow: auto;
   outline: none;
@@ -135,11 +135,10 @@
   border-top: .8px solid #0000002e;
   padding: 0 2rem;
   margin: 0 8%;
-}
 
-.catchphrase h2 {
-  margin-left: 12px;
-  font-style: italic;
+  h2 {
+    margin-left: 12px;
+  }
 }
 
 @font-face {

@@ -17,11 +17,11 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/create.js"></script>
   </head>
-
   <body>
-    <%- include('partials/_header') %>
-    <main class="create-story">
 
+    <%- include('partials/_header') %>
+
+    <main class="create-story">
       <form action="/stories" method="post" id="create-story">
         <label for="title">Enter the title of your story:</label>
         <input type="text" name="title" id="title">
@@ -40,13 +40,14 @@
           <p>WRITER'S BLOCK?</p>
           <div class="prompt-box"></div>
           <button class="continue-button prompt-button">GENERATE A STORY STARTER</button>
-
         </div>
         <label for="story-content">Enter your content</label>
         <textarea name="content" id="story-content"></textarea>
         <button type="submit">Submit</button>
       </form>
-
     </main>
+
+    <%- include('partials/_footer') %>
+
   </body>
 </html>

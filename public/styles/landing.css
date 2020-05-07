@@ -1,3 +1,7 @@
+body {
+  font-family: 'jost-2', sans-serif;
+}
+
 section {
   padding: 4rem 2rem;
   max-width: 1200px;
@@ -40,6 +44,10 @@ section {
   display: flex;
 }
 
+.landing-second img {
+  height: 314px;
+}
+
 .background-green {
   background-color: #438180;
 }
@@ -59,10 +67,6 @@ section {
   color: white;
   align-self: center;
   font-weight: 400;
-}
-
-.landing-second img {
-  height: 314px;
 }
 
 .landing-second-h-three {
@@ -109,6 +113,10 @@ section {
   font-style: normal;
 }
 
+.landing-third h1 {
+  color: black;
+}
+
 .landing-third-unfinished-container {
   display: flex;
   justify-content: space-around;
@@ -116,10 +124,6 @@ section {
 
 .landing-third-unfinished-container div {
   width: 26%;
-}
-
-.landing-third h1 {
-  color: black;
 }
 
 .landing-third-unfinished-container .continue-button {
@@ -162,10 +166,6 @@ section {
 
 .two {
   height: 420px;
-}
-
-body {
-  font-family: 'jost-2', sans-serif;
 }
 
 .landing-third-title {
