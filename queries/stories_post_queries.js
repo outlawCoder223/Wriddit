@@ -1,5 +1,5 @@
 const createNewStory = `
-INSERT INTO stories(content, title, author_id) VALUES ($1, $2, $3) RETURNING *;
+INSERT INTO stories(content, title, author_id, genre) VALUES ($1, $2, $3, $4) RETURNING *;
 `
 
 const markStoryComplete = `
