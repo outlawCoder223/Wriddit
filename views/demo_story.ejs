@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Wriddit - DEMO</title>
+    <title>Wriddit- DEMO</title>
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -40,12 +40,12 @@
       </section>
       <section id="contribution-container">
         <% for (const item of contributions) { %>
-        <article class="contribution">
+        <article class="contribution" data-id="<%= item.id %>">
           <p class="div-content"><%= item.content %></p>
           <footer>
             <div class="upvote-box">
-              <button class="upvote"><img src="/images/hands-and-gestures.png" alt=""></button>
-              <p><%= item.upvotes %></p>
+              <button class="upvote-<%= item.id %>"><img src="/images/hands-and-gestures.png" alt=""></button>
+              <p class="upvote-number"><%= item.upvotes %></p>
             </div>
             <div class="button-id-and-merge">
               <h4><%= item.name %></h4>
