@@ -58,7 +58,6 @@ $(document).ready(() => {
                   </div>
                   <div>
                     <h4>${post.name}</h4>
-                      <button id="${post.id}" class="merge">Merge</button>
                   </div>
                 </footer>
             </article>
