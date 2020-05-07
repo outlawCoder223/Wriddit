@@ -18,15 +18,9 @@ module.exports = (myDB) => {
     const title = req.body.title;
     const content = req.body.content;
     const genre = req.body.genre;
-    myDB.createStory(content, title, authorId, genre)
-      .then((data) => {
-        const storyId = data.rows[0].id;
+    myDB.newStory(content, title, authorId, genre)
+      .then((storyId) => {
         res.redirect(`/stories/${storyId}/contributions`);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
       });
   });
 
@@ -173,7 +167,6 @@ module.exports = (myDB) => {
 
     myDB.like(contributionId)
       .then((response) => {
-
         res.status(200).json({upvotes: response.rows[0].upvotes});
       });
 
