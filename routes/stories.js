@@ -30,18 +30,6 @@ const { getUserName, getStoriesByUser } = require('../queries/users_get_queries'
 
 const { getStoryByGenreName } = require('../queries/genres_queries');
 
-
-
-/**************ESSENTIAL ROUTES***************
- * GET / -- done with hardcoding
- * POST / -- done
- * POST /update (for writing prompt api) - done
- * GET /:story_id  -- done
- * GET /:story_id/contributions
- * POST /:story_id/contributions
- * POST /:story_id/contributions/:contribution_id -- done
- */
-
 module.exports = (db) => {
   //browse all stories
   router.get('/', (req, res) => {
