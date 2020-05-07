@@ -9,14 +9,14 @@ GROUP BY content, title, genres.name, users.name
 LIMIT $1;
 `
 const getCompleteStoryById = `
-SELECT content, title, users.name, state
+SELECT content, title, users.name, state,
 FROM stories
 JOIN users ON author_id = users.id
 WHERE stories.id = $1
 `;
 
 const getIncompleteStoryById = `
-SELECT content, title, users.name, state
+SELECT content, title, users.name, state,
 FROM stories
 JOIN users ON author_id = users.id
 WHERE stories.id = $1
@@ -31,14 +31,14 @@ ORDER BY upvotes DESC;
 `
 
 const getStoryOfTheWeek = `
-SELECT stories.title, users.name
+SELECT stories.title, users.name, photo_url
 FROM stories
 JOIN users ON stories.author_id = users.id
 WHERE stories.name = $1
 `;
 
 const getRandomIncompleteStory = `
-SELECT content, title, users.name, state, stories.id
+SELECT content, title, users.name, state, stories.id, photo_url
 FROM stories
 JOIN users ON author_id = users.id
 WHERE state LIKE '%In Progress%'
@@ -54,7 +54,7 @@ WHERE state LIKE '%rogr%';
 `;
 
 const getRandomCompleteStory = `
-SELECT content, title, users.name, state, stories.id
+SELECT content, title, users.name, state, stories.id, photo_url
 FROM stories
 JOIN users ON author_id = users.id
 WHERE state LIKE '%Complete%'
@@ -63,13 +63,11 @@ LIMIT $1
 `;
 
 const getAllTopStories = `
-SELECT content, title, users.name, to_char(AVG (rating),'9D9') AS average_rating, stories.id
+SELECT content, title, users.name, stories.id, likes
 FROM stories
 JOIN users ON stories.author_id = users.id
-JOIN story_ratings ON story_ratings.story_id = stories.id
 WHERE state LIKE '%omplete%'
-GROUP BY stories.content, title, users.name, stories.id
-ORDER BY average_rating DESC
+order by likes desc
 LIMIT 20;
 `;
 

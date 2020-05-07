@@ -58,6 +58,7 @@ module.exports = (db) => {
     Promise.all([promise1, promise2, promise3, promise4])
       .then((data) => {
         templateVars.username = data[0].rows[0].name;
+
         templateVars.incomplete = {
           first: data[1].rows[0],
           second: data[1].rows[1],
