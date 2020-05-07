@@ -34,7 +34,7 @@ $(document).ready(() => {
 
   // dummy upvote functionality
   $('#contribution-container').on('click','.upvote',function(event) {
-    event.preventDefault;
+    event.preventDefault();
     const self = this
     if ($(self).hasClass('on')) {
       const upvoteCount = $(self).siblings('p')[0].innerHTML;

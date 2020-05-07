@@ -369,3 +369,7 @@ a:active {
 .generator-genre {
   padding-top: 21px;
 }
+
+select#genre {
+  height: 38px;
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Wriddit</title>
+    <title>Wriddit - DEMO</title>
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -13,47 +13,48 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/story.js"></script>
   </head>
+
   <body>
 
-    <%- include('partials/_header') %>
+    <%- include('partials/_header_demo') %>
 
     <main>
       <section class="story">
-        <img src=<%= photo_url %> alt="">
+        <img src="https://images.squarespace-cdn.com/content/v1/54942a43e4b0f18f7f64b77b/1566909279972-ZMT7JGSCY1WXGFSBRT8X/ke17ZwdGBToddI8pDm48kOiqdsfHQPA8ihNjytf6azUUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2pTu6XFiae5s5fU-ZX3bEBd_e_OjDfmdBVoFaOAshuL5m0nepH0bYFh4DTA4Bp5g2/internet-medium.jpg" alt="">
         <h1><%= title %></h1>
         <h3>STARTED BY <%= author %></h3>
         <% if (state !== 'Complete' && loggedIn && username === author) { %>
-          <button id="mark-complete">Mark Complete</button>
+        <button id="mark-complete">Mark Complete</button>
         <% } %>
       </section>
       <p class="story-text"><%= content %></p>
       <% if (state !== 'Complete') { %>
       <section class="contribution-form">
         <form id="new-contribution" action="/stories/:story_id/:contribution_id" method="post">
-        <label class="contribution-label" for="contribution">What happens next...</label>
-        <textarea name="contribution" id="add-contribution" cols="30" rows="10"></textarea>
-        <div>
-          <button type="submit">Submit</button>
-        </div>
+          <label class="contribution-label" for="contribution">What happens next...</label>
+          <textarea name="contribution" id="add-contribution" cols="30" rows="10"></textarea>
+          <div>
+            <button type="submit">Submit</button>
+          </div>
         </form>
       </section>
       <section id="contribution-container">
         <% for (const item of contributions) { %>
-          <article class="contribution">
-              <p class="div-content"><%= item.content %></p>
-              <footer>
-                <div class="upvote-box">
-                  <button class="upvote <%= item.id %>" ><img src="/images/hands-and-gestures.png" alt=""></button>
-                  <p><%= item.upvotes %></p>
-                </div>
-                <div class="button-id-and-merge">
-                  <h4><%= item.name %></h4>
-                  <% if (loggedIn && username === author ) { %>
-                    <button id="<%= item.id %>" class="merge">Merge</button>
-                  <% } %>
-                </div>
-              </footer>
-          </article>
+        <article class="contribution">
+          <p class="div-content"><%= item.content %></p>
+          <footer>
+            <div class="upvote-box">
+              <button class="upvote"><img src="/images/hands-and-gestures.png" alt=""></button>
+              <p><%= item.upvotes %></p>
+            </div>
+            <div class="button-id-and-merge">
+              <h4><%= item.name %></h4>
+              <% if (loggedIn && username === author ) { %>
+              <button id="<%= item.id %>" class="merge">Merge</button>
+              <% } %>
+            </div>
+          </footer>
+        </article>
         <% } %>
       </section>
       <% } %>

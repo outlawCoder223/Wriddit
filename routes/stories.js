@@ -15,6 +15,7 @@ const { selectAllStories,
 const {
   createNewStory,
   markStoryComplete,
+  updateLikesofStory
 } = require('../queries/stories_post_queries');
 
 const { getContributionsByStoryId,
@@ -71,7 +72,7 @@ module.exports = (db) => {
           romance: data[3].rows[5],
           action: data[3].rows[0],
           crime: data[3].rows[2]
-        }
+        };
       })
       .then(() => {
         res.render('stories', templateVars);
@@ -213,6 +214,7 @@ module.exports = (db) => {
         templateVars['content'] = story.content;
         templateVars['author'] = story.name;
         templateVars['state'] = story.state;
+        templateVars['photo_url'] = story.photo_url;
         templateVars['loggedIn'] = false;
         templateVars['id'] = id;
         fct(story);
@@ -251,11 +253,17 @@ module.exports = (db) => {
                 templateVars.content = story.content;
                 templateVars.author = story.name;
                 templateVars.state = story.state;
+                templateVars['photo_url'] = story.photo_url;
                 templateVars.id = id;
                 if (story.state === 'Complete') {
                   res.redirect(`/stories/${id}`);
                 } else {
-                  res.render('story', templateVars);
+                  if (user === 1) {
+                    res.render('story', templateVars);
+                  } else {
+                    res.render('demo_story', templateVars);
+                  }
+
                 }
               });
           })
@@ -346,6 +354,10 @@ module.exports = (db) => {
     res.status(200).send();
   });
 
+
+
+
   return router;
 };
+
 
