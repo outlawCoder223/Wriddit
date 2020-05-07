@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Story</title>
+    <title>Wriddit</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Jost:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
@@ -15,66 +15,58 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/stories.js"></script>
   </head>
-
   <body>
 
     <%- include('partials/_header') %>
 
     <main id="main-container">
-
       <section class="header-one">
-
         <section class="header-top-stories">
-
           <h1 class="mainpage-header">TOP STORIES</h1>
-
           <div class="header-top-stories-one">
             <img class="story-image" src="https://i.pinimg.com/originals/85/bd/13/85bd1361a9180a835637f4a3ab4a4aa5.jpg">
-            <h1 class="story-name"><%= first.title %></h1>
-            <h2 class="author-name"><%= first.name %></h2>
-            <a href="/stories/<%= first.id %>"><button class="button-mainpage">READ THE STORY</button></a>
+            <h1 class="story-name"><%= complete.first.title %></h1>
+            <h2 class="author-name"><%= complete.first.name %></h2>
+            <a href="/stories/<%= complete.first.id %>"><button class="button-mainpage">READ THE STORY</button></a>
             <div class="total-likes">
               <i class="far fa-hand-point-left"></i>
               <h3>320</h3>
             </div>
           </div>
-
           <div class="header-top-stories-two">
             <div class="top-story-image-two"></div>
             <img class="story-image" src="https://66.media.tumblr.com/tumblr_m6ilt1dzEh1rrqne4o1_500.jpg">
-            <h1 class="story-name"><%= second.title %></h1>
-            <h2 class="author-name"><%= second.name %></h2>
-            <a href="/stories/<%= second.id %>"><button class="button-mainpage">READ THE STORY</button></a>
+            <h1 class="story-name"><%= complete.second.title %></h1>
+            <h2 class="author-name"><%= complete.second.name %></h2>
+            <a href="/stories/<%= complete.second.id %>"><button class="button-mainpage">READ THE STORY</button></a>
             <div class="total-likes">
               <i class="far fa-hand-point-left"></i>
               <h3>279</h3>
             </div>
           </div>
-
           <div class="header-top-stories-three">
             <img class="story-image" src="https://studygroupcomics.com/main/wp-content/uploads/2012/10/inccov.gif">
-            <h1 class="story-name"><%= third.title %></h1>
-            <h2 class="author-name"><%= third.name %></h2>
-            <a href="/stories/<%= third.id %>"><button class="button-mainpage">READ THE STORY</button></a>
+            <h1 class="story-name"><%= complete.third.title %></h1>
+            <h2 class="author-name"><%= complete.third.name %></h2>
+            <a href="/stories/<%= complete.third.id %>"><button class="button-mainpage">READ THE STORY</button></a>
             <div class="total-likes">
               <i class="far fa-hand-point-left"></i>
               <h3>480</h3>
             </div>
           </div>
-
         </section>
-
         <div class="header-one-middle">
           <div class="feature-story">
             <div class="feature-story-first-section">
               <img class="feature-image" src="https://wfdd-live.s3.amazonaws.com/styles/slideshow/s3/images/slideshow/The-Sci-Fi-Strangeness-And-Canadian-Sensuality-Of-Cartoonist-Michael-DeForge-522904049-1491563707.jpg?itok=-1zh_Kx8">
               <h1 class="feature-title">FEATURE STORY OF THE WEEK</h1>
-              <p><%= seventh.content.slice(0, 390).trim() %>...</p>
+              <!-- <p><%= seventh.content.slice(0, 390).trim() %>...</p> -->
+              <p>To Sherlock Holmes she is always the woman. I have seldom heard him mention her under any other name. In his eyes she eclipses and predominates the whole of her sex. It was not that he felt any emotion akin to love for Irene Adler. All emotions, and that one particularly, were abhorrent to his cold, precise but admirably balanced mind. He was, I take it, the most perfect reasoning and observing machine that the world has seen...</p>
               <a href="/stories/<%= seventh.id %>"><button class="button-mainpage">READ THE STORY</button></a>
             </div>
           </div>
-
           <div class="story-starter">
             <h1 class="feature-title">WRITER'S BLOCK?</h1>
             <div class="prompt-box"></div>
@@ -82,60 +74,58 @@
             <form class="story-starter story-submit" action="/stories" method="post">
               <label for="title">Enter the title of your story:</label>
               <input type="text" name="title" id="title" class="story-starter-text-area">
-              <label for="story-content">Enter your content</label>
+              <label class="generator-genre" for="genre">Choose a genre</label>
+              <select name="genre" id="genre">
+                <option value="">--Please choose an option--</option>
+                <option value="romance">Romance</option>
+                <option value="crime">Crime</option>
+                <option value="sci-fi">Sci-fi</option>
+                <option value="horror">Horror</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="action">Action</option>
+                <option value="comedy">Comedy</option>
+              </select>
+              <label class="generator-genre" for="story-content">Enter your content</label>
               <textarea name="content" id="story-content" class="story-starter-text-area"></textarea>
               <button class="button-mainpage" type="submit">SUBMIT</button>
             </form>
           </div>
         </div>
-
-
         <div class="unfinished-stories">
           <h1 class="mainpage-header">UNFINISHED STORIES</h1>
           <div class="unfinished-stories-one">
             <img class="story-image" src="https://www.booooooom.com/wp-content/uploads/2014/12/michael-deforge05.jpg">
-            <h1 class="story-name"><%= fourth.title %></h1>
-            <h2 class="author-name"><%= fourth.name %></h2>
+            <h1 class="story-name"><%= incomplete.first.title %></h1>
+            <h2 class="author-name"><%= incomplete.first.name %></h2>
             <h2 class="contributions">ALREADY 320 CONTRIBUTIONS</h2>
-            <a href="/stories/<%= fourth.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
+            <a href="/stories/<%= incomplete.first.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
-
           <div class="unfinished-stories-two">
             <img class="story-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQJSfOorI6keldTIKVd6UcGhyxSlFvRcQwN9rngGVZaAi1L2m28&usqp=CAU">
-            <h1 class="story-name"><%= fifth.title %></h1>
-            <h2 class="author-name"><%= fifth.name %></h2>
+            <h1 class="story-name"><%= incomplete.second.title %></h1>
+            <h2 class="author-name"><%= incomplete.second.name %></h2>
             <h2 class="contributions">ALREADY 436 CONTRIBUTIONS</h2>
-            <a href="/stories/<%= fifth.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
+            <a href="/stories/<%= incomplete.second.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
-
           <div class="unfinished-stories-three">
             <img class="story-image" src="https://www.booooooom.com/wp-content/uploads/2014/12/michael-deforge06.jpg">
-            <h1 class="story-name"><%= sixth.title %></h1>
-            <h2 class="author-name"><%= sixth.name %></h2>
+            <h1 class="story-name"><%= incomplete.third.title %></h1>
+            <h2 class="author-name"><%= incomplete.third.name %></h2>
             <h2 class="contributions">ALREADY 924 CONTRIBUTIONS</h2>
-            <a href="/stories/<%= sixth.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
+            <a href="/stories/<%= incomplete.third.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
-
         </div>
-
       </section>
-
       <section class="catchphrase">
         <h1>WRIDDIT</h1>
         <h2>WRITING FOR EVERYONE WITH EVERYONE</h2>
       </section>
-
       <section class="end">
         <div class="end-container">
-
           <div class="categories-container">
-
             <h1 class="categories-header">TOP STORIES BY CATEGORIES</h1>
-
             <div class="categ-stories-container">
-
               <div class="categ-story1">
-
                 <div class="categ-story-text">
                   <p class="genre">ROMANCE</p>
                   <p class="title">I LOVE THIS PIE</p>
@@ -143,7 +133,7 @@
                   <p class="cont-count"> ALREADY 530 CONTRIBUTIONS</p>
                   <p class="likes"><i class="far fa-hand-point-left"></i>320</p>
                 </div> <!-- closing cateßg-story-text-->
-                <div>
+                <div class="image-container">
                   <img class="categ-story-image" src="https://4.bp.blogspot.com/-7c6blPMiflE/U4Pvf6sbV8I/AAAAAAAAExM/cTSIOnWMLio/s1600/ABodyBeneath.jpg">
                 </div>
               </div><!-- closing categ-story1-->
@@ -155,11 +145,9 @@
                   <p class="cont-count"> ALREADY 686 CONTRIBUTIONS</p>
                   <p class="likes"><i class="far fa-hand-point-left"></i>480</p>
                 </div>
-                <div>
+                <div class="image-container">
                   <img class="categ-story-image" src="https://fantagraphics.com/images/flog/mike/201101/ppit-nyer-deforge.jpg"></div>
               </div>
-
-
               <div class="categ-story3">
                 <div class="categ-story-text">
                   <p class="genre">COMEDY</p>
@@ -168,9 +156,11 @@
                   <p class="cont-count"> ALREADY 497 CONTRIBUTIONS</p>
                   <p class="likes"><i class="far fa-hand-point-left"></i>990</p>
                 </div>
-                <div>
+                <div class="image-container">
                   <img class="categ-story-image" src="https://images.squarespace-cdn.com/content/51b79387e4b06b939d343f1c/1371014039488-BOE91F3UGEUQBI3N6QFH/michael_deforge_03.jpg?content-type=image%2Fjpeg"></div>
               </div>
+
+
               <div class="categ-story4">
                 <div class="categ-story-text">
                   <p class="genre">CRIME</p>
@@ -179,29 +169,19 @@
                   <p class="cont-count"> ALREADY 976 CONTRIBUTIONS</p>
                   <p class="likes"><i class="far fa-hand-point-left"></i>688</p>
                 </div>
-                <div>
+                <div class="image-container">
                   <img class="categ-story-image2" src="http://images.tcj.com/2011/10/tcjgag9.jpg"></div>
               </div>
-
-
-
             </div>
           </div>
           <div class="image-container">
             <img class="wridders-img" src="/images/wridders.png">
           </div>
-          <!--image container closing tag-->
         </div>
       </section>
-
-
     </main>
 
-    <script type="text/javascript" src="/scripts/stories.js"></script>
-
-
-
-
     <%- include('partials/_footer') %>
+
   </body>
 </html>

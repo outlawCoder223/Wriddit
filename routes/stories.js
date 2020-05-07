@@ -25,7 +25,9 @@ const { getContributionsByStoryId,
   getContributionById
 } = require('../queries/contributions_queries');
 
-const { getUserName, getStoriesByUser } = require('../queries/users_get_queries')
+const { getUserName, getStoriesByUser } = require('../queries/users_get_queries');
+
+const { getStoryByGenreName } = require('../queries/genres_queries');
 
 
 
@@ -45,28 +47,25 @@ module.exports = (db) => {
 
     const user = req.session.user;
     const templateVars = { user };
-    db
-      .query(getUserName, [req.session.user])
-      .then(data => {
-        templateVars['username'] = data.rows[0].name;
-      })
-      .then(() => db.query(getRandomIncompleteStory, [4]))
-
+    const promise1 = db.query(getUserName, [user]);
+    const promise2 = db.query(getRandomIncompleteStory, [4]);
+    const promise3 = db.query(getRandomCompleteStory, [3]);
+    Promise.all([promise1, promise2, promise3])
       .then((data) => {
-        templateVars.fourth = data.rows[0];
-        templateVars.fifth = data.rows[1];
-        templateVars.sixth = data.rows[2];
-        templateVars.seventh = data.rows[3];
-      })
-      // get complete stories
-      .then(() => db.query(getRandomCompleteStory, [3]))
-      .then((data) => {
-        templateVars.first = data.rows[0];
-        templateVars.second = data.rows[1];
-        templateVars.third = data.rows[2];
+        templateVars.username = data[0].rows[0].name;
+        templateVars.incomplete = {
+          first: data[1].rows[0],
+          second: data[1].rows[1],
+          third: data[1].rows[2]
+        };
+        templateVars.complete = {
+          first: data[2].rows[0],
+          second: data[2].rows[1],
+          third: data[2].rows[2]
+        };
+        templateVars.seventh = data[1].rows[3];
       })
       .then(() => {
-        console.log(templateVars);
         res.render('stories', templateVars);
       })
       .catch(err => {
@@ -84,8 +83,8 @@ module.exports = (db) => {
     const content = req.body.content;
     db.query(createNewStory, [content, title, authorId])
       .then((data) => {
-        const storyId = data.rows[0].id
-        res.redirect(`/stories/${storyId}/contributions`)
+        const storyId = data.rows[0].id;
+        res.redirect(`/stories/${storyId}/contributions`);
 
       })
       .catch(err => {
@@ -185,9 +184,9 @@ module.exports = (db) => {
       if (story.state !== 'Complete') {
         res.redirect(`/stories/${id}/contributions`);
       } else {
-        res.render('story', templateVars)
+        res.render('story', templateVars);
       }
-    }
+    };
 
     db
       .query(getUserName, [req.session.user])
@@ -245,7 +244,7 @@ module.exports = (db) => {
                 } else {
                   res.render('story', templateVars);
                 }
-              })
+              });
           })
           .catch(err => {
             res
@@ -336,29 +335,3 @@ module.exports = (db) => {
   return router;
 };
 
-
-/*******NON-ESSENTIAL ROUTES*********
- * place these in the router as you build them out
-
-
-
-  //edit a story's title or content NOT by merge
-  router.post('/:story_id', (req, res) => {
-
-  });
-
-
-  //delete a story
-  router.post('/:story_id/delete', (req, res) => {
-
-  });
-
-
-
-  //read a contribution
-  router.get('/:story_id/contributions/:contribution_id', (req, res) => {
-
-  });
-
-
-     */

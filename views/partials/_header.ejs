@@ -1,27 +1,15 @@
 <header class="mainheader">
-
   <div class="mainheader-topbar">
-
-
-
-
     <a class='logo' href="/stories">WRIDDIT</a>
-
-
-
-
     <div class="container-header">
       <ul class="header-menu">
         <% if (user) { %>
-
         <li class='header-link-1'>
           <a class='header-link' href="/stories">Home</a>
         </li>
-
         <li class='header-link-2'>
           <a class='header-link' href="#"><%= username %></a>
         </li>
-
         <li class='header-link-3'>
           <a class='header-link' href="/logout">Logout</a>
           <% } else { %>
@@ -34,7 +22,6 @@
   </div>
   <% if (user) { %>
   <nav class="nav-container">
-
     <ul class="nav-menu">
       <li class='nav-link-1'>
         <a class='nav-link' href="/stories/topStories">TOP STORIES</a>
@@ -52,7 +39,6 @@
         <a class='nav-link' href="/create">CREATE A NEW STORY</a>
       </li>
     </ul>
-
   </nav>
   <% } %>
 </header>

@@ -3,7 +3,7 @@ main {
   margin: 0 auto;
   margin-top: 150px;
   width: 80%;
-
+  margin-bottom: 51px;
 }
 
 .story {
@@ -30,6 +30,7 @@ main {
     width: 47%;
     float: right;
     margin-left: 10px;
+    margin-bottom: 60px;
   }
 
   button {
@@ -48,7 +49,7 @@ main {
 
 .contribution-form {
 
-  height: 375px;
+
 
   label {
     display: block;
@@ -61,7 +62,7 @@ main {
     font-size: 1rem;
     font-family: 'Jost';
     border: none;
-    height: 50%;
+    height: 300px;
     margin-top: 1%;
     border: none;
     overflow: auto;
@@ -104,7 +105,8 @@ main {
   padding: 5px;
   margin: 10px 0;
   font-size: 1rem;
-  margin-top: 31px;
+  margin-top: 60px;
+  font-family: 'Jost';
 
 
   footer {
@@ -119,7 +121,6 @@ main {
 
     p {
       display: inline-block;
-      margin: 0;
       font-family: 'Jost';
     }
 
@@ -135,10 +136,9 @@ main {
 
 .upvote {
   background-color: #e6dfdf;
-  border: none;
-  // opacity: 0.5;
-
+  outline: none;
   opacity: 1;
+  display: contents;
 }
 
 .upvote:hover {
@@ -162,12 +162,11 @@ main {
 
 .story-text {
   font-family: 'Jost';
+  margin-bottom: 140px;
+  white-space: pre-wrap;
 }
 
-#contribution-container {
-  padding-top: 18%;
 
-}
 
 @font-face {
   font-family: 'jost-3';
@@ -176,4 +175,24 @@ main {
 
 }
 
+.color {
+  color: red;
+}
 
+.upvote-box {
+  margin-left: 12px;
+}
+
+.button-id-and-merge h4{
+ font-weight: 400;
+}
+
+.button-id-and-merge {
+  margin-right: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.div-content {
+  font-size: 21px;
+  margin: 1rem;
+}
