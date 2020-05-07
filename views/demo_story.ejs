@@ -20,7 +20,7 @@
 
     <main>
       <section class="story">
-        <img src="https://images.squarespace-cdn.com/content/v1/54942a43e4b0f18f7f64b77b/1566909279972-ZMT7JGSCY1WXGFSBRT8X/ke17ZwdGBToddI8pDm48kOiqdsfHQPA8ihNjytf6azUUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2pTu6XFiae5s5fU-ZX3bEBd_e_OjDfmdBVoFaOAshuL5m0nepH0bYFh4DTA4Bp5g2/internet-medium.jpg" alt="">
+        <img src=<%= photo_url %> alt="">
         <h1><%= title %></h1>
         <h3>STARTED BY <%= author %></h3>
         <% if (state !== 'Complete' && loggedIn && username === author) { %>
