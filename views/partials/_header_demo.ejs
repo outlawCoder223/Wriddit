@@ -1,0 +1,44 @@
+<header class="mainheader">
+  <div class="mainheader-topbar">
+    <a class='logo'>WRIDDIT</a>
+    <div class="container-header">
+      <ul class="header-menu">
+        <% if (user) { %>
+        <li class='header-link-1'>
+          <a class='header-link'>Home</a>
+        </li>
+        <li class='header-link-2'>
+          <a class='header-link'><%= username %></a>
+        </li>
+        <li class='header-link-3'>
+          <a class='header-link'>Logout</a>
+          <% } else { %>
+        <li class='header-link-3'>
+          <a class='header-link'>Login</a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+  <% if (user) { %>
+  <nav class="nav-container">
+    <ul class="nav-menu">
+      <li class='nav-link-1'>
+        <a class='nav-link'>TOP STORIES</a>
+      </li>
+      <li class='nav-link-2'>
+        <a class='nav-link'>CATEGORIES</a>
+      </li>
+      <li class='nav-link-3'>
+        <a class='nav-link'>UNFINISHED STORIES</a>
+      </li>
+      <li class='nav-link-4'>
+        <a class='nav-link'>MY STORIES</a>
+      </li>
+      <li class='nav-link-5'>
+        <a class='nav-link'>CREATE A NEW STORY</a>
+      </li>
+    </ul>
+  </nav>
+  <% } %>
+</header>

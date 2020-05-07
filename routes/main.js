@@ -9,7 +9,7 @@ const { getUserName } = require('../queries/users_get_queries')
  */
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
+  router.get("/dev", (req, res) => {
     const user = req.session.user;
     const templateVars = { user };
     if (user) {
@@ -28,7 +28,24 @@ module.exports = (db) => {
     } else {
       res.render('landing', templateVars);
     }
+  });
 
+  router.get("/", (req, res) => {
+    req.session.user = Math.ceil(Math.random() * 98) + 1;
+    const user = req.session.user;
+    const templateVars = { user };
+    db
+      .query(getUserName, [req.session.user])
+      .then(data => {
+        templateVars['username'] = data.rows[0].name;
+        res.redirect(`/stories/2/contributions`);
+      })
+      .catch(err => {
+        console.log(err);
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   });
 
   router.get('/login/:id', (req, res) => {
@@ -39,7 +56,7 @@ module.exports = (db) => {
 
   router.get('/logout', (req, res) => {
     req.session = null;
-    res.status(307).redirect('/');
+    res.status(307).redirect('/dev');
   });
 
   router.get('/create', (req, res) => {
