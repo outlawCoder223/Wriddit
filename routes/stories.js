@@ -84,32 +84,14 @@ module.exports = (myDB) => {
   router.get('/:story_id/contributions', (req, res) => {
     const id = req.params.story_id;
     const user = req.session.user;
-    const templateVars = { loggedIn: false, complete: false, user };
-    const promise1 = myDB.getContributions(id);
-    const promise2 = myDB.getComplete(id);
-    const promise3 = myDB.getUsername(user);
-    if (req.session.user) templateVars.loggedIn = true;
-    Promise.all([promise1, promise2, promise3])
-      .then(data => {
-        const story = data[1].rows[0];
-        templateVars.username = data[2].rows[0].name;
-        templateVars.contributions = data[0].rows;
-        templateVars.title = story.title;
-        templateVars.content = story.content;
-        templateVars.author = story.name;
-        templateVars.state = story.state;
-        templateVars.photo_url = story.photo_url;
-        templateVars.id = id;
-        if (story.state === 'Complete') {
+    myDB.incompleteStory(user, id)
+      .then((templateVars) => {
+        if (req.session.user) templateVars.loggedIn = true;
+        if (templateVars.state === 'Complete') {
           res.redirect(`/stories/${id}`);
         } else {
           (user === 1) ? res.render('story', templateVars) : res.render('demo_story', templateVars);
         }
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
       });
   });
 
