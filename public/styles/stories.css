@@ -2,10 +2,6 @@ a {
   color: black;
 }
 
-a:visited {
-  color: black;
-}
-
 a:hover {
   color: black;
 }
@@ -187,7 +183,7 @@ a:active {
 
 .feature-image {
   float: right;
-  width: 400px;
+  width: 330px;
 }
 
 .end {
@@ -236,7 +232,7 @@ a:active {
 
 .end .end-container .categories-container .categ-stories-container .categ-story1 .image-container {
   border-bottom: .8px solid #0000002e;
-  margin-right: 10px;
+  margin-right: 23px;
 }
 
 .end .end-container .categories-container .categ-stories-container .categ-story2 {
@@ -314,6 +310,10 @@ a:active {
   padding-left: 10px;
 }
 
+.end .end-container .categories-container .categ-stories-container .categ-story-text3 {
+  width: 50%;
+}
+
 .end .end-container .categories-container .categ-stories-container .categ-story-image {
   height: 15vw;
   width: auto;
@@ -321,10 +321,16 @@ a:active {
 }
 
 .end .end-container .categories-container .categ-stories-container .categ-story-image2 {
-  height: 12vw;
+  height: 15vw;
   width: auto;
-  margin-left: -32px;
+  margin-left: -10px;
   margin-right: 35px;
+}
+
+.end .end-container .categories-container .categ-stories-container .categ-story-image3 {
+  height: 10vw;
+  width: auto;
+  padding-right: 20px;
 }
 
 .end .end-container .categories-container .categ-stories-container .image-container {
@@ -335,12 +341,11 @@ a:active {
   flex: 1 1 25%;
   display: flex;
   align-items: center;
-  padding-left: 3%;
-  margin-top: 41px;
 }
 
 .end .end-container .image-container .wridders-img {
-  height: 48vw;
+  margin-top: 112px;
+  height: 38vw;
   margin: 0 auto;
 }
 
@@ -372,4 +377,8 @@ a:active {
 
 select#genre {
   height: 38px;
+}
+
+.end .end-container .categories-container .categ-stories-container .categ-story-image.action-picture {
+  height: 15vw;
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Wriddit - DEMO</title>
+    <title>Wriddit- DEMO</title>
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/story.js"></script>
+    <script type="text/javascript" src="/scripts/story_demo.js"></script>
   </head>
 
   <body>
@@ -32,6 +32,14 @@
       <section class="contribution-form">
         <form id="new-contribution" action="/stories/:story_id/:contribution_id" method="post">
           <label class="contribution-label" for="contribution">What happens next...</label>
+          <div class="error-no-text">
+            <span>
+          <p><i class="fontAwesomeIcon fas fa-exclamation-circle"></i>Oops! Please enter a contribution.</p></span>
+          </div>
+          <div class="error-over-500">
+            <span>
+          <p><i class="fontAwesomeIcon fas fa-exclamation-circle"></i>Oops! Your contribution must be less than 300 words.</p></span>
+          </div>
           <textarea name="contribution" id="add-contribution" cols="30" rows="10"></textarea>
           <div>
             <button type="submit">Submit</button>
@@ -40,18 +48,15 @@
       </section>
       <section id="contribution-container">
         <% for (const item of contributions) { %>
-        <article class="contribution">
+        <article class="contribution" data-id="<%= item.id %>">
           <p class="div-content"><%= item.content %></p>
           <footer>
             <div class="upvote-box">
               <button class="upvote"><img src="/images/hands-and-gestures.png" alt=""></button>
-              <p><%= item.upvotes %></p>
+              <p class="upvote-number"><%= item.upvotes %></p>
             </div>
             <div class="button-id-and-merge">
               <h4><%= item.name %></h4>
-              <% if (loggedIn && username === author ) { %>
-              <button id="<%= item.id %>" class="merge">Merge</button>
-              <% } %>
             </div>
           </footer>
         </article>

@@ -17,6 +17,7 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/stories.js"></script>
   </head>
+
   <body>
 
     <%- include('partials/_header') %>
@@ -60,11 +61,10 @@
         <div class="header-one-middle">
           <div class="feature-story">
             <div class="feature-story-first-section">
-              <img class="feature-image" src="https://wfdd-live.s3.amazonaws.com/styles/slideshow/s3/images/slideshow/The-Sci-Fi-Strangeness-And-Canadian-Sensuality-Of-Cartoonist-Michael-DeForge-522904049-1491563707.jpg?itok=-1zh_Kx8">
+              <img class="feature-image" src="https://cdn.pastemagazine.com/www/articles/assets_c/2019/02/WomansWork9-thumb-500x666-1075574.jpg">
               <h1 class="feature-title">FEATURE STORY OF THE WEEK</h1>
-              <!-- <p><%= seventh.content.slice(0, 390).trim() %>...</p> -->
-              <p>To Sherlock Holmes she is always the woman. I have seldom heard him mention her under any other name. In his eyes she eclipses and predominates the whole of her sex. It was not that he felt any emotion akin to love for Irene Adler. All emotions, and that one particularly, were abhorrent to his cold, precise but admirably balanced mind. He was, I take it, the most perfect reasoning and observing machine that the world has seen...</p>
-              <a href="/stories/<%= seventh.id %>"><button class="button-mainpage">READ THE STORY</button></a>
+              <p>Once upon a time, a mouse, a bird, and a sausage, entered into partnership and set up house together. For a long time all went well; they lived in great comfort, and prospered so far as to be able to add considerably to their stores. The bird’s duty was to fly daily into the wood and bring in fuel; the mouse fetched the water, and the sausage saw to the cooking When people are too well off they always begin to long for something new. And so it c....</p>
+              <a href="http://localhost:8080/stories/22"><button class="button-mainpage">READ THE STORY</button></a>
             </div>
           </div>
           <div class="story-starter">
@@ -146,10 +146,10 @@
                   <p class="likes"><i class="far fa-hand-point-left"></i><%= genres.action.likes %></p>
                 </div>
                 <div class="image-container">
-                  <img class="categ-story-image" src="<%= genres.action.photo_url %>"></div>
+                  <img class="categ-story-image action-picture" src="<%= genres.action.photo_url %>"></div>
               </div>
               <div class="categ-story3">
-                <div class="categ-story-text">
+                <div class="categ-story-text categ-story-text3">
                   <p class="genre">COMEDY</p>
                   <p class="title"><a href="/stories/<%= genres.comedy.id %>"><%= genres.comedy.title %></a></p>
                   <p class="starter">STARTED BY <%= genres.comedy.name %></p>
@@ -157,7 +157,7 @@
                   <p class="likes"><i class="far fa-hand-point-left"></i><%= genres.comedy.likes %></p>
                 </div>
                 <div class="image-container">
-                  <img class="categ-story-image" src="<%= genres.comedy.photo_url %>"></div>
+                  <img class="categ-story-image3" src="<%= genres.comedy.photo_url %>"></div>
               </div>
               <div class="categ-story4">
                 <div class="categ-story-text">
