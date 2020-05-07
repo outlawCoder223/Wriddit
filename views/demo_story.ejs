@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/story.js"></script>
+    <script type="text/javascript" src="/scripts/story_demo.js"></script>
   </head>
 
   <body>
@@ -50,7 +50,7 @@
             <div class="button-id-and-merge">
               <h4><%= item.name %></h4>
               <% if (loggedIn && username === author ) { %>
-              <button id="<%= item.id %>" class="merge">Merge</button>
+              <!-- <button id="<%= item.id %>" class="merge">Merge</button> -->
               <% } %>
             </div>
           </footer>
