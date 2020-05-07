@@ -6,6 +6,7 @@ module.exports = (myDB) => {
   //browse all stories
   router.get('/', (req, res) => {
     const user = req.session.user;
+
     myDB.browseAllStories(user, 4, 3)
       .then((templateVars) => {
         res.render('stories', templateVars);
@@ -18,6 +19,7 @@ module.exports = (myDB) => {
     const title = req.body.title;
     const content = req.body.content;
     const genre = req.body.genre;
+
     myDB.newStory(content, title, authorId, genre)
       .then((storyId) => {
         res.redirect(`/stories/${storyId}/contributions`);
@@ -44,6 +46,7 @@ module.exports = (myDB) => {
   // get all stories that are unfinished /stories/unfinished
   router.get('/unfinished', (req, res) => {
     const user = req.session.user;
+
     myDB.browseUnfinished(user)
       .then((templateVars) => {
         res.render('unfinished', templateVars)
@@ -53,6 +56,7 @@ module.exports = (myDB) => {
   // get top stories by like
   router.get('/topStories', (req, res) => {
     const user = req.session.user;
+
     myDB.getTopStories(user)
       .then((templateVars) => {
         res.render('topStories', templateVars)
@@ -78,6 +82,7 @@ module.exports = (myDB) => {
   router.get('/:story_id/contributions', (req, res) => {
     const id = req.params.story_id;
     const user = req.session.user;
+
     myDB.incompleteStory(user, id)
       .then((templateVars) => {
         if (req.session.user) templateVars.loggedIn = true;
@@ -115,6 +120,7 @@ module.exports = (myDB) => {
   router.post('/:story_id/contributions/:contribution_id', (req, res) => {
     const contributionId = req.params.contribution_id;
     const storyId = req.params.story_id;
+
     myDB.merge(storyId, contributionId)
     .then(() => {
       res.status(201).send();
@@ -130,7 +136,6 @@ module.exports = (myDB) => {
         console.log('Changed story state to complete.');
         res.status(200).send();
       });
-
   });
 
   // upvote
