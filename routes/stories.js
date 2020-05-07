@@ -15,6 +15,7 @@ const { selectAllStories,
 const {
   createNewStory,
   markStoryComplete,
+  updateLikesofStory
 } = require('../queries/stories_post_queries');
 
 const { getContributionsByStoryId,
@@ -51,10 +52,6 @@ module.exports = (db) => {
     const promise2 = db.query(getRandomIncompleteStory, [4]);
     const promise3 = db.query(getRandomCompleteStory, [3]);
     const promise4 = db.query(getStoryByGenreName);
-    // db.query(getStoryByGenreName)
-    //   .then((data) => {
-    //     console.log(data.rows)
-    //   });
     Promise.all([promise1, promise2, promise3, promise4])
       .then((data) => {
         templateVars.username = data[0].rows[0].name;
@@ -75,7 +72,7 @@ module.exports = (db) => {
           romance: data[3].rows[5],
           action: data[3].rows[0],
           crime: data[3].rows[2]
-        }
+        };
       })
       .then(() => {
         res.render('stories', templateVars);
@@ -93,7 +90,8 @@ module.exports = (db) => {
     const authorId = req.session.user;
     const title = req.body.title;
     const content = req.body.content;
-    db.query(createNewStory, [content, title, authorId])
+    const genre = req.body.genre;
+    db.query(createNewStory, [content, title, authorId, genre])
       .then((data) => {
         const storyId = data.rows[0].id;
         res.redirect(`/stories/${storyId}/contributions`);
@@ -212,6 +210,7 @@ module.exports = (db) => {
         templateVars['content'] = story.content;
         templateVars['author'] = story.name;
         templateVars['state'] = story.state;
+        templateVars['photo_url'] = story.photo_url;
         templateVars['loggedIn'] = false;
         templateVars['id'] = id;
         fct(story);
@@ -250,6 +249,7 @@ module.exports = (db) => {
                 templateVars.content = story.content;
                 templateVars.author = story.name;
                 templateVars.state = story.state;
+                templateVars['photo_url'] = story.photo_url;
                 templateVars.id = id;
                 if (story.state === 'Complete') {
                   res.redirect(`/stories/${id}`);
@@ -344,6 +344,10 @@ module.exports = (db) => {
     res.status(200).send();
   });
 
+
+
+
   return router;
 };
+
 
