@@ -28,7 +28,7 @@
 
 * [x] Prefab data
 
-* [ ] Prompts for writing inspiration
+* [x] Prompts for writing inspiration
 
 * [ ] Infinite Scroll
 
@@ -38,11 +38,11 @@
 
 * [ ] Share story button
 
-* [ ] Dynamic homepage -> different stories on refresh
+* [x] Dynamic homepage -> different stories on refresh
 
 * [ ] Dropdown menu for contribution type (e.g. conclusion, body etc.)
 
-* [ ] Cannot edit others posts
+* [x] Cannot edit others posts
 
 * [ ] Extra security features
 

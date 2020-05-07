@@ -335,29 +335,3 @@ module.exports = (db) => {
   return router;
 };
 
-
-/*******NON-ESSENTIAL ROUTES*********
- * place these in the router as you build them out
-
-
-
-  //edit a story's title or content NOT by merge
-  router.post('/:story_id', (req, res) => {
-
-  });
-
-
-  //delete a story
-  router.post('/:story_id/delete', (req, res) => {
-
-  });
-
-
-
-  //read a contribution
-  router.get('/:story_id/contributions/:contribution_id', (req, res) => {
-
-  });
-
-
-     */

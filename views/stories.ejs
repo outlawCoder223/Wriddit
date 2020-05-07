@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Story</title>
+    <title>Wriddit</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Jost:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
@@ -15,20 +15,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/stories.js"></script>
   </head>
-
   <body>
 
     <%- include('partials/_header') %>
 
     <main id="main-container">
-
       <section class="header-one">
-
         <section class="header-top-stories">
-
           <h1 class="mainpage-header">TOP STORIES</h1>
-
           <div class="header-top-stories-one">
             <img class="story-image" src="https://i.pinimg.com/originals/85/bd/13/85bd1361a9180a835637f4a3ab4a4aa5.jpg">
             <h1 class="story-name"><%= complete.first.title %></h1>
@@ -39,7 +35,6 @@
               <h3>320</h3>
             </div>
           </div>
-
           <div class="header-top-stories-two">
             <div class="top-story-image-two"></div>
             <img class="story-image" src="https://66.media.tumblr.com/tumblr_m6ilt1dzEh1rrqne4o1_500.jpg">
@@ -51,7 +46,6 @@
               <h3>279</h3>
             </div>
           </div>
-
           <div class="header-top-stories-three">
             <img class="story-image" src="https://studygroupcomics.com/main/wp-content/uploads/2012/10/inccov.gif">
             <h1 class="story-name"><%= complete.third.title %></h1>
@@ -62,9 +56,7 @@
               <h3>480</h3>
             </div>
           </div>
-
         </section>
-
         <div class="header-one-middle">
           <div class="feature-story">
             <div class="feature-story-first-section">
@@ -75,7 +67,6 @@
               <a href="/stories/<%= seventh.id %>"><button class="button-mainpage">READ THE STORY</button></a>
             </div>
           </div>
-
           <div class="story-starter">
             <h1 class="feature-title">WRITER'S BLOCK?</h1>
             <div class="prompt-box"></div>
@@ -100,8 +91,6 @@
             </form>
           </div>
         </div>
-
-
         <div class="unfinished-stories">
           <h1 class="mainpage-header">UNFINISHED STORIES</h1>
           <div class="unfinished-stories-one">
@@ -111,7 +100,6 @@
             <h2 class="contributions">ALREADY 320 CONTRIBUTIONS</h2>
             <a href="/stories/<%= incomplete.first.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
-
           <div class="unfinished-stories-two">
             <img class="story-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQJSfOorI6keldTIKVd6UcGhyxSlFvRcQwN9rngGVZaAi1L2m28&usqp=CAU">
             <h1 class="story-name"><%= incomplete.second.title %></h1>
@@ -119,7 +107,6 @@
             <h2 class="contributions">ALREADY 436 CONTRIBUTIONS</h2>
             <a href="/stories/<%= incomplete.second.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
-
           <div class="unfinished-stories-three">
             <img class="story-image" src="https://www.booooooom.com/wp-content/uploads/2014/12/michael-deforge06.jpg">
             <h1 class="story-name"><%= incomplete.third.title %></h1>
@@ -127,27 +114,18 @@
             <h2 class="contributions">ALREADY 924 CONTRIBUTIONS</h2>
             <a href="/stories/<%= incomplete.third.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
-
         </div>
-
       </section>
-
       <section class="catchphrase">
         <h1>WRIDDIT</h1>
         <h2>WRITING FOR EVERYONE WITH EVERYONE</h2>
       </section>
-
       <section class="end">
         <div class="end-container">
-
           <div class="categories-container">
-
             <h1 class="categories-header">TOP STORIES BY CATEGORIES</h1>
-
             <div class="categ-stories-container">
-
               <div class="categ-story1">
-
                 <div class="categ-story-text">
                   <p class="genre">ROMANCE</p>
                   <p class="title">I LOVE THIS PIE</p>
@@ -170,8 +148,6 @@
                 <div class="image-container">
                   <img class="categ-story-image" src="https://fantagraphics.com/images/flog/mike/201101/ppit-nyer-deforge.jpg"></div>
               </div>
-
-
               <div class="categ-story3">
                 <div class="categ-story-text">
                   <p class="genre">COMEDY</p>
@@ -196,26 +172,16 @@
                 <div class="image-container">
                   <img class="categ-story-image2" src="http://images.tcj.com/2011/10/tcjgag9.jpg"></div>
               </div>
-
-
-
             </div>
           </div>
           <div class="image-container">
             <img class="wridders-img" src="/images/wridders.png">
           </div>
-          <!--image container closing tag-->
         </div>
       </section>
-
-
     </main>
 
-    <script type="text/javascript" src="/scripts/stories.js"></script>
-
-
-
-
     <%- include('partials/_footer') %>
+
   </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Top Stories</title>
     <link href="https://fonts.googleapis.com/css?family=Jost:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -11,36 +11,26 @@
     <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
     <link rel="stylesheet" href="/styles/topStories.css" type="text/css" />
 
-
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script src="/scripts/story.js"></script>
   </head>
-
   <body>
 
     <%- include('partials/_header') %>
 
     <main>
-
       <section id="top-stories-container">
         <% for (const item of stories) { %>
           <article class="top-stories">
             <a class='top-stories-author anchor' href="/stories/<%= item.id %>">AUTHOR: <%= item.name %></a>
             <a class='top-stories-name anchor' href="/stories/<%= item.id %>">STORY NAME: <%= item.title %></a>
             <h3 class="top-stories-content"> <%= item.content %> </h3>
-
           </article>
-
           <% } %>
       </section>
-
-
-
     </main>
-
-
-
   </body>
+
   <%- include('partials/_footer') %>
-  <script src="/scripts/story.js"></script>
-  <script src="/scripts/app.js"></script>
+
 </html>

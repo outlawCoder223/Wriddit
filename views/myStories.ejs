@@ -13,19 +13,16 @@
 
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/story.js"></script>
   </head>
-
   <body>
 
     <%- include('partials/_header') %>
 
-
     <main>
-
       <div class="title">
         <h1 class="title-text">MY STORIES</h1>
       </div>
-
       <section id="my-stories-container">
         <% for (const item of stories) { %>
         <article class="my-stories">
@@ -33,19 +30,12 @@
           <a class='my-stories-name anchor' href="/stories/<%= item.id %>"><%= item.title %></a>
           <a class='my-stories-status anchor' href="/stories/<%= item.id %>"><%= item.state %></a>
           <h3 class="my-stories-content"> <%= item.content %> </h3>
-
         </article>
-
         <% } %>
       </section>
-
-
-
     </main>
 
     <%- include('partials/_footer') %>
 
   </body>
-  <script src="/scripts/story.js"></script>
-  <script src="/scripts/app.js"></script>
 </html>
