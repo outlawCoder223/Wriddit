@@ -85,13 +85,13 @@ $(document).ready(() => {
   const renderPost = (post) => {
     const newPost = `
     <article class="contribution">
-                <p>${post.content}</p>
+                <p class="div-content">${post.content}</p>
                 <footer>
-                  <div>
+                  <div class="upvote-box">
                     <button class="upvote" ><img src="/images/hands-and-gestures.png" alt=""></button>
                     <p>${post.upvotes}</p>
                   </div>
-                  <div>
+                  <div class="button-id-and-merge">
                     <h4>${post.name}</h4>
                   </div>
                 </footer>
