@@ -124,40 +124,15 @@ module.exports = (db) => {
 
   // get all stories that are unfinished /stories/unfinished
   router.get('/unfinished', (req, res) => {
-    const query = getAllUnfinishedStories;
     const user = req.session.user;
     const templateVars = { user };
-
-    db
-      .query(getUserName, [req.session.user])
-      .then(data => {
-        templateVars['username'] = data.rows[0].name;
-      })
-      .then(() => db.query(query))
-      .then(data => {
-        templateVars['stories'] = data.rows;
-        res.render('unfinished', templateVars);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
-
-  // get all stories that user has created /profile
-  router.get('/myStories', (req, res) => {
-    const query = getAllUnfinishedStories;
-    const user = req.session.user;
-    const templateVars = { user };
-
-    db
-      .query(getUserName, [req.session.user])
-      .then(data => {
-        templateVars['username'] = data.rows[0].name;
-      })
-      .then(() => db.query(getStoriesByUser, [user]))
-      .then(data => {
-        templateVars['stories'] = data.rows;
-        res.render('myStories', templateVars);
+    const promise1 = db.query(getUserName, [req.session.user]);
+    const promise2 = db.query(getAllUnfinishedStories);
+    Promise.all([promise1, promise2])
+      .then((data) => {
+        templateVars.username = data[0].rows[0].name;
+        templateVars.stories = data[1].rows;
+        res.render('unfinished', templateVars)
       })
       .catch((err) => {
         console.log(err);
@@ -166,20 +141,15 @@ module.exports = (db) => {
 
   // get top stories by like
   router.get('/topStories', (req, res) => {
-    const query = getAllTopStories;
     const user = req.session.user;
     const templateVars = { user };
-
-    db
-      .query(getUserName, [req.session.user])
+    const promise1 = db.query(getUserName, [req.session.user]);
+    const promise2 = db.query(getAllTopStories);
+    Promise.all([promise1, promise2])
       .then(data => {
-        templateVars['username'] = data.rows[0].name;
-      })
-      .then(() => db.query(query))
-      .then(data => {
-        templateVars['stories'] = data.rows;
-        res.render('topStories', templateVars);
-
+        templateVars.username = data[0].rows[0].name;
+        templateVars.stories = data[1].rows;
+        res.render('topStories', templateVars)
       })
       .catch((err) => {
         console.log(err);
@@ -253,7 +223,7 @@ module.exports = (db) => {
                 templateVars.content = story.content;
                 templateVars.author = story.name;
                 templateVars.state = story.state;
-                templateVars['photo_url'] = story.photo_url;
+                templateVars.photo_url = story.photo_url;
                 templateVars.id = id;
                 if (story.state === 'Complete') {
                   res.redirect(`/stories/${id}`);
