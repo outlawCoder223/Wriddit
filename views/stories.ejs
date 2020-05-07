@@ -26,7 +26,7 @@
         <section class="header-top-stories">
           <h1 class="mainpage-header">TOP STORIES</h1>
           <div class="header-top-stories-one">
-            <img class="story-image" src="https://i.pinimg.com/originals/85/bd/13/85bd1361a9180a835637f4a3ab4a4aa5.jpg">
+            <img class="story-image" src=<%= complete.first.photo_url %>>
             <h1 class="story-name"><%= complete.first.title %></h1>
             <h2 class="author-name"><%= complete.first.name %></h2>
             <a href="/stories/<%= complete.first.id %>"><button class="button-mainpage">READ THE STORY</button></a>
@@ -37,7 +37,7 @@
           </div>
           <div class="header-top-stories-two">
             <div class="top-story-image-two"></div>
-            <img class="story-image" src="https://66.media.tumblr.com/tumblr_m6ilt1dzEh1rrqne4o1_500.jpg">
+            <img class="story-image" src=<%= complete.second.photo_url %>>
             <h1 class="story-name"><%= complete.second.title %></h1>
             <h2 class="author-name"><%= complete.second.name %></h2>
             <a href="/stories/<%= complete.second.id %>"><button class="button-mainpage">READ THE STORY</button></a>
@@ -47,7 +47,7 @@
             </div>
           </div>
           <div class="header-top-stories-three">
-            <img class="story-image" src="https://studygroupcomics.com/main/wp-content/uploads/2012/10/inccov.gif">
+            <img class="story-image" src=<%= complete.third.photo_url %>>
             <h1 class="story-name"><%= complete.third.title %></h1>
             <h2 class="author-name"><%= complete.third.name %></h2>
             <a href="/stories/<%= complete.third.id %>"><button class="button-mainpage">READ THE STORY</button></a>
@@ -94,21 +94,21 @@
         <div class="unfinished-stories">
           <h1 class="mainpage-header">UNFINISHED STORIES</h1>
           <div class="unfinished-stories-one">
-            <img class="story-image" src="https://www.booooooom.com/wp-content/uploads/2014/12/michael-deforge05.jpg">
+            <img class="story-image" src=<%= incomplete.first.photo_url %>>
             <h1 class="story-name"><%= incomplete.first.title %></h1>
             <h2 class="author-name"><%= incomplete.first.name %></h2>
             <h2 class="contributions">ALREADY 320 CONTRIBUTIONS</h2>
             <a href="/stories/<%= incomplete.first.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
           <div class="unfinished-stories-two">
-            <img class="story-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQJSfOorI6keldTIKVd6UcGhyxSlFvRcQwN9rngGVZaAi1L2m28&usqp=CAU">
+            <img class="story-image" src=<%= incomplete.second.photo_url %>>
             <h1 class="story-name"><%= incomplete.second.title %></h1>
             <h2 class="author-name"><%= incomplete.second.name %></h2>
             <h2 class="contributions">ALREADY 436 CONTRIBUTIONS</h2>
             <a href="/stories/<%= incomplete.second.id %>"><button class="button-mainpage">CONTINUE THE STORY</button></a>
           </div>
           <div class="unfinished-stories-three">
-            <img class="story-image" src="https://www.booooooom.com/wp-content/uploads/2014/12/michael-deforge06.jpg">
+            <img class="story-image" src=<%= incomplete.third.photo_url %>>
             <h1 class="story-name"><%= incomplete.third.title %></h1>
             <h2 class="author-name"><%= incomplete.third.name %></h2>
             <h2 class="contributions">ALREADY 924 CONTRIBUTIONS</h2>
