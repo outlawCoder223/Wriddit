@@ -32,6 +32,14 @@
       <section class="contribution-form">
         <form id="new-contribution" action="/stories/:story_id/:contribution_id" method="post">
           <label class="contribution-label" for="contribution">What happens next...</label>
+          <div class="error-no-text">
+            <span>
+          <p><i class="fontAwesomeIcon fas fa-exclamation-circle"></i>Oops! Please enter a contribution.</p></span>
+          </div>
+          <div class="error-over-500">
+            <span>
+          <p><i class="fontAwesomeIcon fas fa-exclamation-circle"></i>Oops! Your contribution must be less than 300 words.</p></span>
+          </div>
           <textarea name="contribution" id="add-contribution" cols="30" rows="10"></textarea>
           <div>
             <button type="submit">Submit</button>
@@ -44,7 +52,7 @@
           <p class="div-content"><%= item.content %></p>
           <footer>
             <div class="upvote-box">
-              <button class="upvote-<%= item.id %>"><img src="/images/hands-and-gestures.png" alt=""></button>
+              <button class="upvote"><img src="/images/hands-and-gestures.png" alt=""></button>
               <p class="upvote-number"><%= item.upvotes %></p>
             </div>
             <div class="button-id-and-merge">
