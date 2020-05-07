@@ -189,54 +189,42 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
-
-
   });
 
   //read an incomplete story
   router.get('/:story_id/contributions', (req, res) => {
-    const query1 = getActiveContributions;
-    const query2 = getIncompleteStoryById;
     const id = req.params.story_id;
     const user = req.session.user;
     const templateVars = { loggedIn: false, complete: false, user };
+    const promise1 = db.query(getActiveContributions, [id]);
+    const promise2 = db.query(getIncompleteStoryById, [id]);
+    const promise3 = db.query(getUserName, [user]);
     if (req.session.user) templateVars.loggedIn = true;
-
-    db
-      .query(getUserName, [req.session.user])
+    Promise.all([promise1, promise2, promise3])
       .then(data => {
-        templateVars['username'] = data.rows[0].name;
+        templateVars.username = data[2].rows[0].name;
+        templateVars.contributions = data[0].rows;
+        const story = data[1].rows[0];
+        templateVars.title = story.title;
+        templateVars.content = story.content;
+        templateVars.author = story.name;
+        templateVars.state = story.state;
+        templateVars.photo_url = story.photo_url;
+        templateVars.id = id;
+        if (story.state === 'Complete') {
+          res.redirect(`/stories/${id}`);
+        } else {
+          if (user === 1) {
+            res.render('story', templateVars);
+          } else {
+            res.render('demo_story', templateVars);
+          }
+        }
       })
-      .then(() => {
-        db.query(query1, [id])
-          .then(data => {
-            templateVars.contributions = data.rows;
-            db.query(query2, [id])
-              .then(data => {
-                const story = data.rows[0];
-                templateVars.title = story.title;
-                templateVars.content = story.content;
-                templateVars.author = story.name;
-                templateVars.state = story.state;
-                templateVars.photo_url = story.photo_url;
-                templateVars.id = id;
-                if (story.state === 'Complete') {
-                  res.redirect(`/stories/${id}`);
-                } else {
-                  if (user === 1) {
-                    res.render('story', templateVars);
-                  } else {
-                    res.render('demo_story', templateVars);
-                  }
-
-                }
-              });
-          })
-          .catch(err => {
-            res
-              .status(500)
-              .json({ error: err.message });
-          });
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
       });
   });
 
