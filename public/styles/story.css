@@ -27,6 +27,7 @@ main {
   width: 47%;
   float: right;
   margin-left: 10px;
+  margin-bottom: 60px;
 }
 
 .story button {
@@ -42,10 +43,6 @@ main {
   cursor: pointer;
 }
 
-.contribution-form {
-  height: 375px;
-}
-
 .contribution-form label {
   display: block;
   font-size: 3.25rem;
@@ -57,7 +54,7 @@ main {
   font-size: 1rem;
   font-family: 'Jost';
   border: none;
-  height: 50%;
+  height: 300px;
   margin-top: 1%;
   border: none;
   overflow: auto;
@@ -149,11 +146,6 @@ main {
 .story-text {
   font-family: 'Jost';
   margin-bottom: 140px;
-}
-
-#contribution-container {
-  padding-top: 12%;
-  padding-bottom: 7%;
 }
 
 @font-face {

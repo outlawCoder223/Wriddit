@@ -31,6 +31,7 @@ main {
     width: 47%;
     float: right;
     margin-left: 10px;
+    margin-bottom: 60px;
   }
 
   button {
@@ -49,7 +50,7 @@ main {
 
 .contribution-form {
 
-  height: 375px;
+
 
   label {
     display: block;
@@ -62,7 +63,7 @@ main {
     font-size: 1rem;
     font-family: 'Jost';
     border: none;
-    height: 50%;
+    height: 300px;
     margin-top: 1%;
     border: none;
     overflow: auto;
@@ -165,11 +166,7 @@ main {
   margin-bottom: 140px;
 }
 
-#contribution-container {
-  padding-top: 12%;
-  padding-bottom: 7%;
 
-}
 
 @font-face {
   font-family: 'jost-3';
