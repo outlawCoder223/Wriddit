@@ -2,11 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const { getUserName } = require('../queries/users_get_queries')
-/**************ESSENTIAL ROUTES***************
- * login get /login/:id
- * logout get /logout
- * homepage get /
- */
 
 module.exports = (db) => {
   router.get("/dev", (req, res) => {
