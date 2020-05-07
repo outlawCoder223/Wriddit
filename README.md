@@ -1,6 +1,7 @@
 Wriddit
 --------
 
+## **Welcome to Wriddit!** 
 
 
 ## Dependencies
