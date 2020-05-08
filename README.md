@@ -10,7 +10,7 @@ Wriddit is a full stack web application built with Node and Express that allows 
 
 ### Homepage
 
-![Homepage](https://github.com/rancewcampbell/midterm-project/blob/master/public/images/Homepage.png?raw=true)
+![Homepage](https://github.com/rancewcampbell/midterm-project/blob/master/public/images/stories-by-category.png?raw=true)
 ![HomepageTwo](https://github.com/rancewcampbell/midterm-project/blob/master/public/images/Homepage%202.png?raw=true)
 
 ### Create a Story Page
